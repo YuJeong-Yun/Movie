@@ -1,0 +1,21 @@
+/* COMMON - 프로젝트에 공통으로 적용할 내용*/
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+img {
+  display: block;
+}
+a {
+  text-decoration: none;
+}
+.inner {
+  width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}

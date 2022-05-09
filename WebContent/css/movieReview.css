@@ -1,0 +1,82 @@
+@import url("./header.css");
+@import url("./footer.css");
+@import url("./common.css");
+
+/* 광고 이미지 */
+.ad-wrapper {
+  background-color: #333;
+  width: 180px;
+  height: 420px;
+  position: fixed;
+  top: 180px;
+  right: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.ad-wrapper .ad-img {
+  width: 160px;
+  height: 320px;
+}
+.ad-wrapper .description div {
+  margin: 5px 0;
+  padding-bottom: 2px;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  font-size: 14px;
+}
+
+
+/* 게시판 글 목록 */
+.board .inner {
+  margin-top: 200px;
+  width: 890px;
+  height: 700px;
+}
+.board .board-title {
+  font-size: 30px;
+  font-weight: 900;
+  color: #333;
+  margin-bottom: 20px;
+}
+.board .board-table {
+  width: 890px;
+  border-top: 2px solid #777 ;
+}
+.board .board-table th {
+  background-color: #ffdddd;
+  height: 40px;
+  line-height: 40px;
+  text-align: left;
+  color: #444;
+  font-size: 16px;
+  font-weight: 700;
+}
+.board .board-table th:first-child {
+  padding-left: 20px;
+}
+.board .board-table tr {
+  height: 33px;
+  line-height: 33px;
+  border-bottom: 1px dotted #dfdfdf;
+  font-size: 14px;
+}
+.board .board-table tr td:first-child {
+  padding-left: 20px;
+}
+  .board .board-table tr:hover {
+  background-color: #fffafa;
+}
+.board .writeBtn {
+  width: 70px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  bottom: 100px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+.board .writeBtn a {
+  color: #333;
+}

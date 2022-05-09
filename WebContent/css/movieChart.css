@@ -1,0 +1,65 @@
+@import url("./header.css");
+@import url("./footer.css");
+@import url("./common.css");
+
+.movie-chart {
+    margin-top: 250px;
+}
+.movie-chart .inner {
+    width: 998px;
+}
+.movie-chart .movie-wrapper {
+    padding: 0;
+    display: flex;
+}
+.movie-chart .movie-wrapper li {
+    width: 197px;
+    height: 400px;
+    margin-right: 70px;
+}
+.movie-chart .movie-wrapper li:last-child {
+    margin-right: 0;
+}
+.movie-chart .movie-wrapper li .movie-rank {
+    width: 197px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    margin-bottom: 5px;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    background-color: #fb4357;
+}
+.movie-chart .movie-wrapper li .movie-img {
+    width: 197px;
+    height: 260px;
+    margin-bottom: 5px;
+}
+.movie-chart .movie-wrapper li .movie-contents {
+    width: 197px;
+}
+.movie-chart .movie-wrapper li .movie-contents .title {
+    font-size: 17px;
+    font-weight: 700;
+}
+.movie-chart .movie-wrapper li .movie-contents .rate {
+    font-size: 13px;
+    font-weight: 500;
+}
+.movie-chart .movie-wrapper li .movie-contents .opening-date {
+    font-size: 13px;
+    font-weight: 500;
+}
+.movie-chart .movie-wrapper li .movie-ticketing {
+    display: block;
+    margin-top: 10px;
+    background-color: #fb4357;
+    width: 100px;
+    height: 27px;
+    text-align: center;
+    line-height: 27px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 15px;
+}

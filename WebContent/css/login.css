@@ -1,0 +1,86 @@
+@import url("./header.css");
+@import url("./footer.css");
+@import url("./common.css");
+
+.logIn {
+  margin-top: 145px;
+  padding: 100px 0 200px;
+}
+.logIn .inner {
+  padding: 40px 0;
+  width: 800px;
+  height: 400px;
+  border-top: 3px solid #888;
+  border-bottom: 3px solid #888;
+}
+.logIn .btn-wrapper {
+  position: absolute;
+  top: -51px;
+  left: -1px;
+  display: flex;
+}
+.logIn .btn-wrapper .btn {
+  background-color: #888;
+  border: none;
+  margin: 0 1px;
+  width: 140px;
+  height: 50px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+.logIn .btn-wrapper .btn a {
+  color: #fff;
+}
+.logIn .btn:first-child {
+  background-color: #ff4444;
+}
+.logIn .logInForm {
+  margin-top: 20px;
+  width: 350px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+}
+.logIn .logInForm > input {
+  padding: 10px;
+  width: 350px;
+  height: 50px;
+  border: 2px solid #777;
+  border-radius: 10px;
+  margin: 3px 0;
+}
+.logIn .logInForm .logInBtn-wrapper {
+  width: 350px;
+  height: 50px;
+  background-color: #ff4444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logIn .logInForm .logInSubmit {
+  width: 346px;
+  height: 46px;
+  background-color: #ff4444;
+  border-radius: 0;
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+}
+.logIn .logInForm .save-id {
+  margin-top: 15px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.logIn .logInForm .save-id input {
+  width: 20px;
+  margin: 0 10px 0 0;
+}
