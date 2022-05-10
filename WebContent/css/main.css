@@ -39,8 +39,7 @@
 
 /* 영화 차트 */
 .movie-chart {
-  height: 400px;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(189, 189, 189, 0.37));
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(251, 206, 177, 0.32));
 }
 .movie-chart > .inner {
   width: 1000px;
@@ -58,7 +57,20 @@
 
 }
 .movie-chart .swiper .swiper-wrapper .swiper-slide {
-
+	position: relative;
+	width: 170px;
+	height: 315px;
+}
+.movie-chart .swiper .swiper-wrapper .swiper-slide .poster-bg::before {
+  content: "";
+  display: block;
+  width: 170px;
+  height: 250px;
+  border-radius: 5%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.09) 35%, rgba(0, 0, 0, 0.7));
 }
 .movie-chart .swiper .swiper-wrapper .swiper-slide .poster {
   width: 170px;
@@ -66,6 +78,37 @@
   border-radius: 5%;
 }
 .movie-chart .swiper .swiper-wrapper .swiper-slide .movieContent {
+	width: 170px;
+	height: 55px;
+	padding: 0;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	color: #333;
+}
+.movie-chart .swiper .swiper-wrapper .swiper-slide .movieContent .rank {
+  position: absolute;
+  top: -70px;
+  left: 10px;
+  font-size: 40px;
+  font-style: italic;
+  color: #eee;
+  z-index: 1;
+}
+.movie-chart .swiper .swiper-wrapper .swiper-slide .movieContent .title {
+  width: 170px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  font-size: 17px;
+  font-weight: 700;
+}
+.movie-chart .swiper .swiper-wrapper .swiper-slide .movieContent .rate::before {
+	content: "예매율 ";
+	font-size: 13px;
+}
+.movie-chart .swiper .swiper-wrapper .swiper-slide .movieContent .rate {
+	font-size: 13px;
 }
 .movie-chart .swiper-prev, 
 .movie-chart .swiper-next {

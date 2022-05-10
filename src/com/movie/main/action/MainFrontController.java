@@ -37,14 +37,13 @@ public class MainFrontController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 		
-		if(command.equals("/Main.do")) { // 글쓰기 페이지로 이동
+		if(command.equals("/Main.do")) { // 메인 페이지로 이동
 			System.out.println(" C : /Main.do 호출 " );
-			// DB사용 X, view 이동
+			// DB사용 X, Model 이동
 			
-			// 페이지이동 객체 생성
-			forward = new ActionForward();
-			forward.setPath("./main/main.jsp");
-			forward.setRedirect(false);
+			action = new MainMovieChartAction();
+			
+			forward = action.execute(request, response);
 		}
 		
 		

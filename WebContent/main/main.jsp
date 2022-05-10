@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -22,6 +23,7 @@
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
   <link rel="stylesheet" href="./css/main.css" />
+
   <script defer src="./js/youtube.js"></script>
   <script defer src="./js/main.js"></script>
 </head>
@@ -31,12 +33,12 @@
   <jsp:include page="../inc/header.jsp"></jsp:include>
 
 
-    <!-- 유튜브 iFrame API -->
-    <section class="youtube">
-      <div class="youtube__area">
-        <div id="player"></div>
-      </div>
-    </section> 
+  <!-- 유튜브 iFrame API -->
+  <section class="youtube">
+    <div class="youtube__area">
+      <div id="player"></div>
+    </div>
+  </section> 
 
 
   <!-- 영화 차트 슬라이드 -->
@@ -45,41 +47,18 @@
       <div class="swiper">
         <h1 class="movie-chart-title">무비차트</h1>
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="./images/movieImg1.jpg" alt="movie1" class="poster">
-            <div class="movieContent">
-              <div class="rank">1</div>
-              <div class="title">영화1</div>
+       	  <c:forEach var="mv" items="${sessionScope.movieChart }" begin="0" end="9" step="1">
+         	<div class="swiper-slide">
+         	  <div class="poster-bg">
+                <img src="${mv.img }" alt="movie" class="poster" />
+              </div>
+              <div class="movieContent">
+                <div class="rank">${mv.rank.substring(3) }</div>
+                <div class="title">${mv.movieTitle }</div>
+                <div class="rate">${mv.movieRate }</div>
+              </div>
             </div>
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/movieImg1.jpg" alt="movie1" class="poster">
-            <div class="movieContent">
-              <div class="rank">2</div>
-              <div class="title">영화2</div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/movieImg1.jpg" alt="movie1" class="poster">
-            <div class="movieContent">
-              <div class="rank">3</div>
-              <div class="title">영화3</div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/movieImg1.jpg" alt="movie1" class="poster">
-            <div class="movieContent">
-              <div class="rank">4</div>
-              <div class="title">영화4</div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/movieImg1.jpg" alt="movie1" class="poster">
-            <div class="movieContent">
-              <div class="rank">5</div>
-              <div class="title">영화5</div>
-            </div>
-          </div>
+       	  </c:forEach>	
         </div>
       </div>
 

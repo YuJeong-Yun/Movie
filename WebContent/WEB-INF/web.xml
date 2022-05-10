@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
-  <display-name>movie</display-name>
+  <display-name>Movie</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -9,53 +9,40 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
-  <!-- 메인 -->
   <servlet>
     <servlet-name>MainFrontController</servlet-name>
     <servlet-class>com.movie.main.action.MainFrontController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>MainFrontController</servlet-name>
-    <url-pattern>*.do</url-pattern>  
+    <url-pattern>*.do</url-pattern>
   </servlet-mapping>
-  
-  
-  <!-- 게시판 -->
   <servlet>
     <servlet-name>BoardFrontController</servlet-name>
     <servlet-class>com.movie.board.action.BoardFrontController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>BoardFrontController</servlet-name>
-    <url-pattern>*.bo</url-pattern>  
+    <url-pattern>*.bo</url-pattern>
   </servlet-mapping>
-  
-  
-  <!-- 회원 -->
-    <servlet>
+  <servlet>
     <servlet-name>MemberFrontController</servlet-name>
     <servlet-class>com.movie.member.action.MemberFrontController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>MemberFrontController</servlet-name>
-    <url-pattern>*.me</url-pattern>  
+    <url-pattern>*.me</url-pattern>
   </servlet-mapping>
-  
-  
-  <!-- 한글처리하기 -->
   <filter>
-  	 <filter-name>SetUTF</filter-name>
-  	 <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
-  	 <init-param>
-	 	<param-name>encoding</param-name>
-  	 	<param-value>utf-8</param-value>
-  	 </init-param>
+    <filter-name>SetUTF</filter-name>
+    <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
   </filter>
   <filter-mapping>
-  	  <filter-name>SetUTF</filter-name>
-  	  <url-pattern>/*</url-pattern>
+    <filter-name>SetUTF</filter-name>
+    <url-pattern>/*</url-pattern>
   </filter-mapping>
-  
-  
 </web-app>
