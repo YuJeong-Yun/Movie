@@ -39,6 +39,11 @@
 .logIn .btn:first-child {
   background-color: #ff4444;
 }
+.logIn .alert {
+	text-align: center;
+	font-weight: 700;
+	color: #ff0000;
+}
 .logIn .logInForm {
   margin-top: 20px;
   width: 350px;
@@ -46,7 +51,6 @@
   left: 0;
   right: 0;
   margin: auto;
-
 }
 .logIn .logInForm > input {
   padding: 10px;

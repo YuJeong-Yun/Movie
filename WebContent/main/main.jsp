@@ -47,15 +47,15 @@
       <div class="swiper">
         <h1 class="movie-chart-title">무비차트</h1>
         <div class="swiper-wrapper">
-       	  <c:forEach var="mv" items="${sessionScope.movieChart }" begin="0" end="9" step="1">
+       	  <c:forEach var="mc" items="${sessionScope.movieChart }" begin="0" end="9" step="1">
          	<div class="swiper-slide">
          	  <div class="poster-bg">
-                <img src="${mv.img }" alt="movie" class="poster" />
+                <img src="${mc.img }" alt="movie" class="poster" />
               </div>
               <div class="movieContent">
-                <div class="rank">${mv.rank.substring(3) }</div>
-                <div class="title">${mv.movieTitle }</div>
-                <div class="rate">${mv.movieRate }</div>
+                <div class="rank">${mc.rank.substring(3) }</div>
+                <div class="title">${mc.movieTitle }</div>
+                <div class="rate">${mc.movieRate }</div>
               </div>
             </div>
        	  </c:forEach>	

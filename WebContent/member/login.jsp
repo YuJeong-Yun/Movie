@@ -17,7 +17,7 @@
   <!-- 구글 아이콘 -->
   <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="./css/login.css">
 </head>
 <body>
   <!-- HEADER -->
@@ -32,7 +32,9 @@
         <button class="btn"><a href="javascript:void(0)">비회원 예매</a></button>
         <button class="btn"><a href="javascript:void(0)">비회원 예매확인</a></button>
       </div>
-      <form action="javascript:void(0)" method="post" class="logInForm">
+      
+      <h2 class="alert">${requestScope.alert }</h2>
+      <form action="./LoginAction.me" method="post" class="logInForm">
         <input type="text" name="id"><br>
         <input type="password" name="pw"><br>
         <div class="logInBtn-wrapper"> 
@@ -42,7 +44,6 @@
       </form>
     </div>
   </section>
-
 
 
   <!-- FOOTER -->

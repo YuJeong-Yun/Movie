@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+
 public class MemberFrontController extends HttpServlet {
 	
 	protected void doProcess(HttpServletRequest request
@@ -37,25 +38,45 @@ public class MemberFrontController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 		
+		if(command.equals("/Login.me")) { // 로그인 페이지로 이동
+			System.out.println(" C : /Login.me 호출 " );
+			// DB사용 X, view 이동
+			
+			forward = new ActionForward();
+			forward.setPath("./member/login.jsp");
+			forward.setRedirect(false);
+				
+		}else if(command.equals("/LoginAction.me")) { // 로그인 처리 페이지
+			System.out.println(" C : /LoginAction.me 호출 ");
+			// DB 사용 ㅇ, 모델 이동
+			
+			action = new LoginAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
 
-		
 		
 		System.out.println(" C : 2. 가상 주소 매핑 끝\n ");
 		//////////////////////////////2. 가상 주소 매핑 /////////////////////////////////
 		//////////////////////////////3. 페이지 이동 /////////////////////////////////
 		System.out.println(" C : 3. 페이지 이동 시작");
 		
-//		if(forward != null) { // 페이지 이동정보가 있을 때
-//			if(forward.isRedirect()) { // true
-//				System.out.println(" C : redirect 방식, "+forward.getPath()+"로 이동");
-//				response.sendRedirect(forward.getPath());
-//			} else { //false
-//				RequestDispatcher dis =
-//						request.getRequestDispatcher(forward.getPath());
-//				System.out.println(" C : forward방식, "+forward.getPath()+"로 이동");
-//				dis.forward(request, response);
-//			} 
-//		}
+		if(forward != null) { // 페이지 이동정보가 있을 때
+			if(forward.isRedirect()) { // true
+				System.out.println(" C : redirect 방식, "+forward.getPath()+"로 이동");
+				response.sendRedirect(forward.getPath());
+			} else { //false
+				RequestDispatcher dis =
+						request.getRequestDispatcher(forward.getPath());
+				System.out.println(" C : forward방식, "+forward.getPath()+"로 이동");
+				dis.forward(request, response);
+			} 
+		}
 		
 		System.out.println(" C : 3. 페이지 이동 끝\n");
 		//////////////////////////////3. 페이지 이동 /////////////////////////////////

@@ -60,7 +60,7 @@ public class MainMovieChartAction implements Action {
 		// 페이지 이동 객체 생성
 		ActionForward forward = new ActionForward();
 		forward = new ActionForward();
-		forward.setPath("./main/jsonMovieChart.jsp");
+		forward.setPath("./main/main.jsp");
 		forward.setRedirect(false);
 
 		return forward;

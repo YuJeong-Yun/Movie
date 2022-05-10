@@ -8,7 +8,7 @@ public interface Action {
 	// 처리동작 후 ActionForward(페이지 이동객체) 리턴
 	
 	public ActionForward execute(HttpServletRequest request,
-			HttpServletResponse response);
+			HttpServletResponse response)  throws Exception;
 	
 
 }

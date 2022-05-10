@@ -41,9 +41,22 @@ public class MainFrontController extends HttpServlet {
 			System.out.println(" C : /Main.do 호출 " );
 			// DB사용 X, Model 이동
 			
-			action = new MainMovieChartAction();
+			action = new MainMovieChartAction(); // CGV 영화 차트 크롤링해서 세션에 저장
 			
-			forward = action.execute(request, response);
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/MovieChart.do")) { // 영화 차트 페이지로 이동
+			System.out.println(" C : /MovieChart.do 호출 ");
+			// DB 사용 X, view 이동
+			
+			forward = new ActionForward();
+			forward.setPath("./main/movieChart.jsp");
+			forward.setRedirect(false);
+					
 		}
 		
 		

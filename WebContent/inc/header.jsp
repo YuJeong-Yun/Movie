@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- HEADER -->
 <header>
@@ -15,12 +16,23 @@
 
       <ul class="memberInfo">
         <img src="./images/main_add_img.png" alt="현대카드" class="main_ad" />
-        <li>
-          <a href="./Login.me" class="member-Icon">
-            <div class="material-icons-outlined">lock</div>
-            <div class="member-Text">로그인</div>
-          </a>
-        </li>
+        <c:if test="${sessionScope.id == null }">
+          <li>
+            <a href="./Login.me" class="member-Icon">
+              <div class="material-icons-outlined">lock</div>
+              <div class="member-Text">로그인</div>
+            </a>
+          </li>
+        </c:if>
+        <c:if test="${sessionScope.id != null }">
+          <li>
+            <a href="./Logout.me" class="member-Icon">
+              <div class="material-icons-outlined">lock</div>
+              <div class="member-Text">로그아웃</div>
+            </a>
+          </li>
+        </c:if>
+        
         <li>
           <a href="./Join.me" class="member-Icon">
             <div class="material-icons-outlined">group_add</div>

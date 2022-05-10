@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +19,7 @@
   <!-- 구글 아이콘 -->
   <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/movieChart.css">
+  <link rel="stylesheet" href="./css/movieChart.css">
 </head>
 
 <body>
@@ -27,51 +28,51 @@
 
 
 
+
+
   <!-- 무비 차트 -->
   <section class="movie-chart">
     <div class="inner">
+    
+      <!-- 광고 이미지 -->
+      <div class="ad-wrapper">
+	    <img src="./images/movieChart_ad.jpg" alt="CGV GIFTCARD" class="ad-img"/>  
+	    <div class="description">
+          <div>CGV 기프트 카드</div>
+  	      <div>감사의 마음을 선물하세요!</div>
+	    </div>
+      </div>
+    
+      <h2 class="title">무비차트</h2>
       <ol class="movie-wrapper">
-        <li>
-          <div class="movie-rank">No.1</div>
-          <img src="../images/movieImg1.jpg" alt="영화" class="movie-img" />
-          <div class="movie-contents">
-            <div class="title">닥터 스트레인지</div>
-            <div class="rate">예매율 30%</div>
-            <div class="opening-date">2022.05.01 개봉</div>
-          </div>
-          <a href="javascript:void(0)" class="movie-ticketing">예매하기</a>
-        </li>
-        <li>
-          <div class="movie-rank">No.1</div>
-          <img src="../images/movieImg1.jpg" alt="영화" class="movie-img" />
-          <div class="movie-contents">
-            <div class="title">닥터 스트레인지</div>
-            <div class="rate">예매율 30%</div>
-            <div class="opening-date">2022.05.01 개봉</div>
-          </div>
-          <a href="javascript:void(0)" class="movie-ticketing">예매하기</a>
-        </li>
-        <li>
-          <div class="movie-rank">No.1</div>
-          <img src="../images/movieImg1.jpg" alt="영화" class="movie-img" />
-          <div class="movie-contents">
-            <div class="title">닥터 스트레인지</div>
-            <div class="rate">예매율 30%</div>
-            <div class="opening-date">2022.05.01 개봉</div>
-          </div>
-          <a href="javascript:void(0)" class="movie-ticketing">예매하기</a>
-        </li>
-        <li>
-          <div class="movie-rank">No.1</div>
-          <img src="../images/movieImg1.jpg" alt="영화" class="movie-img" />
-          <div class="movie-contents">
-            <div class="title">닥터 스트레인지</div>
-            <div class="rate">예매율 30%</div>
-            <div class="opening-date">2022.05.01 개봉</div>
-          </div>
-          <a href="javascript:void(0)" class="movie-ticketing">예매하기</a>
-        </li>
+      	<c:forEach var="mc" items="${sessionScope.movieChart }" begin="0" end="2" step="1">
+	      <li>
+	        <div class="movie-rank">${mc.rank }</div>
+	        <img src="${mc.img }" alt="영화" class="movie-img" />
+	        <div class="movie-contents">
+	          <div class="title">${mc.movieTitle }</div>
+	          <div class="rate">${mc.movieRate }</div>
+	          <div class="opening-date">${mc.movieOpenDate }</div>
+	        </div>
+	        <a href="javascript:void(0)" class="movie-ticketing">예매하기</a>
+	      </li>
+        </c:forEach>
       </ol>
+      <ol class="movie-wrapper second">
+      	<c:forEach var="mc" items="${sessionScope.movieChart }" begin="3" end="18" step="1">
+	      <li>
+	        <div class="movie-rank">${mc.rank }</div>
+	        <img src="${mc.img }" alt="영화" class="movie-img" />
+	        <div class="movie-contents">
+	          <div class="title">${mc.movieTitle }</div>
+	          <div class="rate">${mc.movieRate }</div>
+	          <div class="opening-date">${mc.movieOpenDate }</div>
+	        </div>
+	        <a href="javascript:void(0)" class="movie-ticketing">예매하기</a>
+	      </li>
+        </c:forEach>
+      </ol>
+      
     </div>
   </section>
 

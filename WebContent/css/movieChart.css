@@ -2,22 +2,60 @@
 @import url("./footer.css");
 @import url("./common.css");
 
+
+/* 광고 이미지 */
+.ad-wrapper {
+  background-color: #333;
+  width: 180px;
+  height: 420px;
+  position: absolute;
+  top: 128px;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.ad-wrapper .ad-img {
+  width: 160px;
+  height: 320px;
+}
+.ad-wrapper .description div {
+  margin: 5px 0;
+  padding-bottom: 2px;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  font-size: 14px;
+}
+
+
+
 .movie-chart {
-    margin-top: 250px;
+    margin-top: 200px;
 }
 .movie-chart .inner {
     width: 998px;
 }
+.movie-chart .inner > .title {
+	font-size: 40px;
+	font-weight: 600;
+	color: #333;
+	padding-bottom: 20px;
+	border-bottom: 3px solid #333;
+	margin-bottom: 50px;
+}
 .movie-chart .movie-wrapper {
     padding: 0;
     display: flex;
+    flex-wrap: wrap;
 }
 .movie-chart .movie-wrapper li {
     width: 197px;
     height: 400px;
     margin-right: 70px;
+    margin-bottom: 80px;
 }
-.movie-chart .movie-wrapper li:last-child {
+.movie-chart .movie-wrapper li:nth-child(4n+0) {
     margin-right: 0;
 }
 .movie-chart .movie-wrapper li .movie-rank {
@@ -31,6 +69,9 @@
     font-weight: 600;
     background-color: #fb4357;
 }
+.movie-chart .movie-wrapper.second li .movie-rank {
+	background-color: #333;
+}
 .movie-chart .movie-wrapper li .movie-img {
     width: 197px;
     height: 260px;
@@ -40,10 +81,17 @@
     width: 197px;
 }
 .movie-chart .movie-wrapper li .movie-contents .title {
+	width: 197px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow:ellipsis;
     font-size: 17px;
     font-weight: 700;
 }
-.movie-chart .movie-wrapper li .movie-contents .rate {
+.movie-chart .movie-wrapper li .movie-contents .rate::before {
+	content: "예매율 ";
+}
+	.movie-chart .movie-wrapper li .movie-contents .rate {
     font-size: 13px;
     font-weight: 500;
 }
