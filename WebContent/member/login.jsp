@@ -18,6 +18,7 @@
   <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
   <link rel="stylesheet" href="./css/login.css">
+  <script defer src="./js/login.js"></script>
 </head>
 <body>
   <!-- HEADER -->
@@ -34,13 +35,13 @@
       </div>
       
       <h2 class="alert">${requestScope.alert }</h2>
-      <form action="./LoginAction.me" method="post" class="logInForm">
+      <form action="./LoginAction.me" method="post" class="logInForm" name="loginForm" onsubmit="return loginCheck();">
         <input type="text" name="id"><br>
         <input type="password" name="pw"><br>
         <div class="logInBtn-wrapper"> 
           <input type="submit" value="로그인" class="logInSubmit">
         </div>
-        <label class="save-id"><input type="checkbox">아이디 저장</label></label>
+        <label class="save-id"><input type="checkbox">아이디 저장</label>
       </form>
     </div>
   </section>

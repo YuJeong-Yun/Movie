@@ -58,6 +58,48 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+		}else if(command.equals("/Logout.me")) { // 로그아웃 처리
+			System.out.println(" C : /Logout.me 호출 ");
+			// DB 사용 X, view 이동
+			
+			action = new LogoutAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/Join.me")) { // 회원가입 페이지로 이동
+			System.out.println(" C : /Join.me 호출");
+			// DB 사용 X, view 이동
+			
+			// 회원가입 페이지 이동
+			forward = new ActionForward();
+			forward.setPath("./member/join.jsp");
+			forward.setRedirect(false);
+			
+		}else if(command.equals("/JoinAction.me")) { // 회원가입 실행 페이지
+			System.out.println(" C : /JoinAction.me 호출 ");
+			// DB 사용 O, 로그인 페이지 이동
+			
+			action = new JoinAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/JoinCheckAction.me")) { // 아이디 중복체크
+			System.out.println(" C : /JoinCheckAction.me 호출 ");
+			// DB 사용 O
+			
+			action = new JoinCheckAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		

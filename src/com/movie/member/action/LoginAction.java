@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.movie.member.action.db.memberDAO;
+import com.movie.member.action.db.MemberDAO;
 
 public class LoginAction implements Action {
 
@@ -19,7 +19,7 @@ public class LoginAction implements Action {
 			
 		// 전달받은 정보를 비교하기 위해서 DB로 이동
 		// DAO 객체를 사용
-		memberDAO dao = new memberDAO();
+		MemberDAO dao = new MemberDAO();
 
 		// 로그인여부를 체크하는 동작
 		int result = dao.loginCheck(id, pw);

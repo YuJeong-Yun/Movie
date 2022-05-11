@@ -17,7 +17,7 @@
 	<res-auth>Container</res-auth>
 </resource-ref>
   
-  
+<!--   메인 페이지 -->
   <servlet>
     <servlet-name>MainFrontController</servlet-name>
     <servlet-class>com.movie.main.action.MainFrontController</servlet-class>
@@ -26,6 +26,8 @@
     <servlet-name>MainFrontController</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
+  
+<!--   게시판 페이지 -->
   <servlet>
     <servlet-name>BoardFrontController</servlet-name>
     <servlet-class>com.movie.board.action.BoardFrontController</servlet-class>
@@ -34,6 +36,8 @@
     <servlet-name>BoardFrontController</servlet-name>
     <url-pattern>*.bo</url-pattern>
   </servlet-mapping>
+  
+<!--   회원정보 페이지 -->
   <servlet>
     <servlet-name>MemberFrontController</servlet-name>
     <servlet-class>com.movie.member.action.MemberFrontController</servlet-class>
@@ -42,6 +46,8 @@
     <servlet-name>MemberFrontController</servlet-name>
     <url-pattern>*.me</url-pattern>
   </servlet-mapping>
+  
+<!--   한글처리 -->
   <filter>
     <filter-name>SetUTF</filter-name>
     <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>

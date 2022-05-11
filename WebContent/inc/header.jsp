@@ -23,6 +23,12 @@
               <div class="member-Text">로그인</div>
             </a>
           </li>
+          <li>
+            <a href="./Join.me" class="member-Icon">
+              <div class="material-icons-outlined">group_add</div>
+              <div class="member-Text">회원가입</div>
+            </a>
+          </li>
         </c:if>
         <c:if test="${sessionScope.id != null }">
           <li>
@@ -32,13 +38,6 @@
             </a>
           </li>
         </c:if>
-        
-        <li>
-          <a href="./Join.me" class="member-Icon">
-            <div class="material-icons-outlined">group_add</div>
-            <div class="member-Text">회원가입</div>
-          </a>
-        </li>
         <li>
           <a href="./MyPage.me" class="member-Icon">
             <div class="material-icons-outlined">person_outline</div>

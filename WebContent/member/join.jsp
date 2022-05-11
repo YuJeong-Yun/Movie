@@ -21,7 +21,8 @@
     rel="stylesheet">
 
 
-  <link rel="stylesheet" href="../css/join.css">
+  <link rel="stylesheet" href="./css/join.css">
+  <script defer src="./js/join.js"></script>
 </head>
 
 <body>
@@ -32,50 +33,53 @@
   <!-- 회원가입 -->
   <section class="join">
     <div class="inner">
-      <img src="../images/join.jpg" alt="회원가입" class="join-img">
+      <img src="./images/join.jpg" alt="회원가입" class="join-img">
 
       <div class="form-wrapper">
-        <form action="javascript:void(0)" method="post">
+        <form action="./JoinAction.me" method="post" name="fr" onsubmit="return formCheck();">
           <div class="form-title">필수 회원 정보</div>
           <table>
             <tr>
               <td>아이디</td>
-              <td><input type="text" name="id"></td>
+              <td><input type="text" name="id" onkeyup="showIdDbCheck();"></td>
+              <td>
+                <button type="button" name="idCheck" onclick="idDbCheck();" class="idDbBtn">아이디 중복체크</button>
+                <input type="hidden" name="idDuplication" value="idUncheck">
+              </td>
             </tr>
             <tr>
               <td>비밀번호</td>
-              <td><input type="password" name="pw"></td>
+              <td colspan="2"><input type="password" name="pw"></td>
             </tr>
             <tr>
               <td>비밀번호 확인</td>
-              <td><input type="password" name="pw2"></td>
+              <td colspan="2"><input type="password" name="pw2"></td>
             </tr>
             <tr>
               <td>이름</td>
-              <td><input type="text" name="name"></td>
+              <td colspan="2"><input type="text" name="name"></td>
             </tr>
             <tr>
               <td>성별</td>
-              <td>
+              <td colspan="2">
                 <label><input type="radio" name="gender" vlaue="남"> 남</label>
                 <label><input type="radio" name="gender" value="여"> 여</label>
               </td>
             </tr>
             <tr>
               <td>주소</td>
-              <td><input type="text" name="addr"></td>
+              <td colspan="2"><input type="text" name="addr"></td>
             </tr>
             <tr>
               <td>휴대전화</td>
-              <td><input type="text" name="tel"></td>
+              <td colspan="2"><input type="text" name="tel"></td>
             </tr>
             <tr>
               <td>e-mail</td>
-              <td><input type="email" name="email"></td>
+              <td colspan="2"><input type="email" name="email"></td>
             </tr>
-
-            <input type="submit" class="joinBtn" value="CGV+ 통합 회원가입">
           </table>
+          <input type="submit" class="joinBtn" value="CGV+ 통합 회원가입">
         </form>
 
       </div>

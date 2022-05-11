@@ -12,7 +12,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 
-public class memberDAO {
+public class MemberDAO {
 	// 디비에 movie_member 테이블과 관련된 모든 동작을 처리
 	
 	// 공통변수 선언
@@ -59,58 +59,35 @@ public class memberDAO {
 
 	
 	
-//	// 회원가입 - insertMember()
-//	public void insertMember(MemberBean mb){
-//		System.out.println("DAO : 회원가입 메서드 실행! ");
-//		String DRIVER = "com.mysql.cj.jdbc.Driver";
-//		String DBURL = "jdbc:mysql://localhost:3306/jspdb";
-//		String DBID = "root";
-//		String DBPW = "1234";
-//		
-//		    //* jsp 파일에서는 서버에서 제어해서 try-catch문 작성할 필요 없었음.
-//			// 1. 드라이버 로드
-//			try {
-//				Class.forName(DRIVER);
-//				
-//				// 2. 디비 연결
-//				con = DriverManager.getConnection(DBURL, DBID, DBPW);
-//				
-//				// 3. sql작성 & pstmt 생성
-//				sql = "insert into itwill_member "
-//						+ "values(?, ?, ?, ?, ?, ?, ?)";
-//				pstmt = con.prepareStatement(sql);
-//				// ??? 입력
-//				pstmt.setString(1, mb.getId());
-//				pstmt.setString(2, mb.getPw());
-//				pstmt.setString(3, mb.getName());
-//				pstmt.setString(4, mb.getGender());
-//				pstmt.setInt(5, mb.getAge());
-//				pstmt.setString(6, mb.getEmail());
-//				pstmt.setTimestamp(7, mb.getReg_date());
-//				
-//				
-//				// 4. sql 실행
-//				pstmt.executeUpdate();
-//				
-//				System.out.println("DAO : 회원가입 완료!");
-//				
-//			} catch (ClassNotFoundException e) {
-//				e.printStackTrace();
-//				
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//				
-//			} finally {
-//				try {
-//					// DB관련 동작이 모두 끝났을 때 객체 정보가 남아있는 경우 자원을 해제
-//					// 사용한 순서의 역순으로 자원해제함(권장사항. 관습적으로 이렇게 많이 씀.)
-//					if(pstmt != null) { pstmt.close(); };
-//					if(con!=null) { con.close(); };
-//				} catch (SQLException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//	} // 회원가입 - insertMember()
+	// 회원가입 - insertMember()
+	public void insertMember(MemberDTO dto){
+		
+				try {
+					// 1.2. 디비 연결
+					con = getCon();
+					
+					// 3. sql작성 & pstmt 생성
+					sql = "insert into movie_member(id, pw, name, gender, addr, tel, email, date) values(?, ?, ?, ?, ?, ?, ?, now())";
+					pstmt = con.prepareStatement(sql);
+					// ??? 입력
+					pstmt.setString(1, dto.getId());
+					pstmt.setString(2, dto.getPw());
+					pstmt.setString(3, dto.getName());
+					pstmt.setString(4, dto.getGender());
+					pstmt.setString(5, dto.getAddr());
+					pstmt.setString(6, dto.getTel());
+					pstmt.setString(7, dto.getEmail());
+					
+					// 4. sql 실행
+					pstmt.executeUpdate();
+					
+					System.out.println("DAO : 회원가입 완료!");
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					closeDB();
+				}
+	} // 회원가입 - insertMember()
 	
 	
 	
@@ -149,9 +126,41 @@ public class memberDAO {
 		} finally {
 			closeDB();
 		}
-		
 		return result;
 	} // 로그인 - loginCheck
+
+	
+	
+	// 아이디 중복검사
+	public int idDbCheck(String id) {
+		int result = 0;
+		
+		try {
+			// 1.2. 디비 연결
+			con = getCon();
+			
+			// 3. sql 작성 & pstmt 객체
+			sql = "select id from movie_member where id = ?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setString(1, id);			
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			if(rs.next()) { // 아이디 있으면
+				result = 1;
+			}else { // 아이디 없으면
+				result = -1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return result;
+	} // idDbCheck()
 	
 	
 //	// getMember(id)
