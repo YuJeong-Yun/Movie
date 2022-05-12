@@ -338,49 +338,4 @@ public class MemberDAO {
 	
 	
 	
-	
-//	// getMemberList()
-//	public ArrayList getMemberList() { 
-//		ArrayList memberList = new ArrayList();
-//		
-//		try {
-//			// 1 2 디비연결
-//			con = getCon();
-//			
-//			// 3 sql 작성(select) & pstmt 객체 
-//			sql = "select * from itwill_member";
-//			pstmt = con.prepareStatement(sql);
-//			
-//			// 4 sql 실행
-//			rs = pstmt.executeQuery();
-//			
-//			// 5 데이터 처리(DB 정보를 모두 저장)
-//			while(rs.next()) {
-//				// 회원 1명의 정보를 meberList 한칸에 저장
-//				MemberBean mb = new MemberBean();
-//						
-//				mb.setAge(rs.getInt("age"));
-//				mb.setEmail(rs.getString("email"));
-//				mb.setGender(rs.getString("gender"));
-//				mb.setId(rs.getString("id"));
-//				mb.setName(rs.getString("name"));
-//				mb.setPw(rs.getString("pw"));
-//				mb.setReg_date(rs.getTimestamp("reg_date"));
-//				System.out.println("회원 정보 저장 완료");
-//				///////////////////////////////////////////////////////
-//				
-//				memberList.add(mb);
-//				System.out.println("회원 리스트 한 칸에 저장 완료");
-//			}
-//			System.out.println("DAO : 회원 전체 목록 저장 완료!");
-//			System.out.println(memberList);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		
-//		return memberList;
-//	} // getMemberList
-	
 }

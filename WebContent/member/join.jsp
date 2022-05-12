@@ -70,7 +70,7 @@
             </tr>
             <tr>
               <td>휴대전화</td>
-              <td><input type="text" name="tel" onkeyup="telDbCheck();" maxlength="13"></td>
+              <td><input type="text" name="tel" onkeyup="telDbCheck();" placeholder="숫자만 입력하세요." maxlength="13"></td>
               <td class="telDbResult"></tr>
             <tr>
               <td>e-mail</td>

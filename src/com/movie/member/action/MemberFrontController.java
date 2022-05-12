@@ -21,10 +21,8 @@ public class MemberFrontController extends HttpServlet {
 		
 		// 가상주소 가져오기
 		String requestURI =	request.getRequestURI();
-		System.out.println(" C : requestURI -  " + requestURI);
 		// 프로젝트명  가져오기
 		String ctxPath = request.getContextPath();
-		System.out.println(" C : ctxPath - "+ctxPath);
 		// 가상주소 계산 (가상주소 - 프로젝트명)
 		String command = requestURI.substring(ctxPath.length());
 		System.out.println(" C : command - " + command);
