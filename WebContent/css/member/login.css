@@ -1,6 +1,6 @@
-@import url("./header.css");
-@import url("./footer.css");
-@import url("./common.css");
+@import url("../header.css");
+@import url("../footer.css");
+@import url("../common.css");
 
 .logIn {
   margin-top: 145px;

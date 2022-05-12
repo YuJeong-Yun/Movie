@@ -1,7 +1,7 @@
 /* HEADER & FOOTER CSS */
-@import url("./header.css"); 
-@import url("./footer.css");
-@import url("./common.css");
+@import url("../header.css"); 
+@import url("../footer.css");
+@import url("../common.css");
 
 
 /* 유튜브 iframe API */

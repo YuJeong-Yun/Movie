@@ -21,9 +21,9 @@
     href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="./css/myPage.css" />
+  <link rel="stylesheet" href="./css/member/myPage.css" />
   <script defer src="./js/jquery-3.6.0.min.js"></script>
-  <script defer src="./js/myPage.js"></script>
+  <script defer src="./js/member/myPage.js"></script>
 </head>
 
 <body>

@@ -1,7 +1,7 @@
-@import url("./header.css");
-@import url("./footer.css");
-@import url("./common.css");
-@import url("./left.css");
+@import url("../header.css");
+@import url("../footer.css");
+@import url("../common.css");
+@import url("../left.css");
 
 
 .my-cgv > .inner {
@@ -9,14 +9,14 @@
 }
 
 
-<!-- left menu 에서 회원 정보 수정 표시 -->
-.left .left-menu li:nth-child(2) a {
+<!-- left menu 에서 회원 탈퇴 표시 -->
+.left .left-menu li:nth-child(4) a {
   color: #d92316;
 }
 
 
 /* 회원 정보 수정 */
-.changePw {
+.delete {
     margin-top: 160px;
     padding: 60px 40px 0;
     width: 880px;
@@ -24,46 +24,37 @@
     position: absolute;
     right: 0;
 }
-.changePw .changePw-title {
+.delete .delete-title {
     font-size: 40px;
     font-weight: 900;
     color: #fb4537;
     margin-bottom: 30px;
 }    
-.changePw form .form-title {
+.delete form .form-title {
     font-size: 20px;
     font-weight: 900;
     color: #333;
     margin-bottom: 10px;
 }
-.changePw form table {
+.delete form table {
     width: 700px;
     border-top: 1px solid #888;
     border-bottom: 1px solid #888;
 }
-.changePw form table tr {
+.delete form table tr {
     height: 60px;
     line-height: 60px;
     border-bottom: 1px solid #dfdfdf;
 }
-.changePw form table tr:first-child {
-	height: 45px;
-	line-height: 45px;
-	border-bottom: 2px solid #777;
-}
-.changePw form table tr td {
+.delete form table tr td {
     padding-left: 30px;
 }
-.changePw form table tr td:last-child input {
-	width: 250px;
-	height: 30px;
-}
-.changePw form table tr td:first-child {
+.delete form table tr td:first-child {
     background-color: #efefef;
 }
-.changePw form .submitBtn {
+.delete form .submitBtn {
     position: absolute;
-    top: 400px;
+    top: 300px;
     width: 120px;
     height: 40px;
     background-color: #fd6759;
@@ -73,6 +64,6 @@
     font-size: 14px;
     cursor: pointer;
 }
-.changePw form .submitBtn:hover {
+.delete form .submitBtn:hover {
 	background-color: #ca3426;
 }

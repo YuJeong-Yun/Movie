@@ -17,8 +17,8 @@
   <!-- 구글 아이콘 -->
   <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
-  <link rel="stylesheet" href="./css/login.css">
-  <script defer src="./js/login.js"></script>
+  <link rel="stylesheet" href="./css/member/login.css">
+  <script defer src="./js/member/login.js"></script>
 </head>
 <body>
   <!-- HEADER -->

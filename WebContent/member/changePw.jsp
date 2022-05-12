@@ -21,8 +21,8 @@
     href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="./css/changePw.css" />
-  <script defer src="./js/changePw.js"></script>
+  <link rel="stylesheet" href="./css/member/changePw.css" />
+  <script defer src="./js/member/changePw.js"></script>
 </head>
 
 <body>

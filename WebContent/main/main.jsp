@@ -22,10 +22,10 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
-  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="stylesheet" href="./css/main/main.css" />
 
-  <script defer src="./js/youtube.js"></script>
-  <script defer src="./js/main.js"></script>
+  <script defer src="./js/main/youtube.js"></script>
+  <script defer src="./js/main/main.js"></script>
 </head>
 
 <body>
