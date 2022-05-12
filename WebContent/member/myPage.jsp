@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,10 +21,15 @@
     href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/myPage.css">
+  <link rel="stylesheet" href="./css/myPage.css">
 </head>
 
 <body>
+  <c:if test="${sessionScope.id == null }">
+    <% response.sendRedirect("./Login.me"); %>
+  </c:if>
+
+
   <!-- HEADER -->
   <jsp:include page="../inc/header.jsp"></jsp:include>
 

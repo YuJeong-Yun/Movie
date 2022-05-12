@@ -22,6 +22,7 @@
 
 
   <link rel="stylesheet" href="./css/join.css">
+  <script src="./js/jquery-3.6.0.min.js"></script>
   <script defer src="./js/join.js"></script>
 </head>
 
@@ -41,15 +42,12 @@
           <table>
             <tr>
               <td>아이디</td>
-              <td><input type="text" name="id" onkeyup="showIdDbCheck();"></td>
-              <td>
-                <button type="button" name="idCheck" onclick="idDbCheck();" class="idDbBtn">아이디 중복체크</button>
-                <input type="hidden" name="idDuplication" value="idUncheck">
-              </td>
+              <td><input type="text" name="id" placeholder ="4~10 자리로 입력하세요." minlength="4" maxlength="10" onkeyup="idDbCheck();"></td>
+              <td class="idDbResult"></td>
             </tr>
             <tr>
               <td>비밀번호</td>
-              <td colspan="2"><input type="password" name="pw"></td>
+              <td colspan="2"><input type="password" name="pw" placeholder ="8~12 자리로 입력하세요." minlength="8" maxlength="12" ></td>
             </tr>
             <tr>
               <td>비밀번호 확인</td>
@@ -72,12 +70,12 @@
             </tr>
             <tr>
               <td>휴대전화</td>
-              <td colspan="2"><input type="text" name="tel"></td>
-            </tr>
+              <td><input type="text" name="tel" onkeyup="telDbCheck();" maxlength="13"></td>
+              <td class="telDbResult"></tr>
             <tr>
               <td>e-mail</td>
-              <td colspan="2"><input type="email" name="email"></td>
-            </tr>
+              <td><input type="email" name="email" onkeyup="emailDbCheck();"></td>
+              <td class="emailDbResult"></tr>
           </table>
           <input type="submit" class="joinBtn" value="CGV+ 통합 회원가입">
         </form>

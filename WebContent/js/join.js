@@ -1,39 +1,39 @@
 /**
  * 
  */
- const fr = document.fr;
- 
- // 아이디 중복검사 버튼 클릭시 이벤트
-function idDbCheck() {
- 	const id = fr.id.value;
- 	
-	if(id=="") {
-		alert("아이디를 입력하세요.");
-	}else {
-		window.open("./JoinCheckAction.me?id="+id, "", "width=400,height=150");
-	}
-}
+const fr = document.fr;
+const idDbResult = fr.querySelector('.idDbResult');
+const telDbResult= fr.querySelector('.telDbResult');
+const emailDbResult = fr.querySelector('.emailDbResult');
+const regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/; // 전화번호 유효성 체크용
+
+let idArr = [];
+let telArr = [];
+let emailArr = [];
+
+// id, tel, email DB에서 가져옴
+$(function(){
+	$.getJSON({
+		url: "./member/dbJSON.jsp",
+		success: function(data){
+			$.each(data, function(index, item){
+				idArr.push(item.id);
+				telArr.push(item.tel);
+				emailArr.push(item.email);
+			});
+		}
+	});
+}); // JQuery
 
 
-// 아이디 수정하면 중복검사 다시 해야함
-function showIdDbCheck() {
-	fr.idCheck.disabled = false;
-	fr.idDuplication.value = "idUncheck";
-}
 
-
+// 폼 submit될 때 체크
 function formCheck() {
 	if(fr.id.value == "") {
 		alert("아이디를 입력하세요.");
 		fr.id.focus();
 		
 		return false;
-		
-	}else if(fr.idDuplication.value != "idCheck") {
-		alert("아이디 중복체크를 해주세요.");
-		
-		return false;
-
 	}else if(fr.pw.value == "") {
 		alert("비밀번호를 입력하세요.");
 		fr.pw.focus();
@@ -73,12 +73,69 @@ function formCheck() {
 		fr.pw2.focus();
 		
 		return false;
-	}
-	else {
+	}else if(idDbResult.textContent!="") {
+		alert("아이디 중복을 확인해주세요.")
+		fr.id.focus();
+		
+		return false;
+	}else if(telDbResult.textContent!="") {
+		alert("전화번호 중복을 확인해주세요.")
+		fr.tel.focus();
+		
+		return false;
+	}else if(emailDbResult.textContent!="") {
+		alert("이메일 중복을 확인해주세요.")
+		fr.email.focus();
+		
+		return false;
+	}else if(fr.id.value.indexOf(" ")!=-1) {
+		alert("아이디에 공백을 제거해주세요.")
+		fr.id.focus();
+		
+		return false;
+	}else if(!regExp.test(fr.tel.value)) {
+		alert("전화번호를 확인해주세요.");
+		fr.tel.focus();
+		
+		return false;
+	}else {
 		alert("회원가입이 완료되었습니다.");
 		
 		return true;
 	}
 }
 
+
+
+
+// id, tel, email 중복 검사
+function idDbCheck() {
+	if(idArr.indexOf(fr.id.value) != -1) {
+		idDbResult.textContent = "중복된 아이디 입니다.";
+	}else {
+		idDbResult.textContent = "";
+	}
+}
+function telDbCheck() {
+	if(telArr.indexOf(fr.tel.value) != -1) {
+		telDbResult.textContent = "중복된 전화번호 입니다.";
+	}else {
+		telDbResult.textContent = "";
+	}
+	
+	if(fr.tel.value.length == 3) {
+		fr.tel.value = fr.tel.value+"-";
+	}
+	if(fr.tel.value.length == 8) {
+		fr.tel.value = fr.tel.value+"-";
+	}
+}
+function emailDbCheck() {
+	if(emailArr.indexOf(fr.email.value) != -1) {
+		emailDbResult.textContent = "중복된 이메일 입니다.";
+	}else {
+		emailDbResult.textContent = "";
+	}
+	
+}
 

@@ -41,7 +41,7 @@
         <div class="logInBtn-wrapper"> 
           <input type="submit" value="로그인" class="logInSubmit">
         </div>
-        <label class="save-id"><input type="checkbox">아이디 저장</label>
+        <label class="save-id"><input type="checkbox" name="saveId">아이디 저장</label>
       </form>
     </div>
   </section>

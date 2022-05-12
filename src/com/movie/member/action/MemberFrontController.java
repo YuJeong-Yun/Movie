@@ -48,7 +48,7 @@ public class MemberFrontController extends HttpServlet {
 				
 		}else if(command.equals("/LoginAction.me")) { // 로그인 처리 페이지
 			System.out.println(" C : /LoginAction.me 호출 ");
-			// DB 사용 ㅇ, 모델 이동
+			// DB 사용 ㅇ, 페이지 이동
 			
 			action = new LoginAction();
 			
@@ -89,17 +89,18 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/JoinCheckAction.me")) { // 아이디 중복체크
-			System.out.println(" C : /JoinCheckAction.me 호출 ");
-			// DB 사용 O
+		}else if(command.equals("/MyPage.me")) { // 마이 페이지(정보 수정 페이지)로 이동
+			System.out.println(" C : /MyPage.me 호출");
+			// DB 사용 O, 페이지 출력
 			
-			action = new JoinCheckAction();
+			action = new MemberUpdateAction();
 			
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		}
 
 		

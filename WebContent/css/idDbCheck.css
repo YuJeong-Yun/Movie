@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+
+
+.result1 {
+	color: #ff0000;
+	text-align: center;
+}
+.result2 {
+	text-align: center;
+}
+.okBtn {
+	width: 50px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 30px;
+	margin: auto;
+}

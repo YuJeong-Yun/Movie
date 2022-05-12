@@ -131,79 +131,46 @@ public class MemberDAO {
 
 	
 	
-	// 아이디 중복검사
-	public int idDbCheck(String id) {
-		int result = 0;
+	// getMember(id)
+	public MemberDTO getMember(String id) {
+		MemberDTO dto = null;
 		
 		try {
-			// 1.2. 디비 연결
+			// 1 2 디비연결
 			con = getCon();
 			
-			// 3. sql 작성 & pstmt 객체
-			sql = "select id from movie_member where id = ?";
+			// 3. sql문 작성 & pstmt 객체 생성
+			sql = "select * from movie_member where id=?";
 			pstmt = con.prepareStatement(sql);
 			// ???
-			pstmt.setString(1, id);			
+			pstmt.setString(1, id);
 			
 			// 4. sql 실행
 			rs = pstmt.executeQuery();
 			
 			// 5. 데이터 처리
-			if(rs.next()) { // 아이디 있으면
-				result = 1;
-			}else { // 아이디 없으면
-				result = -1;
-			}
+			if(rs.next()) { 
+				// 아이디에 해당하는 회원정보를 저장
+				dto = new MemberDTO();
+				
+				dto.setId(rs.getString("id"));
+				dto.setPw(rs.getString("pw"));
+				dto.setName(rs.getString("name"));
+				dto.setGender(rs.getString("gender"));
+				dto.setAddr(rs.getString("addr"));
+				dto.setTel(rs.getString("tel"));
+				dto.setEmail(rs.getString("email"));
+			}	
+			System.out.println("DAO : 회원정보 저장 완료!");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();
 		}
-		return result;
-	} // idDbCheck()
-	
-	
-//	// getMember(id)
-//	public MemberBean getMember(String id) {
-//		MemberBean mb = null;
-//		
-//		try {
-//			// 1 2 디비연결
-//			con = getCon();
-//			
-//			// 3. sql문 작성 & pstmt 객체 생성
-//			sql = "select * from itwill_member where id=?";
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setString(1, id);
-//			
-//			// 4. sql 실행
-//			rs = pstmt.executeQuery();
-//			
-//			// 5. 데이터 처리
-//			if(rs.next()) { 
-//				// 아이디에 해당하는 회원정보를 저장
-//				mb = new MemberBean();
-//				
-//				mb.setId(rs.getString("id"));
-//				mb.setPw(rs.getString("pw"));
-//				mb.setName(rs.getString("name"));
-//				mb.setGender(rs.getString("gender"));
-//				mb.setAge(rs.getInt("age"));
-//				mb.setEmail(rs.getString("email"));
-//				mb.setReg_date(rs.getTimestamp("reg_date"));
-//				}	
-//			System.out.println("DAO : 회원정보 저장 완료!");
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		
-//		return mb;
-//			
-//	} // getMember
+		
+		return dto;
+	} // getMember
 	
 		
 	
