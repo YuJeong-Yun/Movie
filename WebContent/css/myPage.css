@@ -59,6 +59,15 @@
 }
 .modify-info form table tr td:first-child {
     background-color: #efefef;
+	width: 170px;
+}
+.modify-info form table tr td:nth-child(2) {
+	width: 280px;
+}
+.modify-info form table tr td:nth-child(3) {
+	width: 250px;
+	color: #ff0000;
+	font-weight: 700;
 }
 .modify-info form .submitBtn {
     position: absolute;

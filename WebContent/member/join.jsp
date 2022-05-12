@@ -60,7 +60,7 @@
             <tr>
               <td>성별</td>
               <td colspan="2">
-                <label><input type="radio" name="gender" vlaue="남"> 남</label>
+                <label><input type="radio" name="gender" value="남"> 남</label>
                 <label><input type="radio" name="gender" value="여"> 여</label>
               </td>
             </tr>

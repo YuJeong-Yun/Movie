@@ -22,6 +22,7 @@
     rel="stylesheet">
 
   <link rel="stylesheet" href="./css/myPage.css" />
+  <script defer src="./js/jquery-3.6.0.min.js"></script>
   <script defer src="./js/myPage.js"></script>
 </head>
 
@@ -45,28 +46,28 @@
       <!-- 회원 정보 수정 -->
       <div class="modify-info">
         <h2 class="info-title">MY CGV</h2>
-        <form action="./MemberUpdateAction.me" method="post" name="fr" onsubmit="return check();">
+        <form action="./MemberUpdateAction.me" method="post" name="fr" onsubmit="return formCheck();">
           <div class="form-title">필수 회원 정보</div>
           <table>
             <tr>
               <td>이름</td>
-              <td>${dto.name }</td>
+              <td colspan="2">${dto.name }</td>
             </tr>
             <tr>
               <td>아이디</td>
-              <td>${dto.id }</td>
+              <td colspan="2">${dto.id }</td>
             </tr>
             <tr>
               <td>비밀번호</td>
-              <td><button class="pwBtn">비밀번호 변경하기</button></td>
+              <td colspan="2"><a href="./MemberPw.me"><button type="button" class="pwBtn">비밀번호 변경하기</button></a></td>
             </tr>
             <tr>
               <td>비밀번호 확인</td>
-              <td><input type="password" name="pw"></td>
+              <td colspan="2"><input type="password" name="pw"></td>
             </tr>
             <tr>
               <td>성별</td>
-              <td>
+              <td colspan="2">
                 <label><input type="radio" name="gender" value="남" 
                 	<c:if test="${dto.gender eq '남' }">
                 		checked="checked"
@@ -81,15 +82,17 @@
             </tr>
             <tr>
               <td>주소</td>
-              <td><input type="text" name="addr" value="${dto.addr }"></td>
+              <td colspan="2"><input type="text" name="addr" value="${dto.addr }"></td>
             </tr>
             <tr>
               <td>휴대전화</td>
-              <td><input type="text" name="tel" value="${dto.tel }" ></td>
+              <td><input type="text" name="tel" value="${dto.tel }" onkeyup="telDbCheck();" maxlength="13"></td>
+              <td class="telDbResult"></tr>
             </tr>
             <tr>
               <td>e-mail</td>
-              <td><input type="email" name="email" value="${dto.email }" ></td>
+              <td><input type="email" name="email" value="${dto.email }" onkeyup="emailDbCheck();"></td>
+              <td class="emailDbResult"></tr>
             </tr>
             <input type="submit" value="수정하기" class="submitBtn">
           </table>
