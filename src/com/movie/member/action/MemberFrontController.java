@@ -93,7 +93,7 @@ public class MemberFrontController extends HttpServlet {
 			System.out.println(" C : /MyPage.me 호출");
 			// DB 사용 O, 페이지 출력
 			
-			action = new MemberUpdateAction();
+			action = new MemberInfoAction();
 			
 			try {
 				forward = action.execute(request, response);
@@ -101,6 +101,17 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+		}else if(command.equals("/MemberUpdateAction.me")) { // 정보 수정 실행
+			System.out.println(" C : /MemberUpdateAction.me 호출");
+			// DB 사용 O, 페이지 이동
+			
+			action = new MemberUpdateAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		

@@ -1,49 +1,11 @@
 @import url("./header.css");
 @import url("./footer.css");
 @import url("./common.css");
+@import url("./left.css");
 
 
 .my-cgv > .inner {
     height: 1100px;
-}
-
-/* LEFT MENU */
-.left {
-    margin-top: 200px;
-    position: absolute;
-    left: 0;
-}
-.left .left-menu {
-    margin-right: px;
-    padding: 20px 30px 20px 10px;
-    width: 200px;
-    height: 700px;
-    border-right: 1px dotted #ddd;
-}
-.left .left-menu li {
-    height: 30px;
-}
-.left .left-menu li:first-child {
-    margin-bottom: 20px;
-}
-.left .left-menu li:not(:first-child) {
-    padding-left: 15px;
-}
-.left .left-menu li h2 {
-    background-color: #fb4357;
-    padding: 0 5px;
-    height: 35px;
-    line-height: 35px;
-    font-size: 16px;
-    font-weight: 700;
-    color: #fff;
-}
-.left .left-menu li a {
-    color: #333;
-    font-size: 14px;
-}
-.left .left-menu li a:hover {
-    color: #fb4537;
 }
 
 
@@ -81,6 +43,14 @@
 .modify-info form table tr td {
     padding-left: 30px;
 }
+.modify-info form table tr td .pwBtn {
+	border: none;
+	width: 150px;
+	height: 40px;
+}
+.modify-info form table tr td .pwBtn:hover {
+	background-color: #aaa;
+}
 .modify-info form table tr td:first-child {
     background-color: #efefef;
 }
@@ -94,4 +64,9 @@
     border-radius: 5px;
     color: #fff;
     font-size: 14px;
+    cursor: pointer;
+}
+.modify-info form .submitBtn:hover {
+	background-color: #ca3426;
+	
 }

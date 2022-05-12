@@ -175,62 +175,62 @@ public class MemberDAO {
 		
 	
 	
-//	// updateMember(updateBean)
-//	public int updateMember(MemberBean umb) {
-//		int result = -1;
-//		
-//		try {
-//			// 1 2 디비연결
-//			con = getCon();
-//			
-//			// 3 sql 작성 & pstmt 객체 
-//			sql="select pw from itwill_member where id=?";
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setString(1, umb.getId());
-//			
-//			// 4 sql 실행
-//			rs = pstmt.executeQuery();
-//			
-//			// 5 데이터 처리
-//			if(rs.next()) { // 수정할 정보가 있을 때(회원일 때)
-//				if(umb.getPw().equals(rs.getString("pw"))) {
-//					// 본인 -> 정보수정
-//					
-//					// 3 sql 작성(update) & pstmt 객체
-//					sql = "update itwill_member set name=?, age=?, gender=? where id=?";
-//					pstmt = con.prepareStatement(sql);
-//					// ???
-//					pstmt.setString(1, umb.getName());
-//					pstmt.setInt(2, umb.getAge());
-//					pstmt.setString(3, umb.getGender());
-//					pstmt.setString(4, umb.getId());
-//					
-//					// 4 sql 실행
-//					// result = 1;
-//					result = pstmt.executeUpdate();		
-//					
-//				}else {
-//					// 본인 x, 정보수정 x
-//					result = 0;
-//					System.out.println("DAO : 비밀번호 오류, 정보수정 X");
-//				} // if
-//				
-//			}else {
-//				result = -1;
-//				System.out.println("DAO : 회원정보가 없음, 정보수정 X");
-//			} // if
-//			
-//			System.out.println("DAO : 회원정보 수정완료! ( "+result+")");
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//
-//		return result;
-//	} // updateMember
+	// updateMember(updateBean)
+	public int updateMember(MemberDTO dto) {
+		int result = -1;
+		
+		try {
+			// 1 2 디비연결
+			con = getCon();
+			
+			// 3 sql 작성 & pstmt 객체 
+			sql="select pw from movie_member where id=?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setString(1, dto.getId());
+			
+			// 4 sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5 데이터 처리
+			if(rs.next()) { // 수정할 정보가 있을 때(회원일 때)
+				if(dto.getPw().equals(rs.getString("pw"))) {
+					// 본인 -> 정보수정
+					
+					// 3 sql 작성(update) & pstmt 객체
+					sql = "update movie_member set gender=?, addr=?, tel=?, email=? where id=?";
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, dto.getGender());
+					pstmt.setString(2, dto.getAddr());
+					pstmt.setString(3, dto.getTel());
+					pstmt.setString(4, dto.getEmail());
+					pstmt.setString(5, dto.getId());
+					
+					// 4 sql 실행
+					result = pstmt.executeUpdate(); // result = 1;
+					
+				}else {
+					// 본인 x, 정보수정 x
+					result = 0;
+					System.out.println("DAO : 비밀번호 오류, 정보수정 X");
+				} // if
+				
+			}else {
+				result = -1;
+				System.out.println("DAO : 회원정보가 없음, 정보수정 X");
+			} // if
+			
+			System.out.println("DAO : 회원정보 수정완료! ( "+result+")");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+
+		return result;
+	} // updateMember
 	
 	
 	
