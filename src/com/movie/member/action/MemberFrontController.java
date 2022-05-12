@@ -112,6 +112,25 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/DeleteMember.me")) { // 회원 탈퇴 비밀번호 입력 페이지
+			System.out.println(" C : /DeleteMember.me 호출");
+			// DB 사용 X , view 이동
+			
+			forward = new ActionForward();
+			forward.setPath("./member/deleteMember.jsp");
+			forward.setRedirect(false);
+		}else if(command.equals("/DeleteMemberAction.me")) { // 회원 탈퇴 실행
+			System.out.println(" C : /DeleteMemberAction.me ");
+			// DB 사용 O, 페이지 이동
+			
+			action = new DeleteMemberAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 
 		

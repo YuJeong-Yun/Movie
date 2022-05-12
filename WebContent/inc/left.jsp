@@ -14,7 +14,7 @@
       <a href="javascript:void(0)">예매 내역 조회</a>
     </li>
     <li>
-      <a href="javascript:void(0)">회원 탈퇴하기</a>
+      <a href="./DeleteMember.me">회원 탈퇴하기</a>
     </li>
   </ul>
 </div>

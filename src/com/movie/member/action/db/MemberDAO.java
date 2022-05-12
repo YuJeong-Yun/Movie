@@ -234,58 +234,58 @@ public class MemberDAO {
 	
 	
 	
-//	// deleteMember(id,pw)
-//	public int deleteMember(String id, String pw) {
-//		int result = -1;
-//		
-//		try {
-//			// 1 2 디비연결
-//			con = getCon();
-//			
-//			// 3 sql 작성 & pstmt 객체 
-//			sql="select pw from itwill_member where id=?";
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setString(1, id);
-//			
-//			// 4 sql 실행
-//			rs = pstmt.executeQuery();
-//			
-//			// 5 데이터 처리
-//			if(rs.next()) { // 수정할 정보가 있을 때(회원일 때)
-//				if(pw.equals(rs.getString("pw"))) {
-//					// 본인 -> 정보수정
-//					
-//					// 3 sql 작성(delete) & pstmt 객체
-//					sql = "delete from itwill_member where id=?";
-//					pstmt = con.prepareStatement(sql);
-//					// ???
-//					pstmt.setString(1, id);
-//					
-//					// 4 sql 실행
-//					// result = 1;
-//					result = pstmt.executeUpdate();		
-//					
-//				}else {
-//					// 본인 x, 정보삭제 x
-//					result = 0;
-//					System.out.println("DAO : 비밀번호 오류, 정보삭제 X");
-//				} // if
-//				
-//			}else {
-//				result = -1;
-//				System.out.println("DAO : 회원정보가 없음, 정보삭제 X");
-//			} // if
-//			
-//			System.out.println("DAO : 회원정보 삭제완료! ( "+result+")");
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		return result;
-//	} // deleteMember
+	// deleteMember(id,pw)
+	public int deleteMember(String id, String pw) {
+		int result = -1;
+		
+		try {
+			// 1 2 디비연결
+			con = getCon();
+			
+			// 3 sql 작성 & pstmt 객체 
+			sql="select pw from movie_member where id=?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setString(1, id);
+			
+			// 4 sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5 데이터 처리
+			if(rs.next()) { // 삭제할 정보가 있을 때(회원일 때)
+				if(pw.equals(rs.getString("pw"))) {
+					// 본인 -> 정보삭제
+					
+					// 3 sql 작성(delete) & pstmt 객체
+					sql = "delete from movie_member where id=?";
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, id);
+					
+					// 4 sql 실행
+					// result = 1;
+					result = pstmt.executeUpdate();		
+					
+				}else {
+					// 본인 x, 정보삭제 x
+					result = 0;
+					System.out.println("DAO : 비밀번호 오류, 정보삭제 X");
+				} // if
+				
+			}else {
+				result = -1;
+				System.out.println("DAO : 회원정보가 없음, 정보삭제 X");
+			} // if
+			
+			System.out.println("DAO : 회원정보 삭제완료! ( "+result+")");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return result;
+	} // deleteMember
 	
 	
 	
