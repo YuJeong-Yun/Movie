@@ -1,15 +1,15 @@
-@import url("./header.css");
-@import url("./footer.css");
-@import url("./common.css");
+@import url("../header.css");
+@import url("../footer.css");
+@import url("../common.css");
 
 /* 광고 이미지 */
 .ad-wrapper {
   background-color: #333;
   width: 180px;
   height: 420px;
-  position: fixed;
-  top: 180px;
-  right: 40px;
+  position: absolute;
+  top: 40px;
+  right: -240px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -32,7 +32,10 @@
 .board .inner {
   margin-top: 200px;
   width: 890px;
-  height: 700px;
+  height: 650px;
+}
+.board a {
+	color: #333;
 }
 .board .board-title {
   font-size: 30px;
@@ -65,18 +68,39 @@
 .board .board-table tr td:first-child {
   padding-left: 20px;
 }
-  .board .board-table tr:hover {
+.board .board-table tr:hover {
   background-color: #fffafa;
 }
-.board .writeBtn {
+.board .paging {
+  width: 100%;
+  position: absolute;
+  bottom: 130px;
+  text-align: center;
+}
+.board .paging a:hover {
+  border-bottom: 1px solid #333;
+}
+.board .paging .prev,
+.board .paging .next {
+  margin: 0 20px;
+}
+.board .paging .pageNum {
+  margin: 0 5px;
+}
+.board .paging .writeBtn {
   width: 70px;
   height: 30px;
   position: absolute;
   right: 0;
-  bottom: 100px;
   background-color: #fff;
   border: 1px solid #ddd;
 }
 .board .writeBtn a {
   color: #333;
+}
+
+/* 현재 페이지넘버에 표시 */
+.nowPageNum {
+  padding: 0 5px;
+  background-color: #ffeeee;
 }

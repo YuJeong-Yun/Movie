@@ -1,6 +1,7 @@
 /* COMMON - 프로젝트에 공통으로 적용할 내용*/
 * {
   box-sizing: border-box;
+  color: #333;
 }
 body {
   font-size: 16px;
