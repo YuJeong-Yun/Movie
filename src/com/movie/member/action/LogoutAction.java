@@ -13,7 +13,7 @@ public class LogoutAction implements Action {
 		
 		// 로그아웃 -> 세션정보 초기화
 		HttpSession session = request.getSession();
-		session.invalidate();
+		session.removeAttribute("id");
 		
 		// 메인 페이지 이동
 		ActionForward forward = new ActionForward();
