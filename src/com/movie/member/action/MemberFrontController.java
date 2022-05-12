@@ -131,6 +131,26 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+		}else if(command.equals("/MemberPw.me")) { // 비밀번호 변경 페이지로 이동
+			System.out.println(" C : /MemberPw.me 호출");
+			// DB 사용 X, view 이동
+			
+			forward = new ActionForward();
+			forward.setPath("./member/changePw.jsp");
+			forward.setRedirect(false);
+			
+		}else if(command.equals("/MemberPwAction.me")) { // 비밀번호 확인 후 비밀번호 수정
+			System.out.println(" C : /MemberPwAction.me 호출 ");
+			// DB 사용 O, 페이지 이동
+			
+			action = new MemberPwAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 
 		

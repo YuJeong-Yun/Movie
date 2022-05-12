@@ -263,21 +263,20 @@ public class MemberDAO {
 					pstmt.setString(1, id);
 					
 					// 4 sql 실행
-					// result = 1;
-					result = pstmt.executeUpdate();		
+					result = pstmt.executeUpdate(); // result = 1;
 					
 				}else {
 					// 본인 x, 정보삭제 x
 					result = 0;
-					System.out.println("DAO : 비밀번호 오류, 정보삭제 X");
+					System.out.println(" DAO : 비밀번호 오류, 정보삭제 X");
 				} // if
 				
 			}else {
 				result = -1;
-				System.out.println("DAO : 회원정보가 없음, 정보삭제 X");
+				System.out.println(" DAO : 회원정보가 없음, 정보삭제 X");
 			} // if
 			
-			System.out.println("DAO : 회원정보 삭제완료! ( "+result+")");
+			System.out.println(" DAO : 회원정보 삭제완료! ( "+result+")");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -286,6 +285,56 @@ public class MemberDAO {
 		}
 		return result;
 	} // deleteMember
+
+
+	
+	// 비밀번호 변경 
+	public int updatePw(String id, String pwNow, String pwNew) {
+		int result = -1;
+		
+		try {
+			// 1.2. 디비 연결
+			con = getCon();
+			
+			// 3. sql 작성 & pstmt 객체
+			sql = "select pw from movie_member where id=?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setString(1, id);
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			if(rs.next()) {
+				if(pwNow.equals(rs.getString("pw"))) { // 본인 -> 비밀번호 업데이트
+					// 3. sql 작성 & pstmt
+					sql = "update movie_member set pw=? where id=?";
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, pwNew);
+					pstmt.setString(2, id);
+					
+					// 4. sql 실행
+					result = pstmt.executeUpdate(); // result = 1
+				} else { // 비밀번호 오류
+					result = 0;
+					System.out.println("DAO : 비밀번호 오류, 비밀번호 업데이트 X");
+				}
+			} else { // 
+				result = -1;
+				System.out.println("DAO : 회원정보가 없음, 비밀번호 업데이트 X");
+			} // if
+			
+			System.out.println("DAO : 비밀번호 업데이트 완료! "+result);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return result;
+	} // updatePw
 	
 	
 	

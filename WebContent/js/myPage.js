@@ -71,10 +71,6 @@ function formCheck() {
 		fr.tel.focus();
 		
 		return false;
-	}else {
-		alert("수정이 완료되었습니다.");
-		
-		return true;
 	}
 }
 
