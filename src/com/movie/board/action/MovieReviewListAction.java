@@ -9,7 +9,7 @@ import com.movie.board.action.db.MovieBoardDAO;
 import com.movie.board.action.db.MovieBoardDTO;
 
 
-public class MovieReviewBoardAction implements Action {
+public class MovieReviewListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,23 +34,23 @@
   <section class="movie-review">
     <div class="inner">
       <div class="btn-group title">
-        <a href="javascript:void(0)" class="btn">△ 이전글</a>
-        <a href="javascript:void(0)" class="btn">▽ 다음글</a>
-        <a href="javascript:void(0)" class="btn">목록</a>
+        <c:if test="${num lt lastNum }"><a href="./MovieReviewContent.bo?num=${num+1 }&pageNum=${pageNum }" class="btn">△ 이전글</a></c:if>
+        <c:if test="${num gt firstNum }"><a href="./MovieReviewContent.bo?num=${num-1 }&pageNum=${pageNum }" class="btn">▽ 다음글</a></c:if>
+        <a href="./MovieReview.bo?pageNum=${pageNum }" class="btn">목록</a>
       </div>
       <ul class="review__title">
         <ul class="inner">
-          <li class="title__subject">제목입니다.</li>
-          <li class="title__name">작성자</li>
+          <li class="title__subject">${dto.subject }</li>
+          <li class="title__name">${dto.name }</li>
           <li class="title__info">
-            <span>2022/05/13 18:30</span>
-            <span>조회 300</span>
+            <span><f:formatDate value="${dto.date }" pattern="yyyy.MM.dd  HH:mm" /></span>
+            <span>조회수 ${dto.readcount }</span>
           </li>
         </ul>
       </ul>
       <div class="review__content">
         <div class="inner">
-          <div class="content__text">내용입니다... ... ... .. . ..<br>sdfsdf</div>
+          <div class="content__text">${dto.content }</div>
           <div class="btn-group content">
             <a href="javascript:void(0)" class="btn">수정하기</a>
             <a href="javascript:void(0)" class="btn">삭제하기</a>

@@ -1,18 +1,17 @@
 package com.movie.board.action.db;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class MovieBoardDTO {
-	int num;
-	String id;
-	String name;
-	String pass;
-	String subject;
-	String content;
-	int readcount;
-	int re_cnt;
-	Date date;
-	String ip;
+	private int num;
+	private String id;
+	private String name;
+	private String subject;
+	private String content;
+	private int readcount;
+	private int re_cnt;
+	private Timestamp date;
+	private String ip;
 
 	public int getNum() {
 		return num;
@@ -36,14 +35,6 @@ public class MovieBoardDTO {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getPass() {
-		return pass;
-	}
-
-	public void setPass(String pass) {
-		this.pass = pass;
 	}
 
 	public String getSubject() {
@@ -78,11 +69,11 @@ public class MovieBoardDTO {
 		this.re_cnt = re_cnt;
 	}
 
-	public Date getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 
@@ -96,9 +87,8 @@ public class MovieBoardDTO {
 
 	@Override
 	public String toString() {
-		return "MovieBoardDTO [num=" + num + ", id=" + id + ", name=" + name + ", pass=" + pass + ", subject=" + subject
-				+ ", content=" + content + ", readcount=" + readcount + ", re_cnt=" + re_cnt + ", date=" + date
-				+ ", ip=" + ip + "]";
+		return "MovieBoardDTO [num=" + num + ", id=" + id + ", name=" + name + ", subject=" + subject + ", content="
+				+ content + ", readcount=" + readcount + ", re_cnt=" + re_cnt + ", date=" + date + ", ip=" + ip + "]";
 	}
 
 }

@@ -40,7 +40,7 @@ public class BoardFrontController extends HttpServlet {
 			System.out.println(" C : /MovieReview.bo 호출 ");
 			// DB 사용 O, 페이지 출력
 			
-			action = new MovieReviewBoardAction();
+			action = new MovieReviewListAction();
 			
 			try {
 				forward = action.execute(request, response);

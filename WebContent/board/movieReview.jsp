@@ -55,7 +55,7 @@
 			<tr>
 				<td>${dto.num }</td>
 				<td>
-					<a href="./MovieReviewContent.bo?num=${dto.num }">${dto.subject }</a>
+					<a href="./MovieReviewContent.bo?num=${dto.num }&pageNum=${pageNum }">${dto.subject }</a>
 				</td>
 				<td>${dto.name }</td>
 				<td><f:formatDate value="${dto.date }" pattern="yyyy.MM.dd"/></td>

@@ -211,6 +211,35 @@ public class MovieBoardDAO {
 		}
 		return dto;
 	} // getBoard
+
+
+	// 첫 글, 마지막 글 번호 반환
+	public int getFirstBoardNum(int i) {
+		// i가 0이면 첫 글, 1이면 마지막 글 번호 반환
+		int result = 0;
+		
+		try {
+			// 1.2. 디비 연결
+			con = getCon();
+			
+			// 3. sql 작성 & pstmt 객체
+			sql = (i==0) ? "select min(num) from movie_board" : "select max(num) from movie_board";
+			pstmt = con.prepareStatement(sql);
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			if(rs.next()) {
+				result = (i==0) ? rs.getInt(1) : rs.getInt(1);
+			}
+			System.out.println("DAO : 글 번호 " + result + " 반환");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return result;
+	}
 	
 	
 //	// 글쓰기 메서드
