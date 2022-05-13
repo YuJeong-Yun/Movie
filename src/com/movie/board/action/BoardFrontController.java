@@ -36,7 +36,7 @@ public class BoardFrontController extends HttpServlet {
 		ActionForward forward = null;
 		
 		
-		if(command.equals("/MovieReview.bo")) {
+		if(command.equals("/MovieReview.bo")) { // 영화 리뷰 게시판 이동
 			System.out.println(" C : /MovieReview.bo 호출 ");
 			// DB 사용 O, 페이지 출력
 			
@@ -47,6 +47,18 @@ public class BoardFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/MovieReviewContent.bo")) { // 영화 리뷰 글 페이지 이동
+			System.out.println(" C : /MovieReviewContent.bo 호출 ");
+			// DB 사용 O, 페이지 출력
+			
+			action = new MovieReviewContentAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 
 		

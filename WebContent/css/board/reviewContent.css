@@ -1,0 +1,192 @@
+@import url("../header.css");
+@import url("../footer.css");
+@import url("../common.css");
+
+.movie-review > .inner {
+  width: 1000px;
+  margin: 220px auto 200px;
+}
+.btn-group {
+  display: flex;
+  position: absolute;
+  margin: auto;
+}
+.btn {
+  display: block;
+  background-color: #EFF0F2;
+  width: 70px;
+  height: 35px;
+  margin-left: 15px;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 35px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* 리뷰 */
+.movie-review {
+}
+.movie-review .btn-group.title {
+  right: 0;
+  top: -40px;
+}
+.movie-review .btn-group.title .btn {
+}
+/* 글 타이틀 */
+.movie-review .review__title {
+  padding: 30px 0 10px;
+  border-top: 1px solid #d6d4ca;
+  border-bottom: 1px solid #d6d4ca;
+  background-color: #f8f8f8;
+}
+.movie-review .review__title > .inner {
+  width: 900px;
+}
+.movie-review .review__title .title__subject {
+  font-size: 32px;
+  margin-bottom: 18px;
+}
+.movie-review .review__title .title__name {
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: 700;
+}
+.movie-review .review__title .title__info span {
+  margin-right: 15px;
+  font-size: 14px;
+  color: #777;
+}
+/* 글 본문 */
+.movie-review .review__content {
+  padding: 30px 0 100px;
+  border-bottom: 1px solid #d6d4ca;
+  line-height: 30px;
+}
+.movie-review .review__content > .inner {
+  width: 900px;
+}
+.movie-review .review__content .content__text {
+}
+.movie-review .review__content .btn-group.content  {
+  right: -50px;
+  bottom: -90px;
+}
+.movie-review .review__content .btn-group.content .btn {
+  background-color: #fff;
+  width: 60px;
+  height: 25px;
+  border: 1px solid #ddd;
+  line-height: 25px;
+  font-size: 12px;
+  margin-left: 4px;
+}
+.movie-review .review__content .btn-group.content .btn:hover {
+  background-color: #efefef;
+}
+/* 글 댓글 */
+.movie-review .review__comment {
+}
+.movie-review .review__comment> .inner {
+  width: 900px;
+  padding-top: 30px;
+}
+.movie-review .review__comment .comment__cnt {
+  width: 150px;
+  position: absolute;
+  left: 0;
+  top: -30px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #777;
+}
+.movie-review .review__comment .comment__cnt .material-icons-outlined {
+  font-size: 23px;
+  margin-right: 9px;
+}
+.movie-review .review__comment .comment__content .content__write form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.movie-review .review__comment .comment__content .content__write .lengthCalc {
+margin-right: 15px;
+color: #aaa;
+font-size: 14px;
+}
+.movie-review .review__comment .comment__content .content__write textarea {
+  width: 700px;
+  height: 100px;
+  padding: 15px;
+  border: 1px solid #d6d4ca;
+  border-radius: 10px;
+  margin-right: 10px;
+  resize: none;
+  outline: none;
+  line-height: 18px;
+}
+.movie-review .review__comment .comment__content .content__write input  {
+background-color: #fff;
+  width: 50px;
+  height: 30px;
+  border: none;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.movie-review .review__comment .comment__content .content__write input:hover  {
+  background-color: #efefef;
+  cursor: pointer;
+}
+.movie-review .review__comment .comment__content li {
+  padding: 30px 0;
+  border-bottom: 1px solid #f2f2f2;
+  display: flex;
+}
+.movie-review .review__comment .comment__content li .material-icons {
+  background-color: #efefef;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 15px;
+  text-align: center;
+  line-height: 35px;
+  font-size: 25px;
+  color: #555;
+}
+.movie-review .review__comment .comment__content li .content__name {
+  font-weight: 900;
+  margin-bottom: 5px;
+}
+.movie-review .review__comment .comment__content li .content__text {
+  
+}
+.movie-review .review__comment .comment__content li .content__date {
+  margin-top: 5px;
+  font-size: 13px;
+  color: #999;
+}
+.movie-review .review__comment .comment__content li .content__btn {
+  position: absolute;
+  right: 0;
+}
+.movie-review .review__comment .comment__content li .content__btn a {
+  color: #666;
+  font-size: 14px;
+}
+.movie-review .review__comment .comment__content li .content__btn a:nth-child(2)::before {
+  content: " │";
+  color: #ddd;
+}
+.movie-review .review__comment .comment__content li .content__btn a:last-child::before {
+  content: " │";
+  color: #ddd;
+}
+.movie-review .review__comment .btn--top {
+  position: absolute;
+  right: -50px;
+  bottom: -90px;
+  margin: auto;
+}}

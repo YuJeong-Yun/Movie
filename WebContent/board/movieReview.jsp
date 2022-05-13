@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
     <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +10,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Movie Review</title>
   <!-- 브라우저 스타일 초기화 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
   <!-- 구글 폰트 -->
@@ -54,10 +55,10 @@
 			<tr>
 				<td>${dto.num }</td>
 				<td>
-					<a href="./MovieReivewContent.bo?num=${dto.num }&pageNum=${pageNum}">${dto.subject }</a>
+					<a href="./MovieReviewContent.bo?num=${dto.num }">${dto.subject }</a>
 				</td>
 				<td>${dto.name }</td>
-				<td>${dto.date }</td>
+				<td><f:formatDate value="${dto.date }" pattern="yyyy.MM.dd"/></td>
 				<td>${dto.readcount }</td>
 			</tr>
 		</c:forEach>

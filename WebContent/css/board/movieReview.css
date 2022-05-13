@@ -67,11 +67,19 @@
   border-bottom: 1px dotted #dfdfdf;
   font-size: 14px;
 }
+.board .board-table tr:hover {
+  background-color: #fffafa;
+}
 .board .board-table tr td:first-child {
   padding-left: 20px;
 }
-.board .board-table tr:hover {
-  background-color: #fffafa;
+.board .board-table tr td:nth-child(2) a {
+  display: block;
+  padding-right: 15px;
+  width: 500px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .board .paging {
   width: 100%;
