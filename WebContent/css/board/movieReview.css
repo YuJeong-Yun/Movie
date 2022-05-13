@@ -8,7 +8,7 @@
   width: 180px;
   height: 420px;
   position: absolute;
-  top: 40px;
+  top: 58px;
   right: -240px;
   display: flex;
   flex-wrap: wrap;
@@ -41,11 +41,13 @@
   font-size: 30px;
   font-weight: 900;
   color: #333;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+  border-bottom: 2px solid #333;
 }
 .board .board-table {
   width: 890px;
-  border-top: 2px solid #777 ;
+  border-top: 1px solid #777 ;
 }
 .board .board-table th {
   background-color: #ffdddd;
@@ -74,7 +76,7 @@
 .board .paging {
   width: 100%;
   position: absolute;
-  bottom: 130px;
+  bottom: 100px;
   text-align: center;
 }
 .board .paging a:hover {

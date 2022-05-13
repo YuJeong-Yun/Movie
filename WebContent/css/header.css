@@ -1,7 +1,7 @@
 /* 헤더 부분 */
 header {
   width: 100%;
-  border-bottom: 1px solid #ff0000;
+  border-bottom: 2px solid #ff0000;
   position: fixed;
   top: 0;
   z-index: 9;
@@ -85,11 +85,11 @@ header .menu2 .main-menu .menu__contents {
   left: 0;
   height: 0;
   overflow: hidden;
-  transition: .5s;
-  border-top: 1px solid #ff0000;
+  transition: height .3s;
 }
 header .menu2 .main-menu:hover .menu__contents {
   height: 300px;
+  border-top: 1px solid #ff0000;
 }
 header .menu2 .main-menu .menu__contents .inner {
   height: 300px;
