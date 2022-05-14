@@ -214,7 +214,7 @@ public class MovieBoardDAO {
 
 
 	// 첫 글, 마지막 글 번호 반환
-	public int getFirstBoardNum(int i) {
+	public int getBoardNum(int i) {
 		// i가 0이면 첫 글, 1이면 마지막 글 번호 반환
 		int result = 0;
 		
@@ -239,73 +239,133 @@ public class MovieBoardDAO {
 			closeDB();
 		}
 		return result;
-	}
+	} // getBoardNum
 	
 	
-//	// 글쓰기 메서드
-//	public void insertBoard(BoardDTO bb) {
-//		// 글번호 저장 변수
-//		int num = 0;
-//		try {
-//			// 1.2. 디비연결
-//			con = getCon();
-//			
-//			// 3 sql 작성 (글 번호를 계산하는 sql) & pstmt 객체
-//			sql = "select max(num) from itwill_board";
-//			pstmt = con.prepareStatement(sql);
-//
-//			// 4 sql 실행
-//			rs = pstmt.executeQuery();
-//			
-//			// 5. 데이터 처리
-//			// max(num) 컬럼의 결과는 항상 존재함(커서 있음 (▶ 모양))
-//			// 따라서 값이 안들어있어도 rs.next() 결과값이 false가 아님!
-//			if(rs.next()) {  
-//
-//				// getInt 메서드는 null값일 경우 0을 반환
-//				num = rs.getInt(1)+1;   			// 인덱스
-//				// num = rs.getInt("max(num)")+1;  // 컬럼명
-//			}
-//			
-//			System.out.println("DAO  : 글번호 " + num);
-//			
-//			////////////////////////////////////////////////////////////
-//			// 글쓰기
-//			
-//			// 앞에서 DB 연결했으므로 1,2 단계 생략함
-//			// 3. sql(insert) 작성 & pstmt 객체
-//			sql = "insert into itwill_board(num, name, pass, subject, content, readcount, re_ref, re_lev, re_seq, date, ip, file) "
-//					+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, now(), ?, ?)";
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setInt(1, num);  // 직접 계산한 글번호
-//			pstmt.setString(2, bb.getName());
-//			pstmt.setString(3, bb.getPass());
-//			pstmt.setString(4, bb.getSubject());
-//			pstmt.setString(5, bb.getContent());
-//			pstmt.setInt(6, 0); // readcount	(생성된 모든 글의 조회수는 0)
-//			pstmt.setInt(7, num);  // re_ref 	답글->그룹번호    일반글은 글번호와 동일
-//			pstmt.setInt(8, 0);  // re_lev	답글->들여쓰기	일반글은 0
-//			pstmt.setInt(9, 0);  // re_seq	답글->순서	일반글은 0
-//			pstmt.setString(10, bb.getIp());
-//			pstmt.setString(11, bb.getFile());
-//			
-//			// 4. sql 실행
-//			pstmt.executeUpdate();
-//			
-//			System.out.println("DAO : 글쓰기 완료! ");
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//	} // insertBoard
-//	
-//	
-//	
+	// 글쓰기 메서드
+	public int insertBoard(MovieBoardDTO dto) {
+		// 글번호 저장 변수
+		int num = 0;
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			
+			// 3 sql 작성 (글 번호를 계산하는 sql) & pstmt 객체
+			sql = "select max(num) from movie_board";
+			pstmt = con.prepareStatement(sql);
 
-//	
+			// 4 sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			// max(num) 컬럼의 결과는 항상 존재함 -> 따라서 값이 안들어있어도 rs.next() 결과값이 false가 아님!
+			if(rs.next()) {  
+				// getInt 메서드는 null값일 경우 0을 반환
+				num = rs.getInt(1)+1;   			// 인덱스
+			}
+			
+			System.out.println("DAO  : 글번호 " + num);
+			
+			/////////////////////////////////////////////////////////
+			// 현재 아이디 이름 정보 가져오기
+			String name ="";
+			
+			// 3. sql 작성 & pstmt
+			sql = "select name from movie_member where id=?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setString(1, dto.getId());
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			if(rs.next()) {
+				name = rs.getString("name");
+			}
+			
+			System.out.println("DAO : 이름 " + name);
+			
+			////////////////////////////////////////////////////////////
+			// 글쓰기
+			
+			// 3. sql(insert) 작성 & pstmt 객체
+			sql = "insert into movie_board values (?, ?, ?, ?, ?, ?, ?, now(), ?)";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setInt(1, num);  // 직접 계산한 글번호
+			pstmt.setString(2, dto.getId());
+			pstmt.setString(3, name);
+			pstmt.setString(4, dto.getSubject());
+			pstmt.setString(5, dto.getContent());
+			pstmt.setInt(6, 0); // readcount	(생성된 모든 글의 조회수는 0)
+			pstmt.setInt(7, 0); // 댓글수 처음엔 0
+			pstmt.setString(8, dto.getIp());
+			
+			// 4. sql 실행
+			pstmt.executeUpdate();
+			
+			System.out.println("DAO : 글쓰기 완료! ");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return num;
+	} // insertBoard
+	
+	
+	// 글 삭제하는 메서드
+	public int deleteBoard(String id, int num) {
+		int result = -1;
+		
+		try {
+			// 1.2. 디비 연결
+			con = getCon();
+			
+			// 3. sql 작성 & pstmt 객체
+			sql = "select id from movie_board where num=?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setInt(1, num);
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			if(rs.next()) {
+				if(id.equals(rs.getString("id"))) { // 아이디 일치 => 글 삭제
+					// 3. sql 작성 & pstmt 객체
+					sql = "delete from movie_board where num=?";
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setInt(1, num);
+					
+					// 4. sql 실행
+					// pstmt.executeUpdate()는 실행된 row 수를 반환함
+					 result = pstmt.executeUpdate(); 
+				
+				} else { // 아이디 다름
+					result = 0;
+				}
+				
+			} else { // 글 존재 X
+				result = -1;
+			} // if
+			
+			System.out.println(" DAO : 게시판 글 삭제 완료! " + result);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+
+		return result;
+	} // deleteBoard
+	
+	
 //	
 //	
 //	// getBoardList()
@@ -412,63 +472,6 @@ public class MovieBoardDAO {
 //			}
 //			return result;
 //		} // updateBoard 
-//		
-//		
-//		
-//		
-//		// 글 삭제하는 메서드
-//		public int deleteBoard(BoardDTO deBB) {
-//			int result = -1;
-//			
-//			try {
-//				// 1.2. 디비 연결
-//				con = getCon();
-//				
-//				// 3. sql 작성 & pstmt 객체
-//				sql = "select pass from itwill_board where num=?";
-//				pstmt = con.prepareStatement(sql);
-//				// ???
-//				pstmt.setInt(1, deBB.getNum());
-//				
-//				// 4. sql 실행
-//				rs = pstmt.executeQuery();
-//				
-//				// 5. 데이터 처리
-//				if(rs.next()) {
-//					// 비밀번호 일치 => 글 삭제
-//					if(deBB.getPass().equals(rs.getString("pass"))) {
-//						// 3. sql 작성 & pstmt 객체
-//						sql = "delete from itwill_board where num=?";
-//						pstmt = con.prepareStatement(sql);
-//						// ???
-//						pstmt.setInt(1, deBB.getNum());
-//						
-//						// 4. sql 실행
-//						// pstmt.executeUpdate()는 실행된 row 수를 반환함
-//						// 즉 여기선 1줄만 삭제했으므로
-//						// result = pstmt.executeUpdate(); 와 같이 작성해도 OK.
-//						pstmt.executeUpdate();
-//						result = 1;
-//						
-//					// 비밀번호 오류
-//					} else {
-//						result = 0;
-//					}
-//					
-//				} else {
-//					result = -1;
-//				} // if
-//				
-//				System.out.println(" DAO : 게시판 글 삭제 완료!");
-//				
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			} finally {
-//				closeDB();
-//			}
-//
-//			return result;
-//		} // deleteBoard
 //		
 //		
 //		

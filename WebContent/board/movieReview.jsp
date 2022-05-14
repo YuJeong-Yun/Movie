@@ -56,6 +56,7 @@
 				<td>${dto.num }</td>
 				<td>
 					<a href="./MovieReviewContent.bo?num=${dto.num }&pageNum=${pageNum }">${dto.subject }</a>
+					<span><c:if test="${dto.re_cnt ne 0 }">[${dto.re_cnt }]</c:if></span>
 				</td>
 				<td>${dto.name }</td>
 				<td><f:formatDate value="${dto.date }" pattern="yyyy.MM.dd"/></td>
@@ -90,7 +91,9 @@
       		</c:if>
       	</c:if>
       	
-      	<button class="writeBtn"><a href="javascript:void(0)">글쓰기</a></button>
+      	<c:if test="${id!=null }">
+      		<a href="./MovieReviewWrite.bo" class="writeBtn">글쓰기</a>
+      	</c:if>
       </div>
     </div>
   </section>

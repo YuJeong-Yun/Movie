@@ -10,7 +10,7 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-  <resource-ref>
+    <resource-ref>
 	<description>MoviePool</description>
 	<res-ref-name>jdbc/movie</res-ref-name>
 	<res-type>javax.sql.DataSource</res-type>
@@ -27,17 +27,19 @@
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
   
+
 <!--   게시판 페이지 -->
   <servlet>
-    <servlet-name>BoardFrontController</servlet-name>
-    <servlet-class>com.movie.board.action.BoardFrontController</servlet-class>
+    <servlet-name>MovieReviewFrontController</servlet-name>
+    <servlet-class>com.movie.board.action.MovieReviewFrontController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>BoardFrontController</servlet-name>
+    <servlet-name>MovieReviewFrontController</servlet-name>
     <url-pattern>*.bo</url-pattern>
   </servlet-mapping>
   
-<!--   회원정보 페이지 -->
+  
+  <!--   회원정보 페이지 -->
   <servlet>
     <servlet-name>MemberFrontController</servlet-name>
     <servlet-class>com.movie.member.action.MemberFrontController</servlet-class>
@@ -60,4 +62,6 @@
     <filter-name>SetUTF</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  
+
 </web-app>

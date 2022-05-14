@@ -14,7 +14,7 @@ public class MovieReviewListAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		System.out.println(" M : MovieReviewBoard_execute() 실행 ");
+		System.out.println(" M : MovieReviewListAction_execute() 실행 ");
 		
 		// DAO 객체 생성
 		MovieBoardDAO dao = new MovieBoardDAO();

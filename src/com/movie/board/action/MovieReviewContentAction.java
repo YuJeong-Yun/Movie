@@ -31,8 +31,8 @@ public class MovieReviewContentAction implements Action {
 		int result = dao.updateReadCount(num, id);
 		System.out.println(" M : 조회수 "+result+" 증가 완료"); // 조회수 증가 체크
 		// 첫 글, 마지막 글 번호 받아오기
-		int firstNum = dao.getFirstBoardNum(0);
-		int lastNum = dao.getFirstBoardNum(1);
+		int firstNum = dao.getBoardNum(0);
+		int lastNum = dao.getBoardNum(1);
 		System.out.println("fN : "+firstNum+", lN : "+lastNum);
 		
 		// 글번호에 해당하는 글 전체의 정보를 가져오기

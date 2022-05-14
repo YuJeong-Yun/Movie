@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class BoardFrontController extends HttpServlet {
+public class MovieReviewFrontController extends HttpServlet {
 	
 	protected void doProcess(HttpServletRequest request
 			, HttpServletResponse response) throws ServletException, IOException {
@@ -67,7 +67,7 @@ public class BoardFrontController extends HttpServlet {
 			forward.setPath("./board/reviewWrite.jsp");
 			forward.setRedirect(false);
 			
-		}else if (command.equals("/MovieReviewWriteAction.bo")) { // 리뷰 글쓰기 동작
+		}else if(command.equals("/MovieReviewWriteAction.bo")) { // 리뷰 글쓰기 동작
 			System.out.println(" C : /MovieReviewWriteAction.bo 호출 ");
 			// DB 사용, 페이지 이동
 			
@@ -78,6 +78,19 @@ public class BoardFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+		}else if(command.equals("/MovieReviewDelete.bo")) { // 글 삭제
+			System.out.println(" C : MovieReviewDelete.bo 호출 ");
+			// DB 사용 O ,페이지 이동
+			
+			action = new MovieReviewDeleteAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 
 		

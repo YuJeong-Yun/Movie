@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 public class MovieBoardDTO {
 	private int num;
+	private int rownum;
 	private String id;
 	private String name;
 	private String subject;
@@ -19,6 +20,14 @@ public class MovieBoardDTO {
 
 	public void setNum(int num) {
 		this.num = num;
+	}
+
+	public int getRownum() {
+		return rownum;
+	}
+
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
 	}
 
 	public String getId() {
@@ -87,8 +96,9 @@ public class MovieBoardDTO {
 
 	@Override
 	public String toString() {
-		return "MovieBoardDTO [num=" + num + ", id=" + id + ", name=" + name + ", subject=" + subject + ", content="
-				+ content + ", readcount=" + readcount + ", re_cnt=" + re_cnt + ", date=" + date + ", ip=" + ip + "]";
+		return "MovieBoardDTO [num=" + num + ", rownum=" + rownum + ", id=" + id + ", name=" + name + ", subject="
+				+ subject + ", content=" + content + ", readcount=" + readcount + ", re_cnt=" + re_cnt + ", date="
+				+ date + ", ip=" + ip + "]";
 	}
 
 }

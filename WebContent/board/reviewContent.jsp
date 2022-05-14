@@ -50,18 +50,20 @@
       </ul>
       <div class="review__content">
         <div class="inner">
-          <div class="content__text">${dto.content }</div>
-          <div class="btn-group content">
-            <a href="javascript:void(0)" class="btn">수정하기</a>
-            <a href="javascript:void(0)" class="btn">삭제하기</a>
-          </div>
+          <div class="content__text" style="white-space:pre-wrap">${dto.content }</div>
+          <c:if test="${sessionScope.id eq requestScope.dto.id }">
+            <div class="btn-group content">
+              <a href="javascript:void(0)" class="btn">수정하기</a>
+              <a href="./MovieReviewDelete.bo?num=${num }&pageNum=${pageNum }" class="btn" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제하기</a>
+            </div>
+          </c:if>
         </div>
       </div>
       <ul class="review__comment">
         <div class="inner">
           <div class="comment__cnt">
             <span class="material-icons-outlined">textsms</span>
-            <div>댓글 6</div>
+            <div>댓글 ${dto.re_cnt }</div>
           </div>
           <ul class="comment__content">
             <li class="content__write">
