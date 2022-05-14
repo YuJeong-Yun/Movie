@@ -20,16 +20,16 @@ footer .menu {
 }
 footer .menu li {
   padding: 0 17px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: #777;
 }
 footer .info {
   padding: 23px 0;
-  height: 80px;
+  height: 150px;
 }
 footer .info li {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   padding-bottom: 2px;
   color: #666;
