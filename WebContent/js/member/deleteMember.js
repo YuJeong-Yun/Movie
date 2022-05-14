@@ -7,4 +7,11 @@ function check() {
 		
 		return false;
 	}
+	
+	if(confirm("탈퇴 하시겠습니까?") == true) {
+		return true;
+	}else {
+		return false;
+		}
+
 }
