@@ -30,12 +30,14 @@ public class DeleteMemberAction implements Action {
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('회원이 아닙니다.'); location.href='./Main.do';</script>");
 			out.flush();
+			out.close();
 			
 		}else if(result == 0) {  // 비밀번호 없음
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('비밀번호 오류입니다.'); location.href='./DeleteMember.me';</script>");
 			out.flush();
+			out.close();
 			
 		}else {  // result == 1  // 삭제완료
 			session.invalidate();  // 삭제한 회원정보 초기화
@@ -44,6 +46,7 @@ public class DeleteMemberAction implements Action {
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('회원 탈퇴가 완료되었습니다.'); location.href='./Main.do';</script>");
 			out.flush();
+			out.close();
 		
 		}
 		// 페이지 이동
