@@ -366,119 +366,59 @@ public class MovieBoardDAO {
 		} finally {
 			closeDB();
 		}
-
 		return result;
 	} // deleteBoard
 	
 	
-//	
-//	
-//	// getBoardList()
-//	public ArrayList getBoardList(){
-//		ArrayList boardList = new ArrayList();
-//		
-//		try {
-//			// 1.2. 디비연결
-//			con = getCon();
-//			// 3. sql 작성 & pstmt 객체 (num 내림차순 정렬)
-////				sql = "select * from itwill_board order by num desc";
-//			sql = "select * from itwill_board order by num desc limit 0,5";
-//			pstmt = con.prepareStatement(sql);
-//			// 4. sql 실행
-//			rs = pstmt.executeQuery();
-//			// 5. 데이터 처리	
-//			while(rs.next()){ // 데이터 있을때 DB정보를 모두 저장
-//				// 글 1개의 정보 => BoardBean 객체
-//				BoardDTO bb = new BoardDTO();
-//				
-//				bb.setContent(rs.getString("content"));
-//				bb.setDate(rs.getDate("date"));
-//				bb.setFile(rs.getString("file"));
-//				bb.setIp(rs.getString("ip"));
-//				bb.setName(rs.getString("name"));
-//				bb.setNum(rs.getInt("num"));
-//				bb.setPass(rs.getString("pass"));
-//				bb.setRe_lev(rs.getInt("re_lev"));
-//				bb.setRe_ref(rs.getInt("re_ref"));
-//				bb.setRe_seq(rs.getInt("re_seq"));
-//				bb.setReadcount(rs.getInt("readcount"));
-//				bb.setSubject(rs.getString("subject"));
-//				
-//				// BoardBean 객체의 정보 => ArrayList 한칸에 저장
-//				
-//				boardList.add(bb);
-//			}// while
-//			
-//			System.out.println(" DAO : 게시판 글 전체 목록 저장완료! ");
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		
-//		return boardList;
-//	} // getBoardList()
-//	
-//		
-//		
-//		// 수정 정보 DB에 업데이트하는 메서드
-//		public int updateBoard(BoardDTO ubb) {
-//			int result = -1;
-//			
-//			try {
-//				// 1.2. 디비 연결
-//				con = getCon();
-//				
-//				// 3. sql 작성 & pstmt 객체
-//				// 글이 존재하는지 체크
-//				sql ="select pass from itwill_board where num = ?";
-//				pstmt = con.prepareStatement(sql);
-//				// ???
-//				pstmt.setInt(1, ubb.getNum());
-//				
-//				// 4. sql 실행
-//				rs = pstmt.executeQuery();
-//				
-//				// 5. 데이터 처리
-//				// 비밀번호가 존재한다 => 게시판 글이 있음!
-//				if(rs.next()) {
-//					// 글을 쓴 사람일 때만 수정 가능하도록 함
-//					// 비밀번호 일치 => 본인임!
-//					if(ubb.getPass().equals(rs.getString("pass"))) {
-//						// 3. sql 작성(update) & pstmt 객체
-//						sql = "update itwill_board set name=?, subject=?, content=? where num=?";
-//						pstmt = con.prepareStatement(sql);
-//						// ???
-//						pstmt.setString(1, ubb.getName());;
-//						pstmt.setString(2, ubb.getSubject());
-//						pstmt.setString(3, ubb.getContent());
-//						pstmt.setInt(4, ubb.getNum());
-//						
-//						// 4. sql 실행
-//						// result = 1과 같음;
-//						pstmt.executeUpdate();
-//						result = 1;		
-//						
-//					// 비밀번호 오류 => 본인 아님!
-//					} else {
-//						result = 0;
-//					}
-//					
-//				} else {
-//					result = -1;
-//				}
-//				System.out.println(" DAO : 정보 수정 완료("+result+")");
-//				
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			} finally {
-//				closeDB();
-//			}
-//			return result;
-//		} // updateBoard 
-//		
-//		
+	// 수정 정보 DB에 업데이트하는 메서드
+	public int updateBoard(MovieBoardDTO dto) {
+		int result = -1;
+		
+		try {
+			// 1.2. 디비 연결
+			con = getCon();
+			
+			// 3. sql 작성 & pstmt 객체
+			// 글이 존재하는지 체크
+			sql ="select id from movie_board where num = ?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setInt(1, dto.getNum());
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			if(rs.next()) {
+				// 글을 쓴 사람일 때만 수정 가능하도록 함
+				if(dto.getId().equals(rs.getString("id"))) { // 아이디 일치 => 글 수정하기
+					// 3. sql 작성(update) & pstmt 객체
+					sql = "update movie_board set subject=?, content=? where num=?";
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setString(1, dto.getSubject());
+					pstmt.setString(2, dto.getContent());
+					pstmt.setInt(3, dto.getNum());
+					
+					// 4. sql 실행
+					result = pstmt.executeUpdate();		
+					
+				} else { // 아이디 다름 -> 본인 아님
+					result = 0;
+				}
+				
+			} else { // 글 정보 존재 X
+				result = -1;
+			}
+			System.out.println(" DAO : 정보 수정 완료("+result+")");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return result;
+	} // updateBoard 
 //		
 //		
 //		// 답글쓰는 메서드

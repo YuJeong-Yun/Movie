@@ -80,7 +80,7 @@ public class MovieReviewFrontController extends HttpServlet {
 			}
 			
 		}else if(command.equals("/MovieReviewDelete.bo")) { // 글 삭제
-			System.out.println(" C : MovieReviewDelete.bo 호출 ");
+			System.out.println(" C : /MovieReviewDelete.bo 호출 ");
 			// DB 사용 O ,페이지 이동
 			
 			action = new MovieReviewDeleteAction();
@@ -91,6 +91,29 @@ public class MovieReviewFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+		}else if(command.equals("/MovieReviewUpdate.bo")) { // 글 수정 페이지 이동
+			System.out.println(" C : /MovieReviewUpdate.bo 호출");
+			// DB 사용 o, 페이지 출력
+			
+			action = new MovieReviewUpdateAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/MovieReviewUpdateAction.bo")) { // 글 수정 동작
+			System.out.println(" C : /MovieReviewUpdateAction.bo 호출");
+			// DB 사용 ㅇ, 페이지 이동
+			
+			action = new MovieReviewUpdateProAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		

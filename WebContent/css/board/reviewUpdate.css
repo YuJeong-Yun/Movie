@@ -1,0 +1,80 @@
+@import url("../header.css");
+@import url("../footer.css");
+@import url("../common.css");
+
+.review-write > .inner {
+  width: 900px;
+  margin: 200px auto 100px;
+}
+input,
+textarea {
+  width: 800px;
+  border: 1px solid #ebecef;
+  outline: none;
+  padding-left: 15px;
+}
+
+
+/* 영화 리뷰 글쓰기 */
+.review-write {
+  
+}
+.review-write > .inner {
+  width: 800px;
+}
+.review-write form {
+}
+.review-write form table {
+  width: 800;
+}
+.review-write form table tr:first-child td input {
+  height: 40px;
+  margin-bottom: 10px;
+}
+.review-write form table tr:nth-child(2) td {
+}
+.review-write form table tr:nth-child(2) td input {
+  height: 60px;
+  margin-bottom: 30px;
+  font-size: 25px;
+}
+.review-write form table tr:nth-child(2) td input::placeholder {
+  color: #bbb;
+}
+.review-write form table tr:nth-child(3) td {
+  background-color: #f9f9fa;
+  padding: 20px 10px;
+  border-top: 2px solid #bbb;
+  
+}
+.review-write form table tr:nth-child(3)  {
+  height: 100px;
+}
+.review-write form table tr:nth-child(3) td {
+  line-height: 40px;
+}
+.review-write form table tr:nth-child(3) div:first-child a .material-icons-outlined {
+  color: #7484cb;
+}
+.review-write form table tr:nth-child(3) div:last-child a .material-icons-outlined {
+  color: #72a97d;
+}
+.review-write form table tr td:last-child textarea {
+  height: 600px;
+  margin-top: 10px;
+  padding-top: 30px;
+  resize: none;
+  line-height: 30px;
+  font-size: 16px;
+}
+.review-write form .btn {
+  width: 80px;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  bottom: -60px;
+  padding: 0;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
