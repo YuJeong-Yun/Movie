@@ -1,6 +1,7 @@
 package com.movie.board.action;
 
 import java.rmi.Remote;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import com.movie.board.action.db.MovieBoardDAO;
 import com.movie.board.action.db.MovieBoardDTO;
+import com.movie.board.action.db.MovieBoardReplyDTO;
 
 public class MovieReviewContentAction implements Action {
 
@@ -38,6 +40,7 @@ public class MovieReviewContentAction implements Action {
 		// 글번호에 해당하는 글 전체의 정보를 가져오기
 		MovieBoardDTO dto = dao.getBoard(num);
 		System.out.println(" M :글정보 1개 조회 완료");
+		List<MovieBoardReplyDTO> boardReplyList = dao.getBoardReplyList(num);
 		
 		// request 영역에 글정보를 저장
 		request.setAttribute("dto", dto);
@@ -45,6 +48,7 @@ public class MovieReviewContentAction implements Action {
 		request.setAttribute("num", num);
 		request.setAttribute("prevNum", prevNum);
 		request.setAttribute("nextNum", nextNum);
+		request.setAttribute("boardReplyList", boardReplyList);
 		
 		// 페이지 이동 객체 
 		ActionForward forward = new ActionForward();

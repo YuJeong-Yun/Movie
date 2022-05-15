@@ -24,6 +24,7 @@
   font-weight: 700;
 }
 
+
 /* 리뷰 */
 .movie-review {
 }
@@ -46,6 +47,7 @@
 .movie-review .review__title .title__subject {
   font-size: 32px;
   margin-bottom: 18px;
+  word-break: break-all;
 }
 .movie-review .review__title .title__name {
   margin-bottom: 5px;
@@ -112,7 +114,8 @@
   justify-content: center;
   align-items: center;
 }
-.movie-review .review__comment .comment__content .content__write .lengthCalc {
+.movie-review .review__comment .comment__content .content__write .lengthCalc,
+.movie-review .review__comment .comment__content .content__write .lengthCalc2 {
 margin-right: 15px;
 color: #aaa;
 font-size: 14px;

@@ -33,11 +33,15 @@
   <!-- Review Content  -->
   <section class="movie-review">
     <div class="inner">
+      <!-- 이전 글 / 다음 글 / 목록 이동 가능 버튼 
+      		가장 오래된 글은 다음 글 / 가장 최신 글 글은 이전 글 버튼 표시 안 됨
+      -->
       <div class="btn-group title">
         <c:if test="${prevNum ne 0}"><a href="./MovieReviewContent.bo?num=${prevNum }&pageNum=${pageNum }" class="btn">△ 이전글</a></c:if>
         <c:if test="${nextNum ne 0 }"><a href="./MovieReviewContent.bo?num=${nextNum }&pageNum=${pageNum }" class="btn">▽ 다음글</a></c:if>
         <a href="./MovieReview.bo?pageNum=${pageNum }" class="btn">목록</a>
       </div>
+      <!-- 글의 타이틀 출력 부분 -->
       <ul class="review__title">
         <ul class="inner">
           <li class="title__subject">${dto.subject }</li>
@@ -48,9 +52,11 @@
           </li>
         </ul>
       </ul>
+      <!-- 글의 본문 출력 부분 -->
       <div class="review__content">
         <div class="inner">
           <div class="content__text" style="white-space:pre-wrap">${dto.content }</div>
+          <!-- 로그인한 아이디와 글 쓴 아이디 비교해서 같은 사람이면 수정/삭제 버튼 출력 -->
           <c:if test="${sessionScope.id eq requestScope.dto.id }">
             <div class="btn-group content">
               <a href="./MovieReviewUpdate.bo?num=${num }&pageNum=${pageNum }" class="btn">수정하기</a>
@@ -59,60 +65,48 @@
           </c:if>
         </div>
       </div>
+      <!-- 해당 글의 리뷰 수 출력 부분 -->
       <ul class="review__comment">
         <div class="inner">
           <div class="comment__cnt">
             <span class="material-icons-outlined">textsms</span>
             <div>댓글 ${dto.re_cnt }</div>
           </div>
+          <!-- 글의 리뷰 모두 출력 -->
           <ul class="comment__content">
-            <li class="content__write">
-              <form action="javascript:void(0)" method="post" name="fr">
-                <div class="lengthCalc">1000</div>
-                <textarea name="reply" maxlength="1000" onkeyup="calcInputLength();"></textarea>
-                <input type="submit" value="등록">
-              </form>
-            </li>
-            <li>
-              <span class="material-icons">person</span>
-              <div class="content__wrapper">
-                <div  class="content__name">댓글작성자</div>
-                <div class="content__text">댓글 내용입니다.</div>
-                <div class="content__date">2022/05/13 22:10</div>
-                <div class="content__btn">
-                  <a href="javascript:void(0)">답글</a>
-                  <a href="javascript:void(0)">수정</a>
-                  <a href="javascript:void(0)">삭제</a>
-                </div>
-              </div>
-            </li>
-            <li>
-              <span class="material-icons">person</span>
-              <div class="content__wrapper">
-                <div  class="content__name">댓글작성자</div>
-                <div class="content__text">댓글 내용입니다.</div>
-                <div class="content__date">2022/05/13 22:10</div>
-                <div class="content__btn">
-                  <a href="javascript:void(0)">답글</a>
-                  <a href="javascript:void(0)">수정</a>
-                  <a href="javascript:void(0)">삭제</a>
-                </div>
-              </div>
-            </li>
-            <li>
-              <span class="material-icons">person</span>
-              <div class="content__wrapper">
-                <div  class="content__name">댓글작성자</div>
-                <div class="content__text">댓글 내용입니다.</div>
-                <div class="content__date">2022/05/13 22:10</div>
-                <div class="content__btn">
-                  <a href="javascript:void(0)">답글</a>
-                  <a href="javascript:void(0)">수정</a>
-                  <a href="javascript:void(0)">삭제</a>
-                </div>
-              </div>
-            </li>
+            <c:forEach var="boardReply" items="${boardReplyList }">
+	            <li>
+	              <span class="material-icons">person</span>
+	              <div class="content__wrapper">
+	                <div  class="content__name">${boardReply.name }</div>
+	                <div class="content__text">${boardReply.content }</div>
+	                <div class="content__date">
+	                	<f:formatDate value="${boardReply.date }" pattern="yyyy.MM.dd HH:mm" ></f:formatDate>
+	                </div>
+	                <div class="content__btn">
+	                  <!-- 댓글 작성 아이디와 로그인한 아이디 같으면 수정/삭제 버튼 출력 -->
+	                  <c:if test="${boardReply.id eq id }">
+	                    <a href="javascript:void(0)">수정</a>
+	                    <a href="javascript:void(0)">삭제</a>
+	                  </c:if>
+	                </div>
+	              </div>
+	            </li>
+            </c:forEach>
+            <!-- 로그인한 사람만 댓글 작성 가능 -->
+            <c:if test="${id ne null }">
+	            <li class="content__write">
+	              <form action="./MovieReviewReply.bo?pageNum=${pageNum }" method="post" name="fr" onsubmit="return check();">
+	                <!-- 댓글은 1000자 까지만 작성 가능. 남은 입력 가능 수 출력 -->
+	                <div class="lengthCalc">1000</div>
+	                <textarea name="reply" maxlength="1000" onkeyup="calcInputLength();"></textarea>
+	                <input type="submit" value="등록">
+	                <input type="hidden" name="num" value="${dto.num }">
+	              </form>
+	            </li>
+	        </c:if>
           </ul>
+          <!-- 화면 상단으로 이동하는 버튼 -->
           <a href="#" class="btn btn--top">▲ TOP</a>
         </div>
       </ul>
