@@ -51,7 +51,7 @@ public class MovieReviewDeleteAction implements Action {
 			return null;
 			
 		}else { // result == 1
-			out.print("<script>alert('글 삭제가 완료되었습니다.'); location.href='./MovieReview.bo?pageNum="+pageNum+"';");
+			out.print("<script>alert('글 삭제가 완료되었습니다.'); location.href='./MovieReview.bo?pageNum="+pageNum+"';</script>");
 			out.flush();
 		
 			out.close();
