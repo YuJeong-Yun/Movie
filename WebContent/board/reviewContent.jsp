@@ -34,8 +34,8 @@
   <section class="movie-review">
     <div class="inner">
       <div class="btn-group title">
-        <c:if test="${num lt lastNum }"><a href="./MovieReviewContent.bo?num=${num+1 }&pageNum=${pageNum }" class="btn">△ 이전글</a></c:if>
-        <c:if test="${num gt firstNum }"><a href="./MovieReviewContent.bo?num=${num-1 }&pageNum=${pageNum }" class="btn">▽ 다음글</a></c:if>
+        <c:if test="${prevNum ne 0}"><a href="./MovieReviewContent.bo?num=${prevNum }&pageNum=${pageNum }" class="btn">△ 이전글</a></c:if>
+        <c:if test="${nextNum ne 0 }"><a href="./MovieReviewContent.bo?num=${nextNum }&pageNum=${pageNum }" class="btn">▽ 다음글</a></c:if>
         <a href="./MovieReview.bo?pageNum=${pageNum }" class="btn">목록</a>
       </div>
       <ul class="review__title">

@@ -98,7 +98,8 @@ public class MovieBoardDAO {
 			
 			// 3. sql 작성 & pstmt 객체 (num 내림차순 정렬, 페이징 처리)
 			//		=> limit 시작행(0부터 시작함), 개수
-			sql = "select * from movie_board order by num desc limit ?, ?";
+			sql = "select * from (select @ROWNUM:=@ROWNUM +1 AS rownum, T.*	FROM movie_board T, (select @ROWNUM:=0) R "
+					+ "	 ORDER BY num asc) sub order by sub.rownum desc limit ?, ?";
 			pstmt = con.prepareStatement(sql);
 			// ???
 			pstmt.setInt(1, startRow-1);
@@ -114,6 +115,7 @@ public class MovieBoardDAO {
 				// BoardBean 객체의 정보를 ArrayList 한 칸에 저장
 				MovieBoardDTO dto = new MovieBoardDTO();
 				
+				dto.setRownum(rs.getInt("rownum"));
 				dto.setContent(rs.getString("content"));
 				dto.setDate(rs.getTimestamp("date"));
 				dto.setId(rs.getString("id"));
@@ -212,10 +214,10 @@ public class MovieBoardDAO {
 		return dto;
 	} // getBoard
 
-
-	// 첫 글, 마지막 글 번호 반환
-	public int getBoardNum(int i) {
-		// i가 0이면 첫 글, 1이면 마지막 글 번호 반환
+	
+	// 이전, 다음 글 번호 반환
+	public int getBoardSideNum(int i, int num) {
+		// i가 0이면 이전, 1이면 다음 글 번호 반환
 		int result = 0;
 		
 		try {
@@ -223,8 +225,11 @@ public class MovieBoardDAO {
 			con = getCon();
 			
 			// 3. sql 작성 & pstmt 객체
-			sql = (i==0) ? "select min(num) from movie_board" : "select max(num) from movie_board";
+			sql = (i==0) ? "select min(num) from movie_board where num > ?" : "select max(num) from movie_board where num < ?" ;
 			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setInt(1, num);
+			
 			// 4. sql 실행
 			rs = pstmt.executeQuery();
 			
@@ -239,7 +244,7 @@ public class MovieBoardDAO {
 			closeDB();
 		}
 		return result;
-	} // getBoardNum
+	} // getBoardSideNum
 	
 	
 	// 글쓰기 메서드

@@ -30,10 +30,10 @@ public class MovieReviewContentAction implements Action {
 		// 조회수 증가 동작 실행
 		int result = dao.updateReadCount(num, id);
 		System.out.println(" M : 조회수 "+result+" 증가 완료"); // 조회수 증가 체크
-		// 첫 글, 마지막 글 번호 받아오기
-		int firstNum = dao.getBoardNum(0);
-		int lastNum = dao.getBoardNum(1);
-		System.out.println("fN : "+firstNum+", lN : "+lastNum);
+		// 이전, 다음 글 번호 받아오기
+		int prevNum = dao.getBoardSideNum(0, num);
+		int nextNum = dao.getBoardSideNum(1, num);
+		System.out.println("pN : "+prevNum+", nN : "+nextNum);
 		
 		// 글번호에 해당하는 글 전체의 정보를 가져오기
 		MovieBoardDTO dto = dao.getBoard(num);
@@ -43,8 +43,8 @@ public class MovieReviewContentAction implements Action {
 		request.setAttribute("dto", dto);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("num", num);
-		request.setAttribute("firstNum", firstNum);
-		request.setAttribute("lastNum", lastNum);
+		request.setAttribute("prevNum", prevNum);
+		request.setAttribute("nextNum", nextNum);
 		
 		// 페이지 이동 객체 
 		ActionForward forward = new ActionForward();

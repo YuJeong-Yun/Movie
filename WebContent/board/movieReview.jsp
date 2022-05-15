@@ -53,7 +53,7 @@
         </tr>
 		<c:forEach var="dto" items="${requestScope.boardList }">
 			<tr>
-				<td>${dto.num }</td>
+				<td>${dto.rownum }</td>
 				<td>
 					<a href="./MovieReviewContent.bo?num=${dto.num }&pageNum=${pageNum }">${dto.subject }</a>
 					<span><c:if test="${dto.re_cnt ne 0 }">[${dto.re_cnt }]</c:if></span>
