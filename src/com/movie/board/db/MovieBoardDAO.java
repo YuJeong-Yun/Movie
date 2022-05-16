@@ -1,4 +1,4 @@
-package com.movie.board.action.db;
+package com.movie.board.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

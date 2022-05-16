@@ -5,8 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.movie.board.action.db.MovieBoardDAO;
-import com.movie.board.action.db.MovieBoardDTO;
+import com.movie.board.db.MovieBoardDAO;
+import com.movie.board.db.MovieBoardDTO;
 
 
 public class MovieReviewListAction implements Action {

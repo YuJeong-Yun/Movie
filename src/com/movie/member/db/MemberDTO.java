@@ -1,4 +1,4 @@
-package com.movie.member.action.db;
+package com.movie.member.db;
 
 public class MemberDTO {
 	private String id;

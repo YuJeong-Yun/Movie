@@ -1,4 +1,4 @@
-package com.movie.member.action.db;
+package com.movie.member.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.movie.board.action.db.MovieBoardDAO;
-import com.movie.board.action.db.MovieBoardDTO;
-import com.movie.board.action.db.MovieBoardReplyDTO;
+import com.movie.board.db.MovieBoardDAO;
+import com.movie.board.db.MovieBoardDTO;
+import com.movie.board.db.MovieBoardReplyDTO;
 
 public class MovieReviewContentAction implements Action {
 

@@ -3,8 +3,8 @@ package com.movie.member.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.movie.member.action.db.MemberDAO;
-import com.movie.member.action.db.MemberDTO;
+import com.movie.member.db.MemberDAO;
+import com.movie.member.db.MemberDTO;
 
 public class JoinAction implements Action {
 

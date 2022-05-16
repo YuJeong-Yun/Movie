@@ -42,6 +42,7 @@
         </div>
       </div>
     
+      <!-- 영화 리뷰 목록 출력 -->
       <div class="board-title">영화 REVIEW</div>
       <table class="board-table">
         <tr>

@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.movie.member.action.db.MemberDAO;
-import com.movie.member.action.db.MemberDTO;
+import com.movie.member.db.MemberDAO;
+import com.movie.member.db.MemberDTO;
 
 public class MemberUpdateAction implements Action {
 
