@@ -25,6 +25,7 @@
 </head>
 
 <body>
+  <!-- 로그인 안되어있으면 메인으로 이동 -->
   <c:if test="${id eq null }">
   	<%response.sendRedirect("./Main.do"); %>
   </c:if>
@@ -41,15 +42,18 @@
             <td><input type="text" disabled="disabled" value="영화 리뷰 글쓰기"></td>
           </tr>
           <tr>
-            <td><input type="text" name="subject" placeholder="제목을 입력해 주세요." maxlength="200"></td>
+            <!-- 글 제목 입력. 최대 300자 -->
+            <td><input type="text" name="subject" placeholder="제목을 입력해 주세요." maxlength="300"></td>
           </tr>
           <tr>
             <td>
+              <!-- 영화 차트 / 상영 시간표 이동 링크 -->
               <div>지금 영화 차트를 확인하고 싶다면 → <a href="./MovieChart.do"><span class="material-icons-outlined">equalizer</span></a></div>
               <div>상영 시간표를 확인하고 싶다면 → <a href="javascript:void(0)"><span class="material-icons-outlined">date_range</span></a></div>
             </td>
           </tr>
           <tr>
+            <!-- 글 본문 입력. 최대 5000자 -->
             <td><textarea name="content" maxlength="5000">※ 영화 리뷰 게시판 입니다.
 영화 감상을 자유롭게 등록해주세요!</textarea></td>
           </tr>
