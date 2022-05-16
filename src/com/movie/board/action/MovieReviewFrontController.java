@@ -118,7 +118,19 @@ public class MovieReviewFrontController extends HttpServlet {
 			System.out.println(" C : /MovieReviewReply.bo 호출");
 			// DB 사용 ㅇ, 페이지 이동
 			
-			action = new MovieReviewReplyAction();
+			action = new MovieReviewReplyWriteAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.contentEquals("/MovieReviewReplyDelete.bo")) { // 글 댓글 삭제 동작
+			System.out.println(" C : /MovieReviewReplyDelete.bo 호출");
+			// DB 사용 ㅇ, 페이지 이동
+			
+			action = new MovieReviewReplyDeleteAction();
 			
 			try {
 				forward = action.execute(request, response);

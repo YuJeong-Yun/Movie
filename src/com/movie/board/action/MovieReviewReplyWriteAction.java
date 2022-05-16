@@ -9,12 +9,12 @@ import com.movie.board.action.db.MovieBoardDTO;
 import com.movie.board.action.db.MovieBoardReplyDTO;
 import com.sun.corba.se.impl.protocol.BootstrapServerRequestDispatcher;
 
-public class MovieReviewReplyAction implements Action {
+public class MovieReviewReplyWriteAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		System.out.println( " M : MovieReviewReplyAction_execute() 호출");
+		System.out.println( " M : MovieReviewReplyWriteAction_execute() 호출");
 		
 		// 전달 정보 저장
 		HttpSession session = request.getSession();

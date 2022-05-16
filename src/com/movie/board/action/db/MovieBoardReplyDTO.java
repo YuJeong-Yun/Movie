@@ -3,7 +3,7 @@ package com.movie.board.action.db;
 import java.sql.Timestamp;
 
 public class MovieBoardReplyDTO {
-	private int num;
+	private int re_num;
 	private String id;
 	private String name;
 	private String content;
@@ -11,12 +11,12 @@ public class MovieBoardReplyDTO {
 	private Timestamp date;
 	private String ip;
 
-	public int getNum() {
-		return num;
+	public int getRe_num() {
+		return re_num;
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+	public void setRe_num(int re_num) {
+		this.re_num = re_num;
 	}
 
 	public String getId() {
@@ -69,8 +69,8 @@ public class MovieBoardReplyDTO {
 
 	@Override
 	public String toString() {
-		return "MovieBoardReplyDTO [num=" + num + ", id=" + id + ", name=" + name + ", content=" + content + ", re_ref="
-				+ re_ref + ", date=" + date + ", ip=" + ip + "]";
+		return "MovieBoardReplyDTO [re_num=" + re_num + ", id=" + id + ", name=" + name + ", content=" + content
+				+ ", re_ref=" + re_ref + ", date=" + date + ", ip=" + ip + "]";
 	}
 
 }

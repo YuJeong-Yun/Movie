@@ -45,7 +45,6 @@ public class MovieReviewContentAction implements Action {
 		// request 영역에 글정보를 저장
 		request.setAttribute("dto", dto);
 		request.setAttribute("pageNum", pageNum);
-		request.setAttribute("num", num);
 		request.setAttribute("prevNum", prevNum);
 		request.setAttribute("nextNum", nextNum);
 		request.setAttribute("boardReplyList", boardReplyList);

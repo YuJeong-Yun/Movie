@@ -33,10 +33,10 @@
   <!-- Review Content  -->
   <section class="movie-review">
     <div class="inner">
-      <!-- 이전 글 / 다음 글 / 목록 이동 가능 버튼 
-      		가장 오래된 글은 다음 글 / 가장 최신 글 글은 이전 글 버튼 표시 안 됨
-      -->
+      <!-- 이전 글 / 다음 글 / 목록 이동 가능 버튼 -->
       <div class="btn-group title">
+        <!-- num 1인 글은 다음글 버튼 없음 
+        	가장 최신 글은 이전글 버튼 없음 -->
         <c:if test="${prevNum ne 0}"><a href="./MovieReviewContent.bo?num=${prevNum }&pageNum=${pageNum }" class="btn">△ 이전글</a></c:if>
         <c:if test="${nextNum ne 0 }"><a href="./MovieReviewContent.bo?num=${nextNum }&pageNum=${pageNum }" class="btn">▽ 다음글</a></c:if>
         <a href="./MovieReview.bo?pageNum=${pageNum }" class="btn">목록</a>
@@ -44,23 +44,23 @@
       <!-- 글의 타이틀 출력 부분 -->
       <ul class="review__title">
         <ul class="inner">
-          <li class="title__subject">${dto.subject }</li>
-          <li class="title__name">${dto.name }</li>
+          <li class="title__subject">${dto.subject }</li> <!-- 타이틀 -->
+          <li class="title__name">${dto.name }</li> <!-- 글 작성자 -->
           <li class="title__info">
-            <span><f:formatDate value="${dto.date }" pattern="yyyy.MM.dd  HH:mm" /></span>
-            <span>조회수 ${dto.readcount }</span>
+            <span><f:formatDate value="${dto.date }" pattern="yyyy.MM.dd  HH:mm" /></span> <!-- 작성 시간 -->
+            <span>조회수 ${dto.readcount }</span> <!-- 조회수 -->
           </li>
         </ul>
       </ul>
       <!-- 글의 본문 출력 부분 -->
       <div class="review__content">
         <div class="inner">
-          <div class="content__text" style="white-space:pre-wrap">${dto.content }</div>
+          <div class="content__text" style="white-space:pre-wrap">${dto.content }</div> <!-- 글 내용 -->
           <!-- 로그인한 아이디와 글 쓴 아이디 비교해서 같은 사람이면 수정/삭제 버튼 출력 -->
           <c:if test="${sessionScope.id eq requestScope.dto.id }">
             <div class="btn-group content">
-              <a href="./MovieReviewUpdate.bo?num=${num }&pageNum=${pageNum }" class="btn">수정하기</a>
-              <a href="./MovieReviewDelete.bo?num=${num }&pageNum=${pageNum }" class="btn" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제하기</a>
+              <a href="./MovieReviewUpdate.bo?num=${dto.num }&pageNum=${pageNum }" class="btn">수정하기</a>
+              <a href="./MovieReviewDelete.bo?num=${dto.num }&pageNum=${pageNum }" class="btn" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제하기</a>
             </div>
           </c:if>
         </div>
@@ -69,25 +69,25 @@
       <ul class="review__comment">
         <div class="inner">
           <div class="comment__cnt">
-            <span class="material-icons-outlined">textsms</span>
-            <div>댓글 ${dto.re_cnt }</div>
+            <span class="material-icons-outlined">textsms</span> <!-- 댓글 아이콘 -->
+            <div>댓글 ${dto.re_cnt }</div> <!-- 댓글 수 -->
           </div>
           <!-- 글의 리뷰 모두 출력 -->
           <ul class="comment__content">
             <c:forEach var="boardReply" items="${boardReplyList }">
 	            <li>
-	              <span class="material-icons">person</span>
+	              <span class="material-icons">person</span> <!-- 프로필 -->
 	              <div class="content__wrapper">
-	                <div  class="content__name">${boardReply.name }</div>
-	                <div class="content__text">${boardReply.content }</div>
+	                <div  class="content__name">${boardReply.name }</div> <!-- 댓글 작성자 -->
+	                <div class="content__text">${boardReply.content }</div> <!-- 댓글 내용 -->
 	                <div class="content__date">
-	                	<f:formatDate value="${boardReply.date }" pattern="yyyy.MM.dd HH:mm" ></f:formatDate>
+	                	<f:formatDate value="${boardReply.date }" pattern="yyyy.MM.dd HH:mm" ></f:formatDate> <!-- 댓글 작성 시간 -->
 	                </div>
 	                <div class="content__btn">
 	                  <!-- 댓글 작성 아이디와 로그인한 아이디 같으면 수정/삭제 버튼 출력 -->
 	                  <c:if test="${boardReply.id eq id }">
 	                    <a href="javascript:void(0)">수정</a>
-	                    <a href="javascript:void(0)">삭제</a>
+	                    <a href="./MovieReviewReplyDelete.bo?num=${dto.num }&pageNum=${pageNum }&re_num=${boardReply.re_num }" onclick="return confirm('삭제하시겠습니까?');">삭제</a>
 	                  </c:if>
 	                </div>
 	              </div>
@@ -98,7 +98,7 @@
 	            <li class="content__write">
 	              <form action="./MovieReviewReply.bo?pageNum=${pageNum }" method="post" name="fr" onsubmit="return check();">
 	                <!-- 댓글은 1000자 까지만 작성 가능. 남은 입력 가능 수 출력 -->
-	                <div class="lengthCalc">1000</div>
+	                <div class="lengthCalc">1000</div> <!-- 남은 입력 가능 수 (최대 1000자) -->
 	                <textarea name="reply" maxlength="1000" onkeyup="calcInputLength();"></textarea>
 	                <input type="submit" value="등록">
 	                <input type="hidden" name="num" value="${dto.num }">
