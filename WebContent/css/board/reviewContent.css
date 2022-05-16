@@ -164,7 +164,7 @@ background-color: #fff;
   margin-bottom: 5px;
 }
 .movie-review .review__comment .comment__content li .content__text {
-  
+  width: 850px;
 }
 .movie-review .review__comment .comment__content li .content__date {
   margin-top: 5px;

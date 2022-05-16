@@ -79,7 +79,7 @@
 	              <span class="material-icons">person</span> <!-- 프로필 -->
 	              <div class="content__wrapper">
 	                <div  class="content__name">${boardReply.name }</div> <!-- 댓글 작성자 -->
-	                <div class="content__text">${boardReply.content }</div> <!-- 댓글 내용 -->
+	                <div class="content__text" style="white-space:pre-wrap">${boardReply.content }</div> <!-- 댓글 내용 -->
 	                <div class="content__date">
 	                	<f:formatDate value="${boardReply.date }" pattern="yyyy.MM.dd HH:mm" ></f:formatDate> <!-- 댓글 작성 시간 -->
 	                </div>
