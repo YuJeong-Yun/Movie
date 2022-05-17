@@ -4,11 +4,14 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.movie.notice.action.NoticeListAction;
 
+@WebServlet("*.bo")
 public class MovieReviewFrontController extends HttpServlet {
 	
 	protected void doProcess(HttpServletRequest request
@@ -138,20 +141,7 @@ public class MovieReviewFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-		}else if(command.equals("/Notice.bo")) { // 공지사항 페이지 이동
-			System.out.println(" C : /Notice.bo 호출");
-			// DB 사용 O, 페이지 출력
-			
-			action = new NoticeListAction();
-			
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
 		}
-
 		
 		System.out.println(" C : 2. 가상 주소 매핑 끝\n ");
 		//////////////////////////////2. 가상 주소 매핑 /////////////////////////////////

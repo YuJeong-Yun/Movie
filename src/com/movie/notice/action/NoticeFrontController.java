@@ -1,4 +1,4 @@
-package com.movie.main.action;
+package com.movie.notice.action;
 
 import java.io.IOException;
 
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("*.do")
-public class MainFrontController extends HttpServlet {
+@WebServlet("*.no")
+public class NoticeFrontController extends HttpServlet {
 	
 	protected void doProcess(HttpServletRequest request
 			, HttpServletResponse response) throws ServletException, IOException {
@@ -22,10 +22,8 @@ public class MainFrontController extends HttpServlet {
 		
 		// 가상주소 가져오기
 		String requestURI =	request.getRequestURI();
-		System.out.println(" C : requestURI -  " + requestURI);
 		// 프로젝트명  가져오기
 		String ctxPath = request.getContextPath();
-		System.out.println(" C : ctxPath - "+ctxPath);
 		// 가상주소 계산 (가상주소 - 프로젝트명)
 		String command = requestURI.substring(ctxPath.length());
 		System.out.println(" C : command - " + command);
@@ -39,11 +37,12 @@ public class MainFrontController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 		
-		if(command.equals("/Main.do")) { // 메인 페이지로 이동
-			System.out.println(" C : /Main.do 호출 " );
-			// DB사용 X, Model 이동
+		
+		if(command.equals("/Notice.no")) { // 공지사항 페이지
+			System.out.println(" C : /Notice.no 호출");
+			// DB 사용 ㅇ, 페이지 출력
 			
-			action = new MainMovieChartAction(); // CGV 영화 차트 크롤링해서 세션에 저장
+			action = new NoticeListAction();
 			
 			try {
 				forward = action.execute(request, response);
@@ -51,15 +50,9 @@ public class MainFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-		}else if(command.equals("/MovieChart.do")) { // 영화 차트 페이지로 이동
-			System.out.println(" C : /MovieChart.do 호출 ");
-			// DB 사용 X, view 이동
-			
-			forward = new ActionForward();
-			forward.setPath("./main/movieChart.jsp");
-			forward.setRedirect(false);
-					
 		}
+		
+
 		
 		
 		System.out.println(" C : 2. 가상 주소 매핑 끝\n ");

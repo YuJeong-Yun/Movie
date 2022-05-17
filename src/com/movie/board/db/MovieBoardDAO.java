@@ -112,7 +112,6 @@ public class MovieBoardDAO {
 			// 데이터 있을 때 DB 정보를 모두 저장
 			while(rs.next()) {
 				// 글 1개의 정보 => BoardBean 객체
-				// BoardBean 객체의 정보를 ArrayList 한 칸에 저장
 				MovieBoardDTO dto = new MovieBoardDTO();
 				
 				dto.setRownum(rs.getInt("rownum"));

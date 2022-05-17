@@ -94,7 +94,7 @@
                 <li><a href="javascript:void(0)">멤버십/CLUB</a></li>
                 <li><a href="javascript:void(0)">CGV 극장별</a></li>
                 <li><a href="javascript:void(0)">제휴할인</a></li>
-                <li><a href="./Notice.bo">공지사항</a></li>
+                <li><a href="./Notice.no">공지사항</a></li>
                 <li><a href="javascript:void(0)">당첨자 발표</a></li>
               </ul>
             </li>

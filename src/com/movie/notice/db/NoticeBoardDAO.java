@@ -58,84 +58,80 @@ public class NoticeBoardDAO {
 	
 	
 	
-//	// 현재 작성된 글 개수 반환 getBoardCount()
-//	public int getBoardCount() {
-//		int result = 0;
-//		
-//		try {
-//			// 1.2. 디비연결
-//			con = getCon();
-//			
-//			// 3. sql 작성(select) & pstmt 객체
-//			sql = "select count(num) from movie_board";
-//			pstmt = con.prepareStatement(sql);
-//			
-//			// 4. sql 실행
-//			rs = pstmt.executeQuery();
-//			
-//			// 5. 데이터 처리
-//			if(rs.next()) {
-//				result = rs.getInt(1);
-//			}
-//			
-//			System.out.println("DAO : 게시판 글개수 " + result + "개");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		return result;
-//	} // getBoardCount()
-//	
-//	
-//	// 글목록 가져오는 메서드
-//	public ArrayList<MovieBoardDTO> getBoardList(int startRow, int pageSize) {
-//		ArrayList<MovieBoardDTO> boardList = new ArrayList<>();
-//		
-//		try {
-//			// 1.2. 디비 연결
-//			con = getCon();
-//			
-//			// 3. sql 작성 & pstmt 객체 (num 내림차순 정렬, 페이징 처리)
-//			//		=> limit 시작행(0부터 시작함), 개수
-//			sql = "select * from (select @ROWNUM:=@ROWNUM +1 AS rownum, T.*	FROM movie_board T, (select @ROWNUM:=0) R "
-//					+ "	 ORDER BY num asc) sub order by sub.rownum desc limit ?, ?";
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setInt(1, startRow-1);
-//			pstmt.setInt(2, pageSize);
-//			
-//			// 4. sql 실행
-//			rs = pstmt.executeQuery();
-//			
-//			// 5. 데이터 처리
-//			// 데이터 있을 때 DB 정보를 모두 저장
-//			while(rs.next()) {
-//				// 글 1개의 정보 => BoardBean 객체
-//				// BoardBean 객체의 정보를 ArrayList 한 칸에 저장
-//				MovieBoardDTO dto = new MovieBoardDTO();
-//				
-//				dto.setRownum(rs.getInt("rownum"));
-//				dto.setContent(rs.getString("content"));
-//				dto.setDate(rs.getTimestamp("date"));
-//				dto.setId(rs.getString("id"));
-//				dto.setIp(rs.getString("ip"));
-//				dto.setName(rs.getString("name"));
-//				dto.setNum(rs.getInt("num"));
-//				dto.setRe_cnt(rs.getInt("re_cnt"));
-//				dto.setReadcount(rs.getInt("readcount"));
-//				dto.setSubject(rs.getString("subject"));
-//				
-//				boardList.add(dto);
-//			}
-//			System.out.println("DAO : 게시판 글 전체 목록 저장완료!");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		return boardList;
-//	} // getBoardList
+	// 현재 작성된 글 개수 반환 getBoardCount()
+	public int getBoardCount() {
+		int result = 0;
+		
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			
+			// 3. sql 작성(select) & pstmt 객체
+			sql = "select count(num) from movie_notice_board";
+			pstmt = con.prepareStatement(sql);
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			System.out.println("DAO : 게시판 글개수 " + result + "개");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return result;
+	} // getBoardCount()
+	
+	
+	// 글목록 가져오는 메서드
+	public ArrayList<NoticeBoardDTO> getBoardList(int startRow, int pageSize) {
+		ArrayList<NoticeBoardDTO> boardList = new ArrayList<>();
+		
+		try {
+			// 1.2. 디비 연결
+			con = getCon();
+			
+			// 3. sql 작성 & pstmt 객체 (num 내림차순 정렬, 페이징 처리)
+			//		=> limit 시작행(0부터 시작함), 개수
+			sql = "select * from (select @ROWNUM:=@ROWNUM +1 AS rownum, T.*	FROM movie_notice_board T, (select @ROWNUM:=0) R "
+					+ "	 ORDER BY num asc) sub order by sub.rownum desc limit ?, ?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setInt(1, startRow-1);
+			pstmt.setInt(2, pageSize);
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			// 데이터 있을 때 DB 정보를 모두 저장
+			while(rs.next()) {
+				// 글 1개의 정보 => BoardBean 객체
+				NoticeBoardDTO dto = new NoticeBoardDTO();
+				
+				dto.setRownum(rs.getInt("rownum"));
+				dto.setContent(rs.getString("content"));
+				dto.setDate(rs.getTimestamp("date"));
+				dto.setNum(rs.getInt("num"));
+				dto.setReadcount(rs.getInt("readcount"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setFile(rs.getString("file"));
+				
+				boardList.add(dto);
+			}
+			System.out.println("DAO : 게시판 글 전체 목록 저장완료!");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return boardList;
+	} // getBoardList
 //	
 //	
 //	// 글 조회수 증가시키는 메서드
