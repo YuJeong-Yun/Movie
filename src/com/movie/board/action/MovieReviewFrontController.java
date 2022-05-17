@@ -138,6 +138,18 @@ public class MovieReviewFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+		}else if(command.equals("/Notice.bo")) { // 공지사항 페이지 이동
+			System.out.println(" C : /Notice.bo 호출");
+			// DB 사용 O, 페이지 출력
+			
+			action = new NoticeListAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 
 		

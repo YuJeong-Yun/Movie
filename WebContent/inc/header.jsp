@@ -13,7 +13,8 @@
         </a>
         <span>C U L T U R E P L E X</span>
       </div>
-
+	
+      <!-- 로그인 / 로그아웃 / 마이페이지 -->
       <ul class="memberInfo">
         <img src="./images/main_add_img.png" alt="현대카드" class="main_ad" />
         <c:if test="${sessionScope.id == null }">
@@ -48,6 +49,7 @@
     </div>
   </div>
 
+  <!-- 메뉴 리스트 -->
   <div class="menu2">
     <div class="inner">
       <div class="main-menu">
@@ -92,8 +94,8 @@
                 <li><a href="javascript:void(0)">멤버십/CLUB</a></li>
                 <li><a href="javascript:void(0)">CGV 극장별</a></li>
                 <li><a href="javascript:void(0)">제휴할인</a></li>
+                <li><a href="./Notice.bo">공지사항</a></li>
                 <li><a href="javascript:void(0)">당첨자 발표</a></li>
-                <li><a href="javascript:void(0)">종료된 이벤트</a></li>
               </ul>
             </li>
             <li>
