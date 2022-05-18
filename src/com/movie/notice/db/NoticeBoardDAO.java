@@ -229,82 +229,60 @@ public class NoticeBoardDAO {
 		}
 		return result;
 	} // getBoardSideNum
-//	
-//	
-//	// 글쓰기 메서드
-//	public int insertBoard(MovieBoardDTO dto) {
-//		// 글번호 저장 변수
-//		int num = 0;
-//		try {
-//			// 1.2. 디비연결
-//			con = getCon();
-//			
-//			// 3 sql 작성 (글 번호를 계산하는 sql) & pstmt 객체
-//			sql = "select max(num) from movie_board";
-//			pstmt = con.prepareStatement(sql);
-//
-//			// 4 sql 실행
-//			rs = pstmt.executeQuery();
-//			
-//			// 5. 데이터 처리
-//			// max(num) 컬럼의 결과는 항상 존재함 -> 따라서 값이 안들어있어도 rs.next() 결과값이 false가 아님!
-//			if(rs.next()) {  
-//				// getInt 메서드는 null값일 경우 0을 반환
-//				num = rs.getInt(1)+1;   			// 인덱스
-//			}
-//			
-//			System.out.println("DAO  : 글번호 " + num);
-//			
-//			/////////////////////////////////////////////////////////
-//			// 현재 아이디 이름 정보 가져오기
-//			String name ="";
-//			
-//			// 3. sql 작성 & pstmt
-//			sql = "select name from movie_member where id=?";
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setString(1, dto.getId());
-//			
-//			// 4. sql 실행
-//			rs = pstmt.executeQuery();
-//			
-//			// 5. 데이터 처리
-//			if(rs.next()) {
-//				name = rs.getString("name");
-//			}
-//			
-//			System.out.println("DAO : 이름 " + name);
-//			
-//			////////////////////////////////////////////////////////////
-//			// 글쓰기
-//			
-//			// 3. sql(insert) 작성 & pstmt 객체
-//			sql = "insert into movie_board values (?, ?, ?, ?, ?, ?, ?, now(), ?)";
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setInt(1, num);  // 직접 계산한 글번호
-//			pstmt.setString(2, dto.getId());
-//			pstmt.setString(3, name);
-//			pstmt.setString(4, dto.getSubject());
-//			pstmt.setString(5, dto.getContent());
-//			pstmt.setInt(6, 0); // readcount	(생성된 모든 글의 조회수는 0)
-//			pstmt.setInt(7, 0); // 댓글수 처음엔 0
-//			pstmt.setString(8, dto.getIp());
-//			
-//			// 4. sql 실행
-//			pstmt.executeUpdate();
-//			
-//			System.out.println("DAO : 글쓰기 완료! ");
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		return num;
-//	} // insertBoard
-//	
-//	
+	
+	
+	// 글쓰기 메서드
+	public int insertBoard(NoticeBoardDTO dto) {
+		int num = 0; // 글번호 저장 변수
+		
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			
+			// 3 sql 작성 (글 번호를 계산하는 sql) & pstmt 객체
+			sql = "select max(num) from movie_notice_board";
+			pstmt = con.prepareStatement(sql);
+
+			// 4 sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			if(rs.next()) {  
+				// getInt 메서드는 null값일 경우 0을 반환
+				num = rs.getInt(1)+1;   		
+			}
+			
+			System.out.println("DAO  : 글번호 " + num);
+			
+			
+			////////////////////////////////////////////////////////////
+			// 글쓰기
+			
+			// 3. sql(insert) 작성 & pstmt 객체
+			sql = "insert into movie_notice_board(num, subject, content, readcount, date, file) "
+					+ "values (?, ?, ?, ?, now(), ?)";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setInt(1, num);  // 직접 계산한 글번호
+			pstmt.setString(2, dto.getSubject());
+			pstmt.setString(3, dto.getContent());
+			pstmt.setInt(4, 0);
+			pstmt.setString(5, dto.getFile());
+			
+			// 4. sql 실행
+			pstmt.executeUpdate();
+			
+			System.out.println("DAO : 글쓰기 완료! ");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return num;
+	} // insertBoard
+	
+	
 //	// 글 삭제하는 메서드
 //	public int deleteBoard(String id, int num) {
 //		int result = -1;

@@ -8,7 +8,7 @@ import com.movie.notice.db.NoticeBoardDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class NoticeFileUploadAction implements Action {
+public class NoticeWriteAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request,
@@ -17,11 +17,11 @@ public class NoticeFileUploadAction implements Action {
 		System.out.println(" M : BoardFileUploadAction_execute 호출 ");
 		
 		// 1) 파일 업로드
-		// 		- 가상의 업로드 폴더 설정 : upload 폴더
-		String path = request.getRealPath("/upload");
+		// 		- 가상의 업로드 폴더 설정 : file 폴더
+		String path = request.getRealPath("/file");
 		System.out.println(" M path : " +path);
-		//		- 업로드 파일의 크기 설정(제한) - 5MB
-		int maxSize = 5 * 1024 * 1024; 
+		//		- 업로드 파일의 크기 설정(제한) - 10MB
+		int maxSize = 10 * 1024 * 1024; 
 		//		- MultipartRequest 객체 생성(업로드)
 		MultipartRequest  multi 
 				= new MultipartRequest(
@@ -37,26 +37,22 @@ public class NoticeFileUploadAction implements Action {
 		
 		
 		// 2) DB저장
-		//		- 전달정보를 저장 (DTO)
-		// name, pass, subject, content, file
+		// 전달정보를 저장 (DTO) - subject, content, file
 		NoticeBoardDTO dto = new NoticeBoardDTO();
-		dto.setName(("name"));
-		dto.setPass(multi.getParameter("pass"));
 		dto.setSubject(multi.getParameter("subject"));
 		dto.setContent(multi.getParameter("content"));
 		dto.setFile(multi.getFilesystemName("file")); // 서버에 업로드된 파일명
 //		dto.setFile(multi.getOriginalFileName("file")); // 실제 파일명
-		dto.setIp(request.getRemoteAddr());
 		
 		System.out.println(" M  dto : " + dto);
 		
 		//		- DAO 객체 생성 - 업로드 메서드 호출
 		NoticeBoardDAO dao = new NoticeBoardDAO();
-		dao.insertBoard(dto);
+		int num = dao.insertBoard(dto);
 		
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./BoardList.bo");
+		forward.setPath("./Notice.no?num="+num+"&pageNum=1");
 		forward.setRedirect(true);
 		return forward;
 	}

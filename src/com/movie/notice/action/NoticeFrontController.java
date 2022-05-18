@@ -70,6 +70,18 @@ public class NoticeFrontController extends HttpServlet {
 			forward.setPath("./notice/noticeWrite.jsp");
 			forward.setRedirect(false);
 			
+		}else if(command.equals("/NoticeWriteAction.no")) { // 공지사항 글쓰기 동작
+			System.out.println(" C : /NoticeWriteAction.no 호출 ");
+			// DB 사용 ㅇ, 페이지 이동
+			
+			action = new NoticeWriteAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 		
 
