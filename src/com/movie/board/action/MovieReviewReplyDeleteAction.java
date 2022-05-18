@@ -42,27 +42,34 @@ public class MovieReviewReplyDeleteAction implements Action {
 		System.out.println("re : "+result);
 		
 		if(result==0) { // 아이디 다름
-			out.print("<script>alert('본인만 삭제할 수 있습니다.'); history.back(); </script>");
-			out.flush();
+			out.print("<script>");
+			out.print("alert('본인만 삭제할 수 있습니다.');");
+			out.print("history.back();");
+			out.print("</script>");
 			
+			out.flush();
 			// 응답처리하던 연결통로를 제거 (자원해제)
 			out.close();
-			return null;
 			
 		}else if(result==-1) {
-			out.print("<script>alert('댓글이 존재하지 않습니다.'); history.back(); </script>");
+			out.print("<script>");
+			out.print("alert('댓글이 존재하지 않습니다.');");
+			out.print("history.back();");
+			out.print("</script>");
+			
 			out.flush();
-		
 			out.close();
-			return null;
 			
 		}else { // result == 1
-			out.print("<script>alert('댓글 삭제가 완료되었습니다.'); location.href='./MovieReviewContent.bo?num="+num+"&pageNum="+pageNum+"';</script>");
+			out.print("<script>");
+			out.print("alert('댓글 삭제가 완료되었습니다.');");
+			out.print("location.href='./MovieReviewContent.bo?num="+num+"&pageNum="+pageNum+"';");
+			out.print("</script>");
+			
 			out.flush();
-		
 			out.close();
-			return null;
 		}
+		return null;
 	}
 
 }

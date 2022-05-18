@@ -1,5 +1,7 @@
 package com.movie.member.action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -29,11 +31,20 @@ public class JoinAction implements Action {
 		dao.insertMember(dto);
 		
 		
-		ActionForward forward = new ActionForward();
-		forward.setPath("./Login.me");
-		forward.setRedirect(true);
 		
-		return forward;
-	}
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		out.println("<script>");
+		out.println("alert('회원가입이 완료되었습니다.');");
+		out.println("location.href='./Login.me';");
+		out.println("</script>");
+		
+		out.flush();
+		out.close();
+		
+		return null;
+		
+		}
 
 }

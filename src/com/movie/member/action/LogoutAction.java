@@ -20,7 +20,10 @@ public class LogoutAction implements Action {
 		// 페이지 이동
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		out.println("<script>alert('로그아웃이 완료되었습니다.'); location.href='./Main.do';</script>");
+		out.println("<script>");
+		out.println("alert('로그아웃이 완료되었습니다.');");
+		out.println("location.href='./Main.do';");
+		out.println("</script>");
 		out.flush();
 		out.close();
 			

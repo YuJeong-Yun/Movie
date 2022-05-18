@@ -44,26 +44,35 @@ public class MovieReviewUpdateProAction implements Action {
 		PrintWriter out = response.getWriter();
 		
 		if(result==0) { // 아이디 다름
-			out.print("<script>alert('본인만 수정할 수 있습니다.'); history.back(); </script>");
+			out.print("<script>");
+			out.print("alert('본인만 수정할 수 있습니다.');");
+			out.print("history.back();");
+			out.print("</script>");
+			
 			out.flush();
 			// 응답처리하던 연결통로를 제거 (자원해제)
 			out.close();
 			
-			return null;
-			
 		}else if(result==-1) { // 글정보 없음
-			out.print("<script>alert('글정보가 없습니다.'); history.back(); </script>");
+			out.print("<script>");
+			out.print("alert('글정보가 없습니다.');");
+			out.print("history.back();");
+			out.print("</script>");
+			
 			out.flush();
 			out.close();
 			
-			return null;
 		}else { // result == 1
-			out.print("<script>alert('글 수정을 완료했습니다.'); location.href='./MovieReviewContent.bo?num="+num+"&pageNum="+pageNum+"'; </script>");
+			out.print("<script>");
+			out.print("alert('글 수정을 완료했습니다.');");
+			out.print("location.href='./MovieReviewContent.bo?num="+num+"&pageNum="+pageNum+"';");
+			out.print("</script>");
+			
 			out.flush();
 			out.close();
 			
-			return null;
 		}
+		return null;
 	}
 
 }

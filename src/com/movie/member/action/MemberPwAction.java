@@ -28,21 +28,30 @@ public class MemberPwAction implements Action {
 		if(result==-1) { // 회원 없음
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('회원이 아닙니다.'); location.href='./MyPage.me';</script>");
+			out.println("<script>");
+			out.println("alert('회원이 아닙니다.');");
+			out.println("location.href='./MyPage.me';");
+			out.println("</script>");
 			out.flush();
 			out.close();
 			
 		}else if(result==0) { // 비밀번호 오류
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('비밀번호 오류입니다.'); location.href='./MemberPw.me';</script>");
+			out.println("<script>");
+			out.println("alert('비밀번호 오류입니다.');");
+			out.println("location.href='./MemberPw.me';");
+			out.println("</script>");
 			out.flush();
 			out.close();
 			
 		}else { // 정보 수정 완료
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('비밀번호 변경이 완료되었습니다.'); location.href='./MyPage.me';</script>");
+			out.println("<script>");
+			out.println("alert('비밀번호 변경이 완료되었습니다.');");
+			out.println("location.href='./MyPage.me';");
+			out.println("</script>");
 			out.flush();
 			out.close();
 			

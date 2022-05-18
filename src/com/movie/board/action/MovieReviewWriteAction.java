@@ -1,5 +1,7 @@
 package com.movie.board.action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -31,14 +33,26 @@ public class MovieReviewWriteAction implements Action {
 		// insertBoard() 글쓰기 동작 실행
 		MovieBoardDAO dao = new MovieBoardDAO();
 		int num = dao.insertBoard(dto);
-		int pageNum = 1;
 		
 		// 페이지 이동 - 현재 글 번호 함께 전달
 		ActionForward forward = new ActionForward();
-		forward.setPath("./MovieReviewContent.bo?num="+num+"&pageNum="+pageNum);
+		forward.setPath("");
 		forward.setRedirect(true);
 		
-		return forward;
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		out.print("<script>");
+		out.print("alert('글쓰기가 완료되었습니다.');");
+		out.print("location.href='./MovieReviewContent.bo?num="+num+"&pageNum=1';");
+		out.print("</script>");
+		out.flush();
+		
+		// 응답처리하던 연결통로를 제거 (자원해제)
+		out.close();
+		
+		return null;
 	}
 
 }

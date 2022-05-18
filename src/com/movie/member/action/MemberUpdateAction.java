@@ -31,23 +31,33 @@ public class MemberUpdateAction implements Action {
 		MemberDAO dao = new MemberDAO();
 		int result = dao.updateMember(dto); // -1:회원 없음, 0:비밀번호 오류, 1:정보 수정
 
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
 		if(result==-1) { // 아이디 없음
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('회원이 아닙니다.'); location.href='./MyPage.me';</script>");
+			out.println("<script>");
+			out.println("alert('회원이 아닙니다.');");
+			out.println("location.href='./MyPage.me';");
+			out.println("</script>");
+			
 			out.flush();
+			out.close();
 			
 		}else if(result==0) { // 비밀번호 오류
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('비밀번호 오류입니다.'); location.href='./MyPage.me';</script>");
+			out.println("<script>");
+			out.println("alert('비밀번호 오류입니다.');");
+			out.println("location.href='./MyPage.me';");
+			out.println("</script>");
 			out.flush();
+			out.close();
 			
 		}else { // 정보 수정 완료
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('수정이 완료되었습니다.'); location.href='./MyPage.me';</script>");
+			out.println("<script>");
+			out.println("alert('수정이 완료되었습니다.');");
+			out.println("location.href='./MyPage.me';");
+			out.println("</script>");
+			
 			out.flush();
+			out.close();
 			
 		}
 		

@@ -28,19 +28,31 @@ public class DeleteMemberAction implements Action {
 		PrintWriter out = response.getWriter();
 		// 삭제 결과에 따른 페이지 이동
 		if(result == -1) {  // 아이디 없음
-			out.println("<script>alert('회원이 아닙니다.'); location.href='./Main.do';</script>");
+			out.println("<script>");
+			out.println("alert('회원이 아닙니다.');");
+			out.println("location.href='./Main.do';");
+			out.println("</script>");
+			
 			out.flush();
 			out.close();
 			
 		}else if(result == 0) {  // 비밀번호 없음
-			out.println("<script>alert('비밀번호 오류입니다.'); location.href='./DeleteMember.me';</script>");
+			out.println("<script>");
+			out.println("alert('비밀번호 오류입니다.');");
+			out.println("location.href='./DeleteMember.me';");
+			out.println("</script>");
+			
 			out.flush();
 			out.close();
 			
 		}else {  // result == 1  // 삭제완료
 			session.invalidate();  // 삭제한 회원정보 초기화
 			
-			out.println("<script>alert('회원 탈퇴가 완료되었습니다.'); location.href='./Main.do';</script>");
+			out.println("<script>");
+			out.println("alert('회원 탈퇴가 완료되었습니다.');");
+			out.println("location.href='./Main.do';");
+			out.println("</script>");
+			
 			out.flush();
 			out.close();
 		
