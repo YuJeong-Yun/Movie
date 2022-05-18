@@ -83,7 +83,7 @@ public class NoticeListAction implements Action {
 
 		// 페이지 이동 
 		ActionForward forward = new ActionForward();
-		forward.setPath("./board/movieReview.jsp");
+		forward.setPath("./notice/noticeList.jsp");
 		forward.setRedirect(false);
 
 		return forward;

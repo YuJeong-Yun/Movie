@@ -140,6 +140,7 @@ public class MovieBoardDAO {
 	// 글 조회수 증가시키는 메서드
 	public int updateReadCount(int num, String id) {
 		int result = 0;
+		System.out.println("id : " + id);
 		
 		try {
 			// 1.2 디비연결

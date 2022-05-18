@@ -1,0 +1,103 @@
+@import url("../header.css");
+@import url("../footer.css");
+@import url("../common.css");
+
+.notice > .inner {
+  width: 1000px;
+  margin: 220px auto 200px;
+}
+.btn-group {
+  display: flex;
+  position: absolute;
+  margin: auto;
+}
+.btn {
+  display: block;
+  background-color: #EFF0F2;
+  width: 70px;
+  height: 35px;
+  margin-left: 15px;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 35px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* 공지사항 */
+.notice {
+}
+.notice .btn-group.title {
+  right: 0;
+  top: -40px;
+}
+/* 글 타이틀 */
+.notice .notice__title {
+  padding: 30px 0 10px;
+  border-top: 1px solid #d6d4ca;
+  border-bottom: 1px solid #d6d4ca;
+  background-color: #f8f8f8;
+}
+.notice .notice__title > .inner {
+  width: 900px;
+}
+.notice .notice__title .title__subject {
+  font-size: 32px;
+  margin-bottom: 18px;
+  word-break: break-all;
+}
+.notice .notice__title .title__name {
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: 700;
+}
+.notice .notice__title .title__info span {
+  margin-right: 15px;
+  font-size: 14px;
+  color: #777;
+}
+/* 글 본문 */
+.notice .notice__content {
+  padding: 30px 0 100px;
+  border-bottom: 1px solid #d6d4ca;
+  line-height: 30px;
+}
+.notice .notice__content > .inner {
+  width: 900px;
+}
+.notice .notice__content .content__text {
+}
+.notice .notice__content .content__file {
+  position: absolute;
+  left: 0;
+  bottom: -80px;
+}
+.notice .notice__content .content__file a {
+  display: flex;
+  align-itmes: center;
+  border-bottom: 1px solid #333;
+  font-size: 13px;
+}
+.notice .notice__content .btn-group.content  {
+  right: -50px;
+  bottom: -90px;
+}
+.notice .notice__content .btn-group.content .btn {
+  background-color: #fff;
+  width: 60px;
+  height: 25px;
+  border: 1px solid #ddd;
+  line-height: 25px;
+  font-size: 12px;
+  margin-left: 4px;
+}
+.notice .notice__content .btn-group.content .btn:hover {
+  background-color: #efefef;
+}
+.notice .btn--top {
+  position: absolute;
+  right: 0px;
+  bottom: -90px;
+  margin: auto;
+}

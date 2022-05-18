@@ -111,7 +111,6 @@ public class NoticeBoardDAO {
 			// 5. 데이터 처리
 			// 데이터 있을 때 DB 정보를 모두 저장
 			while(rs.next()) {
-				// 글 1개의 정보 => BoardBean 객체
 				NoticeBoardDTO dto = new NoticeBoardDTO();
 				
 				dto.setRownum(rs.getInt("rownum"));
@@ -124,7 +123,7 @@ public class NoticeBoardDAO {
 				
 				boardList.add(dto);
 			}
-			System.out.println("DAO : 게시판 글 전체 목록 저장완료!");
+			System.out.println("DAO : 공지사항 글 전체 목록 저장완료!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -132,114 +131,104 @@ public class NoticeBoardDAO {
 		}
 		return boardList;
 	} // getBoardList
-//	
-//	
-//	// 글 조회수 증가시키는 메서드
-//	public int updateReadCount(int num, String id) {
-//		int result = 0;
-//		
-//		try {
-//			// 1.2 디비연결
-//			con = getCon();
-//			
-//			// 3. sql 작성 & pstmt 생성
-//			// 글 작성자 아니면 기존 조회수 + 1 구문
-//			if(id == null) {
-//				sql = "update movie_board set readcount = readcount + 1 where num = ?";
-//				pstmt = con.prepareStatement(sql);
-//				pstmt.setInt(1, num);
-//			}else {
-//				sql = "update movie_board set readcount = readcount + 1 where num = ? and id != ? ";
-//				pstmt = con.prepareStatement(sql);
-//				pstmt.setInt(1, num);
-//				pstmt.setString(2, id);
-//			}
-//			
-//			// 4. sql 실행
-//			result = pstmt.executeUpdate();
-//			
-//			System.out.println("DAO : "+num+"번 조회수 "+result +" 증가");
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		return result;
-//	} // updateReadCount
-//	
-//	
-//	// 글 1개의 정보를 반환
-//	public MovieBoardDTO getBoard(int num) {
-//		MovieBoardDTO dto = null;
-//		
-//		try {
-//			// 1.2. 디비 연결
-//			con = getCon();
-//			
-//			// 3. sql 작성 & pstmt 객체
-//			sql = "select * from movie_board where num = ?";
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setInt(1, num);
-//			
-//			// 4. sql 실행
-//			rs = pstmt.executeQuery();
-//			
-//			// 5. 데이터 조회
-//			if(rs.next()) {
-//				dto = new MovieBoardDTO();
-//				
-//				dto.setContent(rs.getString("content"));
-//				dto.setDate(rs.getTimestamp("date"));
-//				dto.setId(rs.getString("id"));
-//				dto.setIp(rs.getString("ip"));
-//				dto.setName(rs.getString("name"));
-//				dto.setNum(rs.getInt("num"));
-//				dto.setRe_cnt(rs.getInt("re_cnt"));
-//				dto.setReadcount(rs.getInt("readcount"));
-//				dto.setSubject(rs.getString("subject"));
-//			}
-//			System.out.println(" 데이터 입력 완료!");
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		return dto;
-//	} // getBoard
-//
-//	
-//	// 이전, 다음 글 번호 반환
-//	public int getBoardSideNum(int i, int num) {
-//		// i가 0이면 이전, 1이면 다음 글 번호 반환
-//		int result = 0;
-//		
-//		try {
-//			// 1.2. 디비 연결
-//			con = getCon();
-//			
-//			// 3. sql 작성 & pstmt 객체
-//			sql = (i==0) ? "select min(num) from movie_board where num > ?" : "select max(num) from movie_board where num < ?" ;
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setInt(1, num);
-//			
-//			// 4. sql 실행
-//			rs = pstmt.executeQuery();
-//			
-//			// 5. 데이터 처리
-//			if(rs.next()) {
-//				result = (i==0) ? rs.getInt(1) : rs.getInt(1);
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		return result;
-//	} // getBoardSideNum
+	
+	
+	// 글 조회수 증가시키는 메서드
+	public int updateReadCount(int num) {
+		int result = 0;
+		
+		try {
+			// 1.2 디비연결
+			con = getCon();
+			
+			// 3. sql 작성 & pstmt 생성
+			// 관리자 아니면 기존 조회수 + 1 구문
+			sql = "update movie_notice_board set readcount = readcount + 1 where num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			
+			// 4. sql 실행
+			result = pstmt.executeUpdate();
+			
+			System.out.println("DAO : "+num+"번 조회수 "+result +" 증가");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return result;
+	} // updateReadCount
+	
+	
+	// 글 1개의 정보를 반환
+	public NoticeBoardDTO getBoard(int num) {
+		NoticeBoardDTO dto = null;
+		
+		try {
+			// 1.2. 디비 연결
+			con = getCon();
+			
+			// 3. sql 작성 & pstmt 객체
+			sql = "select * from movie_notice_board where num = ?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setInt(1, num);
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 조회
+			if(rs.next()) {
+				dto = new NoticeBoardDTO();
+				
+				dto.setContent(rs.getString("content"));
+				dto.setDate(rs.getTimestamp("date"));
+				dto.setNum(rs.getInt("num"));
+				dto.setReadcount(rs.getInt("readcount"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setFile(rs.getString("file"));
+			}
+			System.out.println(" 데이터 입력 완료!");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return dto;
+	} // getBoard
+
+	
+	// 이전, 다음 글 번호 반환
+	public int getBoardSideNum(int i, int num) {
+		// i가 0이면 이전, 1이면 다음 글 번호 반환
+		int result = 0;
+		
+		try {
+			// 1.2. 디비 연결
+			con = getCon();
+			
+			// 3. sql 작성 & pstmt 객체
+			sql = (i==0) ? "select min(num) from movie_notice_board where num > ?" : "select max(num) from movie_notice_board where num < ?" ;
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setInt(1, num);
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			if(rs.next()) {
+				result = (i==0) ? rs.getInt(1) : rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return result;
+	} // getBoardSideNum
 //	
 //	
 //	// 글쓰기 메서드
@@ -415,183 +404,5 @@ public class NoticeBoardDAO {
 //		return result;
 //	} // updateBoard 
 //	
-//	
-//	// 답글목록 가져오는 메서드
-//	public ArrayList<MovieBoardReplyDTO> getBoardReplyList(int num) {
-//		ArrayList<MovieBoardReplyDTO> boardReplyList = new ArrayList<>();
-//		
-//		try {
-//			// 1.2. 디비 연결
-//			con = getCon();
-//			
-//			// 3. sql 작성 & pstmt 객체 (num 내림차순 정렬, 페이징 처리)
-//			//		=> limit 시작행(0부터 시작함), 개수
-//			sql = "select * from movie_board_reply where re_ref = ? order by re_num asc";
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setInt(1, num);
-//			
-//			// 4. sql 실행
-//			rs = pstmt.executeQuery();
-//			
-//			// 5. 데이터 처리
-//			// 데이터 있을 때 DB 정보를 모두 저장
-//			while(rs.next()) {
-//				MovieBoardReplyDTO dto = new MovieBoardReplyDTO();
-//				
-//				dto.setContent(rs.getString("content"));
-//				dto.setDate(rs.getTimestamp("date"));
-//				dto.setId(rs.getString("id"));
-//				dto.setIp(rs.getString("ip"));
-//				dto.setName(rs.getString("name"));
-//				dto.setRe_num(rs.getInt("re_num"));
-//				dto.setRe_ref(rs.getInt("re_ref"));
-//				
-//				boardReplyList.add(dto);
-//			}
-//			System.out.println("DAO : 게시판 답글 전체 목록 저장완료!" + boardReplyList);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		return boardReplyList;
-//	} // getBoardReplyList
-//	
-//	
-//	// 답글쓰는 메서드
-//	public void reInsertBoard(MovieBoardReplyDTO dto) {
-//		int re_num = 0;
-//		String name = "";
-//		
-//		try {
-//			// 1.2. 디비 연결
-//			con = getCon();
-//			
-//			// num 계산하기 ----------------------------
-//			// 3. sql 작성 & pstmt 객체
-//			sql = "select max(re_num) from movie_board_reply";
-//			pstmt = con.prepareStatement(sql);
-//			
-//			// 4. sql 실행
-//			rs = pstmt.executeQuery();
-//			
-//			// 5. 데이터 처리
-//			if(rs.next()) {
-//				re_num = rs.getInt("max(re_num)")+1;
-//			}
-//			
-//			// name 계산하기 -----------------------------
-//			// 3. sql 작성 & pstmt 객체
-//			sql = "select name from movie_member where id=?";
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setString(1, dto.getId());
-//			
-//			// 4. sql 실행
-//			rs = pstmt.executeQuery();
-//			
-//			// 5. 데이터 처리
-//			if(rs.next()) {
-//				name = rs.getString("name");
-//			}
-//			
-//			// 부모글 re_cnt 1증가 -------------------------
-//			// 3. sql 작성 & pstmt 객체
-//			sql = "update movie_board set re_cnt = re_cnt+1 where num=?";
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setInt(1, dto.getRe_ref());
-//			
-//			// 4. sql 실행
-//			pstmt.executeUpdate();
-//			
-//			
-//			// 답글 저장 -------------------------------
-//			// 3. sql 작성 & pstmt 객체
-//			sql="insert into movie_board_reply values(?,?,?,?,?,now(),?)";
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setInt(1, re_num);
-//			pstmt.setString(2, dto.getId());
-//			pstmt.setString(3, name);
-//			pstmt.setString(4, dto.getContent());
-//			pstmt.setInt(5, dto.getRe_ref());
-//			pstmt.setString(6, dto.getIp()); // 조회수 0
-//			
-//			// 4. sql 실행
-//			pstmt.executeUpdate();
-//			
-//			System.out.println("DAO : 답글 정보 저장 완료! ");
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//	} // reInsertBoard
-//	
-//	
-//	// 답글 삭제 메서드
-//	public int reDeleteBoard(MovieBoardReplyDTO dto) {
-//		int result = -1;
-//		
-//		try {
-//			// 1.2. 디비 연결
-//			con = getCon();
-//			
-//			// 3. sql 작성 & pstmt 객체
-//			sql = "select id from movie_board_reply where re_num=?";
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setInt(1, dto.getRe_num());
-//			
-//			// 4. sql 실행
-//			rs = pstmt.executeQuery();
-//			
-//			// 5. 데이터 처리
-//			if(rs.next()) {
-//				if(dto.getId().equals(rs.getString("id"))) { // 아이디 일치 => 글 삭제
-//					// 부모글 re_cnt -1 ---------------------------------
-//					// 3. sql 작성 & pstmt 객체
-//					sql = "update movie_board set re_cnt = re_cnt-1 where num=?";
-//					pstmt = con.prepareStatement(sql);
-//					// ???
-//					pstmt.setInt(1, dto.getRe_ref());
-//					
-//					// 4. sql 실행
-//					pstmt.executeUpdate(); 
-//					
-//					// 답글 삭제 ----------------------------------------
-//					// 3. sql 작성 & pstmt 객체
-//					sql = "delete from movie_board_reply where re_num=?";
-//					pstmt = con.prepareStatement(sql);
-//					// ???
-//					pstmt.setInt(1, dto.getRe_num());
-//					
-//					// 4. sql 실행
-//					// pstmt.executeUpdate()는 실행된 row 수를 반환함
-//					result = pstmt.executeUpdate(); 
-//					 
-//				
-//				} else { // 아이디 다름
-//					result = 0;
-//				}
-//				
-//			} else { // 글 존재 X
-//				result = -1;
-//			} // if
-//			
-//			System.out.println(" DAO : 게시판 답글 삭제 완료! " + result);
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		return result;
-//	} //  reDeleteBoard
 		
-//		
-//		
 }

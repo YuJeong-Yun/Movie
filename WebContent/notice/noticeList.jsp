@@ -22,7 +22,7 @@
     href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="./css/event/noticeList.css" />
+  <link rel="stylesheet" href="./css/notice/noticeList.css" />
 </head>
 
 <body>
@@ -30,7 +30,7 @@
   <jsp:include page="../inc/header.jsp"></jsp:include>
 
 
-  <!-- 게시판 글 목록 -->
+  <!-- 공지사항 글 목록 -->
   <section class="board">
     <div class="inner">
     
@@ -48,10 +48,14 @@
 			<tr>
 				<td>${dto.rownum }</td>
 				<td>
-					<a href="./MovieReviewContent.bo?num=${dto.num }&pageNum=${pageNum }">${dto.subject }</a>
-					<span><c:if test="${dto.re_cnt ne 0 }">[${dto.re_cnt }]</c:if></span>
+					<a href="./NoticeContent.no?num=${dto.num }&pageNum=${pageNum }">${dto.subject }</a>
 				</td>
-				<td>${dto.name }</td>
+				<td class="file">
+					<!-- 첨부파일 있으면 아이콘 표시 -->
+					<c:if test="${dto.file ne null }">
+						<span class="material-icons-outlined">save</span>
+					</c:if>
+				</td>
 				<td><f:formatDate value="${dto.date }" pattern="yyyy.MM.dd"/></td>
 				<td>${dto.readcount }</td>
 			</tr>
@@ -63,29 +67,31 @@
       	<c:if test="${result != 0 }">
       		<!-- 이전 -->
       		<c:if test="${startPage > pageBlock }">
-      			<a href="./MovieReview.bo?pageNum=${startPage-pageBlock }" class="prev">이전</a>
+      			<a href="./Notice.no?pageNum=${startPage-pageBlock }" class="prev">이전</a>
       		</c:if>
       		
       		<!-- 1 2 3 4 .... 10     11 12 ... 20 -->
       		<c:forEach var="i" begin="${startPage }" end="${endPage }">
       			<c:if test="${startPage <= endPage }">
+      				<!-- 현재 페이지블럭에 css 적용 -->
       				<c:if test="${pageNum eq i }">
-      					<a href="./MovieReview.bo?pageNum=${i }" class="pageNum nowPageNum">${i }</a>
+      					<a href="./Notice.no?pageNum=${i }" class="pageNum nowPageNum">${i }</a>
       				</c:if>
       				<c:if test="${pageNum ne i }">
-      					<a href="./MovieReview.bo?pageNum=${i }" class="pageNum">${i }</a>
+      					<a href="./Notice.no?pageNum=${i }" class="pageNum">${i }</a>
       				</c:if>
       			</c:if>
       		</c:forEach>
       		
       		<!-- 다음 -->
       		<c:if test="${endPage < pageCount }">
-      			<a href="./MovieReview.bo?pageNum=${startPage + pageBlock }" class="next">다음</a>
+      			<a href="./Notice.no?pageNum=${startPage + pageBlock }" class="next">다음</a>
       		</c:if>
       	</c:if>
       	
-      	<c:if test="${id!=null }">
-      		<a href="./MovieReviewWrite.bo" class="writeBtn">글쓰기</a>
+      	<!-- 관리자 계정만 공지사항 글쓰기 가능 -->
+      	<c:if test="${(sessionScope.id eq 'admin') }">
+      		<a href="./NoticeWrite.no" class="writeBtn">글쓰기</a>
       	</c:if>
       </div>
     </div>

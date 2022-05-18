@@ -2,31 +2,6 @@
 @import url("../footer.css");
 @import url("../common.css");
 
-/* 광고 이미지 */
-.ad-wrapper {
-  background-color: #333;
-  width: 180px;
-  height: 420px;
-  position: absolute;
-  top: 58px;
-  right: -240px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-.ad-wrapper .ad-img {
-  width: 160px;
-  height: 320px;
-}
-.ad-wrapper .description div {
-  margin: 5px 0;
-  padding-bottom: 2px;
-  border-bottom: 2px solid #fff;
-  color: #fff;
-  font-size: 14px;
-}
-
 
 /* 게시판 글 목록 */
 .board .inner {
@@ -48,6 +23,7 @@
 .board .board-table {
   width: 890px;
   border-top: 1px solid #777 ;
+  border-collapse: collapse;
 }
 .board .board-table th {
   background-color: #ffdddd;
@@ -75,18 +51,28 @@
 }
 .board .board-table tr td:nth-child(2) {
   width: 500px;
-  display: flex;
   padding-right: 20px;
 }
 .board .board-table tr td:nth-child(2) a {
-  padding-right: 15px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.board .board-table tr td:nth-child(2) span {
-  font-weight: 700;
+.board .board-table tr td.file {
+	position: relative;
 }
+.board .board-table tr td.file span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  font-weight: 200;
+  color: #666;
+  font-size: 22px;
+  height: 22px;
+}
+
+/* 페이징 */
 .board .paging {
   width: 100%;
   position: absolute;

@@ -38,7 +38,7 @@ public class NoticeFrontController extends HttpServlet {
 		ActionForward forward = null;
 		
 		
-		if(command.equals("/Notice.no")) { // 공지사항 페이지
+		if(command.equals("/Notice.no")) { // 공지사항 목록 페이지
 			System.out.println(" C : /Notice.no 호출");
 			// DB 사용 ㅇ, 페이지 출력
 			
@@ -49,6 +49,26 @@ public class NoticeFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+		}else if(command.equals("/NoticeContent.no")) { // 공지사항 글
+			System.out.println(" C : /NoticeContent.no 호출");
+			// DB 사용 ㅇ, 페이지 출력
+			
+			action = new NoticeContentAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/NoticeWrite.no")) { // 공지사항 글쓰기
+			System.out.println(" C : /NoticeWrite.no 호출 ");
+			// DB 사용 X, 페이지 이동
+			
+			forward = new ActionForward();
+			forward.setPath("./notice/noticeWrite.jsp");
+			forward.setRedirect(false);
 			
 		}
 		
