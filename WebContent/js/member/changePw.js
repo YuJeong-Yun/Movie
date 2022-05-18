@@ -21,5 +21,10 @@ function check() {
 		fr.pwNew2.focus();
 		
 		return false;
+	}else if(fr.pwNow.value == fr.pwNew.value) {
+		alert("현재 비밀번호와 같은 비밀번호로 변경할 수 없습니다.");
+		fr.pwNew.focus();
+		
+		return false;
 	}
 }
