@@ -94,6 +94,29 @@ public class NoticeFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+		}else if(command.equals("/NoticeUpdateProAction.no")) { // 공지사항 수정 동작
+			System.out.println(" C : /NoticeUpdateProAction.no 호출 ");
+			// DB 사용 ㅇ, 페이지 이동
+			
+			action = new NoticeUpdateProAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/NoticeDelete.no")) { // 공지사항 삭제
+			System.out.println(" C : /NoticeDelete.no 호출");
+			// DB 사용 ㅇ, 페이지 이동
+			
+			action = new NoticeDeleteAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 		}
 		
