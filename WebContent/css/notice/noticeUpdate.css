@@ -1,0 +1,65 @@
+@import url("../header.css");
+@import url("../footer.css");
+@import url("../common.css");
+
+.notice-update > .inner {
+  width: 900px;
+  margin: 200px auto 100px;
+}
+input,
+textarea {
+  width: 800px;
+  border: 1px solid #ebecef;
+  outline: none;
+  padding-left: 15px;
+}
+
+
+/* 공지사항 글수정 */
+.notice-update {
+  
+}
+.notice-update > .inner {
+  width: 800px;
+}
+.notice-update form {
+}
+.notice-update form table {
+  width: 800;
+}
+.notice-update form table tr:first-child td input {
+  height: 40px;
+  margin-bottom: 10px;
+}
+.notice-update form table tr:nth-child(2) td {
+}
+.notice-update form table tr:nth-child(2) td input {
+  height: 60px;
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+.notice-update form table tr:nth-child(2) td input::placeholder {
+  color: #bbb;
+}
+.notice-update form table tr:nth-child(3) td textarea {
+  height: 600px;
+  margin-bottom: 10px;
+  padding-top: 30px;
+  resize: none;
+  line-height: 30px;
+  font-size: 16px;
+}
+.notice-update form table tr:last-child td input {
+	height: 30px;
+}
+.notice-update form .btn {
+  width: 80px;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  bottom: -60px;
+  padding: 0;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}

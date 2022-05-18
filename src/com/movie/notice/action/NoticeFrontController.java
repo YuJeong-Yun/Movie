@@ -82,6 +82,19 @@ public class NoticeFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+		}else if(command.contentEquals("/NoticeUpdate.no")) { // 공지사항 수정 페이지
+			System.out.println(" C : /NoticeUpdate.no 호출 ");
+			// DB 사용 ㅇ, 페이지 출력
+			
+			action = new NoticeUpdateAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
 		}
 		
 
