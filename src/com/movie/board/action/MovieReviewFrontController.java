@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.movie.notice.action.NoticeListAction;
 
 @WebServlet("*.bo")
 public class MovieReviewFrontController extends HttpServlet {

@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import com.movie.board.db.MovieBoardDAO;
 import com.movie.board.db.MovieBoardDTO;
 import com.movie.board.db.MovieBoardReplyDTO;
-import com.sun.corba.se.impl.protocol.BootstrapServerRequestDispatcher;
 
 public class MovieReviewReplyWriteAction implements Action {
 
