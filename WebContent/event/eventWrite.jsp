@@ -51,7 +51,7 @@
             </td>
           </tr>
           <tr>
-            <td><input type="text" name="subject" placeholder="제목을 입력해 주세요." maxlength="200"></td>
+            <td><input type="text" name="subject" placeholder="제목을 입력해 주세요." maxlength="30"></td>
           </tr>
           <tr>
             <td>이벤트 기간 <input type="date" name="eventDateStart"> ~ <input type="date" name="eventDateEnd"></td>

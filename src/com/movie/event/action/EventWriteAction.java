@@ -62,6 +62,7 @@ public class EventWriteAction implements Action {
 		
 		// 썸네일 이미지 생성 --------------------------------------
 		String image = multi.getFilesystemName("image");
+		System.out.println(" M : 파일 이름 "+ image);
 		
 		// ParameterBlock 클래스에 변환할 이미지를 담고 그 이미지를 불러온다.
 		ParameterBlock pb=new ParameterBlock();
@@ -71,12 +72,16 @@ public class EventWriteAction implements Action {
 		
 		// 불러온 이미지를 bi로 생성한 BufferedImage 클래스에 담는다 
 		BufferedImage bi= rOp.getAsBufferedImage();
-		// thumb란 이미지 버퍼를 생성하고 버퍼의 사이즈를 100*100으로 설정 
-		BufferedImage thumb=new BufferedImage(100,100,BufferedImage.TYPE_INT_RGB);
+		// 이미지 자르기 (X축 시작점, Y축 시작점, 가로 너비, 세로 너비)
+		int x = bi.getWidth();
+		int y = (int)Math.round(x*0.664);
+		BufferedImage new_buff = bi.getSubimage(0, 0, x, y);
+		// thumb란 이미지 버퍼를 생성하고 버퍼의 사이즈를 설정 
+		BufferedImage thumb=new BufferedImage(282,190,BufferedImage.TYPE_INT_RGB);
 		
-		// thumb란 이미지 버퍼에 원본 이미지를 정해진 버퍼 사이즈인 100*100으로 맞추어 드로우 
+		// thumb란 이미지 버퍼에 원본 이미지를 정해진 버퍼 사이즈로 맞추어 드로우 
 		Graphics2D g=thumb.createGraphics();
-		g.drawImage(bi,0,0,282,190,null);
+		g.drawImage(new_buff,0,0,282,190,null);
 		
 		// 출력할 위치와 파일 이름을 설정하고 썸네일 이미지 생성 
 		// 여기서는 확장자를 jpg로 설정했음 

@@ -5,7 +5,8 @@
 /* 이벤트 목록 */
 .board .inner {
   margin: 200px auto 200px;
-  width: 890px;
+  width: 980px;
+  height: 1050px;
 }
 .board .board-title {
   font-size: 30px;
@@ -34,12 +35,13 @@
 .board .event-list {
   display: flex;
   flex-wrap: wrap;
+  width: 800px;
 }
 .board .event-list li {
-  width: 284px;
-  height: 290px;
-  margin-right: 19px;
-  margin-bottom: 20px;
+  width: 256px;
+  height: 278px;
+  margin-right: 16px;
+  margin-bottom: 15px;
   border: 1px solid #ddd;
 }
 .board .event-list li:nth-child(3n) {
@@ -51,22 +53,34 @@
   height: 100%;
 }
 .board .event-list a > img {
-  width: 282px;
-  height: 190px;
-}
-.board .event-list a div {
-  padding: 10px 10px 0;
+  width: 256px;
+  height: 170px;
 }
 .board .event-list a .txt1 {
-  margin-bottom: 20px;
+  height: 70px;
+  padding: 15px 10px 5px;
   font-size: 16px;
   font-weight: 600;
 }
 .board .event-list a .txt2 {
+  padding: 5px 10px 0;
   font-size: 13px;
   color: #888;
 }
+/* 이벤트 배너 광고 */
+.board .event-ad {
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 153px;
+  right: 0;
+  width: 160px;
+}
+.board .event-ad img {
+  margin-bottom: 10px;
+}
 
+/* 글쓰기 버튼 */
 .board .writeBtn {
   display: block;
   width: 70px;
@@ -79,6 +93,8 @@
   font-size: 13px;
   text-align: center;
 }
+
+
 
 /* 페이징 */
 .board .paging {

@@ -37,7 +37,7 @@
         	가장 최신 글은 이전글 버튼 없음 -->
         <c:if test="${prevNum ne 0 }"><a href="./EventContent.ev?num=${prevNum }&pageNum=${pageNum }&category=${dto.category}" class="btn">△ 이전글</a></c:if>
         <c:if test="${nextNum ne 0 }"><a href="./EventContent.ev?num=${nextNum }&pageNum=${pageNum }&category=${dto.category}" class="btn">▽ 다음글</a></c:if>
-        <a href="./Event.ev?pageNum=${pageNum }" class="btn">목록</a>
+        <a href="./Event.ev?pageNum=${pageNum }&category=${dto.category }" class="btn">목록</a>
       </div>
       
       <!-- 이벤트 글 타이틀 -->

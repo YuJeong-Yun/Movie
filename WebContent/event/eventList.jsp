@@ -21,24 +21,28 @@
       rel="stylesheet">
   
     <link rel="stylesheet" href="./css/event/eventList.css">
+
+<!--     <script defer src="./js/event/eventList.js"></script> -->
 </head>
 <body>
     <!-- HEADER -->
  	<jsp:include page="../inc/header.jsp"></jsp:include>
 
 
-
   <!-- 이벤트 목록 출력 -->
   <section class="board">
     <div class="inner">
-      <div class="board-title">EVENT</div> <!--이벤트 타이틀 -->
-      <ul class="category"> <!--이벤트 카테고리-->
+      <!--이벤트 타이틀 -->
+      <div class="board-title">EVENT</div> 
+      <!--이벤트 카테고리-->
+      <ul class="category">
         <li><a href="./Event.ev?category=special">SPECIAL</a></li>
         <li><a href="./Event.ev?category=movie">영화/예매</a></li>
         <li><a href="./Event.ev?category=membership">멤버십/CLUB</a></li>
         <li><a href="./Event.ev?category=cgv">CGV 극장별</a></li>
         <li><a href="./Event.ev?category=discount">제휴/할인</a></li>
       </ul>
+      <!-- 이벤트 글 리스트 -->
       <ul class="event-list">
         <c:forEach var="event" items="${boardList }">
 	        <li>
@@ -54,6 +58,12 @@
 	        </li>
         </c:forEach>
       </ul>
+      <!-- 이벤트 배너 광고 -->
+      <div class="event-ad">
+      	<img src="./images/event_ad1.jpg" alt="그대가 조국" />
+      	<img src="./images/event_ad2.jpg" alt="CGV GIFTCARD" />
+      	<img src="./images/event_ad3.png" alt="피는 물보다 진하다" />
+      </div>
       
 
       <!-- 페이징 처리 -->
@@ -95,5 +105,20 @@
 
   <!-- FOOTER -->
   <jsp:include page="../inc/footer.jsp"></jsp:include>
+  
+	<script type="text/javascript">
+		// 카테고리 목록 가져오기
+		const categoryArr = document.querySelectorAll('.category li a');
+		console.log(categoryArr);
+	
+		// 현재 카테고리와 일치하는 요소에 폰트 색상 적용
+		 const categoryList = ['special', 'movie', 'membership', 'cgv', 'discount'];
+		 const category = '${param.category}';
+		 for(let i=0; i<categoryList.length ; i++) {
+			if(category==categoryList[i]) {
+		 		categoryArr[i].style.color = "#fb4357";
+			}
+		}
+	</script>
 </body>
 </html>

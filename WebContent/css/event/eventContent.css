@@ -4,7 +4,6 @@
 
 .inner {
     width: 980px;
-    border-bottom: 1px solid #bbb;
 }
 .btn {
     display: block;
@@ -29,6 +28,7 @@ a{
 .event-content > .inner {
     margin: 210px auto 100px;
     padding-bottom: 50px;
+    border-bottom: 1px solid #bbb;
 }
 .event-content .btn-group.title {
 	display: flex;
@@ -50,15 +50,19 @@ a{
     color: #777;
 }
 .event-content .title-wrapper .category {
-    color: #2275a4;
+	width: 100px;
     margin: 0 20px;
+    color: #2275a4;
 }
 .event-content .title-wrapper .title {
-
+	width: 650px;
 }
 .event-content .title-wrapper .date {
+	width: 190px;
     position: absolute;
     right: 20px;
+    font-size: 13px;
+    font-weight: 400;
 }
 .event-content .event-img img {
 	width: 980px;
