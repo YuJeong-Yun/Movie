@@ -1,0 +1,116 @@
+@import url("../header.css"); 
+@import url("../footer.css");
+@import url("../common.css");
+
+/* 이벤트 목록 */
+.board .inner {
+  margin: 200px auto 200px;
+  width: 890px;
+}
+.board .board-title {
+  font-size: 30px;
+  font-weight: 900;
+  color: #333;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #333;
+}
+.board .category {
+  display: flex;
+  height: 50px;
+  margin-bottom: 40px;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+.board .category li {
+}
+.board .category li a {
+  margin: 0 50px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #6a6a6a;
+}
+
+.board .event-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.board .event-list li {
+  width: 284px;
+  height: 290px;
+  margin-right: 19px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+}
+.board .event-list li:nth-child(3n) {
+  margin-right: 0;
+}
+.board .event-list li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.board .event-list a > img {
+  width: 282px;
+  height: 190px;
+}
+.board .event-list a div {
+  padding: 10px 10px 0;
+}
+.board .event-list a .txt1 {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.board .event-list a .txt2 {
+  font-size: 13px;
+  color: #888;
+}
+
+.board .writeBtn {
+  display: block;
+  width: 70px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  border: 1px solid #ddd;
+  line-height: 30px;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* 페이징 */
+.board .paging {
+  width: 100%;
+  position: absolute;
+  bottom: -100px;
+  text-align: center;
+}
+.board .paging a:hover {
+  border-bottom: 1px solid #333;
+}
+.board .paging .prev,
+.board .paging .next {
+  margin: 0 20px;
+}
+.board .paging .pageNum {
+  margin: 0 5px;
+}
+.board .paging .writeBtn {
+  display: block;
+  width: 70px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border: 1px solid #ddd;
+  line-height: 30px;
+  font-size: 13px;
+}
+
+/* 현재 페이지넘버에 표시 */
+.nowPageNum {
+  padding: 0 5px;
+  background-color: #ffeeee;
+}

@@ -66,10 +66,10 @@
             <li>
               <h2>영화</h2>
               <ul>
-                <li><a href="./MovieChart.do">무비차트</a></li>
+                <li><a href="./MovieChart.do" class="do">무비차트</a></li>
                 <li><a href="javascript:void(0)">아트하우스</a></li>
                 <li><a href="javascript:void(0)">ICECON</a></li>
-                <li><a href="./MovieReview.bo">관람 후기</a></li>
+                <li><a href="./MovieReview.bo" class="do">관람 후기</a></li>
               </ul>
             </li>
             <li>
@@ -89,12 +89,12 @@
             <li>
               <h2>이벤트</h2>
               <ul>
-                <li><a href="javascript:void(0)">SPECIAL</a></li>
-                <li><a href="javascript:void(0)">영화/예매</a></li>
-                <li><a href="javascript:void(0)">멤버십/CLUB</a></li>
-                <li><a href="javascript:void(0)">CGV 극장별</a></li>
-                <li><a href="javascript:void(0)">제휴할인</a></li>
-                <li><a href="./Notice.no">공지사항</a></li>
+                <li><a href="./Event.ev?category=special" class="do">SPECIAL</a></li>
+                <li><a href="./Event.ev?category=movie" class="do">영화/예매</a></li>
+                <li><a href="./Event.ev?category=membership" class="do">멤버십/CLUB</a></li>
+                <li><a href="./Event.ev?category=cgv" class="do">CGV 극장별</a></li>
+                <li><a href="./Event.ev?category=discount" class="do">제휴할인</a></li>
+                <li><a href="./Notice.no" class="do">공지사항</a></li>
                 <li><a href="javascript:void(0)">당첨자 발표</a></li>
               </ul>
             </li>
