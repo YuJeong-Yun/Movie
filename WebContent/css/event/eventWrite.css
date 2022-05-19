@@ -15,7 +15,7 @@ select {
 }
 
 
-/* 영화 리뷰 글쓰기 */
+/* 이벤트 글쓰기 */
 .event-write {
   
 }
@@ -53,6 +53,9 @@ select {
 }
 .event-write form table tr:last-child input {
   height: 40px;
+}
+.event-write form table tr:last-child .image-comment {
+  font-weight: 700;	
 }
 .event-write form .btn {
   width: 80px;

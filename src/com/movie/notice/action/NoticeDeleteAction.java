@@ -18,7 +18,7 @@ public class NoticeDeleteAction implements Action {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		// 관리자 계정 아니면 메인으로 이동
-		if(!id.equals("admin")) {
+		if(id == null || !id.equals("admin")) {
 			response.sendRedirect("./Main.do");
 		}
 		

@@ -49,6 +49,40 @@ public class EventFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+		}else if(command.equals("/EventContent.ev")) { // 이벤트 내용 페이지로 이동
+			System.out.println(" C : /EventContent.ev 호출");
+			// DB 사용 ㅇ, 페이지 출력
+			
+			action = new EventContentAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/EventWrite.ev")) { // 이벤트 글쓰기 페이지 이동
+			System.out.println(" C : /EventWrite.ev 호출");
+			// DB 사용 x, 페이지 이동
+			
+			forward = new ActionForward();
+			forward.setPath("./event/eventWrite.jsp");
+			forward.setRedirect(false);
+			
+			
+		}else if(command.equals("/EventWriteAction.ev")) { // 이벤트 글쓰기 동작
+			System.out.println(" C : /EventWrite.ev 호출");
+			// DB 사용 ㅇ, 페이지 이동
+			
+			action = new EventWriteAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		
 		

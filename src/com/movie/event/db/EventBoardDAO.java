@@ -121,8 +121,8 @@ public class EventBoardDAO {
 				dto.setRownum(rs.getInt("rownum"));
 				dto.setNum(rs.getInt("num"));
 				dto.setSubject(rs.getString("subject"));
-				dto.setEventDateStart(rs.getTimestamp("eventDateStart"));
-				dto.setEventDateEnd(rs.getTimestamp("eventDateEnd"));
+				dto.setEventDateStart(rs.getString("eventDateStart"));
+				dto.setEventDateEnd(rs.getString("eventDateEnd"));
 				dto.setImage(rs.getString("image"));
 				dto.setImage_thumb(rs.getString("image_thumb"));
 				
@@ -138,156 +138,133 @@ public class EventBoardDAO {
 	} // getBoardList
 	
 	
-//	// 글 조회수 증가시키는 메서드
-//	public int updateReadCount(int num) {
-//		int result = 0;
-//		
-//		try {
-//			// 1.2 디비연결
-//			con = getCon();
-//			
-//			// 3. sql 작성 & pstmt 생성
-//			// 관리자 아니면 기존 조회수 + 1 구문
-//			sql = "update movie_notice_board set readcount = readcount + 1 where num = ?";
-//			pstmt = con.prepareStatement(sql);
-//			pstmt.setInt(1, num);
-//			
-//			// 4. sql 실행
-//			result = pstmt.executeUpdate();
-//			
-//			System.out.println("DAO : "+num+"번 조회수 "+result +" 증가");
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		return result;
-//	} // updateReadCount
-//	
-//	
-//	// 글 1개의 정보를 반환
-//	public EventBoardDTO getBoard(int num) {
-//		EventBoardDTO dto = null;
-//		
-//		try {
-//			// 1.2. 디비 연결
-//			con = getCon();
-//			
-//			// 3. sql 작성 & pstmt 객체
-//			sql = "select * from movie_notice_board where num = ?";
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setInt(1, num);
-//			
-//			// 4. sql 실행
-//			rs = pstmt.executeQuery();
-//			
-//			// 5. 데이터 조회
-//			if(rs.next()) {
-//				dto = new EventBoardDTO();
-//				
-//				dto.setContent(rs.getString("content"));
-//				dto.setDate(rs.getTimestamp("date"));
-//				dto.setNum(rs.getInt("num"));
-//				dto.setReadcount(rs.getInt("readcount"));
-//				dto.setSubject(rs.getString("subject"));
-//				dto.setFile(rs.getString("file"));
-//			}
-//			System.out.println(" 데이터 입력 완료!");
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		return dto;
-//	} // getBoard
-//
-//	
-//	// 이전, 다음 글 번호 반환
-//	public int getBoardSideNum(int i, int num) {
-//		// i가 0이면 이전, 1이면 다음 글 번호 반환
-//		int result = 0;
-//		
-//		try {
-//			// 1.2. 디비 연결
-//			con = getCon();
-//			
-//			// 3. sql 작성 & pstmt 객체
-//			sql = (i==0) ? "select min(num) from movie_notice_board where num > ?" : "select max(num) from movie_notice_board where num < ?" ;
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setInt(1, num);
-//			
-//			// 4. sql 실행
-//			rs = pstmt.executeQuery();
-//			
-//			// 5. 데이터 처리
-//			if(rs.next()) {
-//				result = (i==0) ? rs.getInt(1) : rs.getInt(1);
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		return result;
-//	} // getBoardSideNum
-//	
-//	
-//	// 글쓰기 메서드
-//	public int insertBoard(EventBoardDTO dto) {
-//		int num = 0; // 글번호 저장 변수
-//		
-//		try {
-//			// 1.2. 디비연결
-//			con = getCon();
-//			
-//			// 3 sql 작성 (글 번호를 계산하는 sql) & pstmt 객체
-//			sql = "select max(num) from movie_notice_board";
-//			pstmt = con.prepareStatement(sql);
-//
-//			// 4 sql 실행
-//			rs = pstmt.executeQuery();
-//			
-//			// 5. 데이터 처리
-//			if(rs.next()) {  
-//				// getInt 메서드는 null값일 경우 0을 반환
-//				num = rs.getInt(1)+1;   		
-//			}
-//			
-//			System.out.println("DAO  : 글번호 " + num);
-//			
-//			
-//			////////////////////////////////////////////////////////////
-//			// 글쓰기
-//			
-//			// 3. sql(insert) 작성 & pstmt 객체
-//			sql = "insert into movie_notice_board(num, subject, content, readcount, date, file) "
-//					+ "values (?, ?, ?, ?, now(), ?)";
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setInt(1, num);  // 직접 계산한 글번호
-//			pstmt.setString(2, dto.getSubject());
-//			pstmt.setString(3, dto.getContent());
-//			pstmt.setInt(4, 0);
-//			pstmt.setString(5, dto.getFile());
-//			
-//			// 4. sql 실행
-//			pstmt.executeUpdate();
-//			
-//			System.out.println("DAO : 글쓰기 완료! ");
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		return num;
-//	} // insertBoard
-//	
-//	
+	// 이전, 다음 글 번호 반환
+	public int getBoardSideNum(int i, int num, String category) {
+		// i가 0이면 이전, 1이면 다음 글 번호 반환
+		int result = 0;
+		
+		try {
+			// 1.2. 디비 연결
+			con = getCon();
+			
+			// 3. sql 작성 & pstmt 객체
+			sql = (i==0) ? "select min(num) from movie_event_board where num>? and category=?" :
+							"select max(num) from movie_event_board where num<? and category=?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setInt(1, num);
+			pstmt.setString(2, category);
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			if(rs.next()) {
+				result = (i==0) ? rs.getInt(1) : rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return result;
+	} // getBoardSideNum
+	
+	
+	// 글 1개의 정보를 반환
+	public EventBoardDTO getBoard(int num) {
+		EventBoardDTO dto = null;
+		
+		try {
+			// 1.2. 디비 연결
+			con = getCon();
+			
+			// 3. sql 작성 & pstmt 객체
+			sql = "select * from movie_event_board where num = ?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setInt(1, num);
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 조회
+			if(rs.next()) {
+				dto = new EventBoardDTO();
+				
+				dto.setCategory(rs.getString("category"));
+				dto.setDate(rs.getTimestamp("date"));
+				dto.setNum(rs.getInt("num"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setEventDateStart(rs.getString("eventDateStart"));
+				dto.setEventDateEnd(rs.getString("eventDateEnd"));
+				dto.setImage(rs.getString("image"));
+				dto.setImage_thumb(rs.getString("image_thumb"));
+			}
+			System.out.println(" 데이터 입력 완료!");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return dto;
+	} // getBoard
+
+	
+	// 글쓰기 메서드
+	public int insertBoard(EventBoardDTO dto) {
+		int num = 0; // 글번호 저장 변수
+		
+		try {
+			// 1.2. 디비연결
+			con = getCon();
+			
+			// 3 sql 작성 (글 번호를 계산하는 sql) & pstmt 객체
+			sql = "select max(num) from movie_event_board";
+			pstmt = con.prepareStatement(sql);
+
+			// 4 sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			if(rs.next()) {  
+				// getInt 메서드는 null값일 경우 0을 반환
+				num = rs.getInt(1)+1;   		
+			}
+			
+			System.out.println("DAO  : 글번호 " + num);
+			
+			
+			////////////////////////////////////////////////////////////
+			// 글쓰기
+			
+			// 3. sql(insert) 작성 & pstmt 객체
+			sql = "insert into movie_event_board values (?,?,?,?,?,?,?,now())";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setInt(1, num);  // 직접 계산한 글번호
+			pstmt.setString(2, dto.getCategory());
+			pstmt.setString(3, dto.getSubject());
+			pstmt.setString(4, dto.getEventDateStart());
+			pstmt.setString(5, dto.getEventDateEnd());
+			pstmt.setString(6, dto.getImage());
+			pstmt.setString(7, dto.getImage_thumb());
+			
+			// 4. sql 실행
+			pstmt.executeUpdate();
+			
+			System.out.println("DAO : 글쓰기 완료! ");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return num;
+	} // insertBoard
+	
+	
 //	// 글 삭제하는 메서드
 //	public int deleteBoard(int num) {
 //		int result = -1;

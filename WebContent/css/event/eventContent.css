@@ -4,6 +4,7 @@
 
 .inner {
     width: 980px;
+    border-bottom: 1px solid #bbb;
 }
 .btn {
     display: block;
@@ -17,14 +18,20 @@
     font-size: 13px;
     font-weight: 700;
 }
+a{
+	display: block;
+}
+
 
 
 
 /* 이벤트 본문 */
 .event-content > .inner {
     margin: 210px auto 100px;
+    padding-bottom: 50px;
 }
-.event-content .btn--list {
+.event-content .btn-group.title {
+	display: flex;
     position: absolute;
     top: -50px;
     right: 0;
@@ -53,14 +60,14 @@
     position: absolute;
     right: 20px;
 }
-.event-content .event-img {
-
+.event-content .event-img img {
+	width: 980px;
 }
-.event-content .btn-group {
+.event-content .btn-group.content {
     display: flex;
     position: absolute;
-    right: 85px;
-    bottom: -55px;
+    right: 0;
+    bottom: 5px;
 }
 .event-content .btn--top {
     position: absolute;

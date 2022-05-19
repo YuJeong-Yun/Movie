@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <!DOCTYPE html>
 <html lang="en">
@@ -43,13 +42,14 @@
       <ul class="event-list">
         <c:forEach var="event" items="${boardList }">
 	        <li>
-	          <a href="./EventContent.ev?num=${event.num }&pageNum=${pageNum }">
+	          <a href="./EventContent.ev?num=${event.num }&pageNum=${pageNum }&category=${event.category }">
 	            <img src="./upload/${event.image_thumb }" />
-	              <div class="txt1">${event.subject }</div>
-	              <div class="txt2">
-	              	<f:formatDate value="${event.eventDateStart }" pattern="yyyy.MM.dd"/> ~
-	              	<f:formatDate value="${event.eventDateEnd }" pattern="yyyy.MM.dd"/>
-	              </div>
+	            <div class="txt1">${event.subject }</div>
+	            <div class="txt2">
+	              ${event.eventDateStart }
+	              <c:if test="${event.eventDateEnd ne '' or event.eventDateStart ne '' }">~</c:if>
+	               ${event.eventDateEnd }
+	            </div>
 	          </a>
 	        </li>
         </c:forEach>

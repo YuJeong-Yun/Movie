@@ -1,14 +1,15 @@
 package com.movie.event.db;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class EventBoardDTO {
 	private int num;
 	private int rownum;
 	private String category;
 	private String subject;
-	private Timestamp eventDateStart;
-	private Timestamp eventDateEnd;
+	private String eventDateStart;
+	private String eventDateEnd;
 	private String image;
 	private String image_thumb;
 	private Timestamp date;
@@ -45,19 +46,19 @@ public class EventBoardDTO {
 		this.subject = subject;
 	}
 
-	public Timestamp getEventDateStart() {
+	public String getEventDateStart() {
 		return eventDateStart;
 	}
 
-	public void setEventDateStart(Timestamp eventDateStart) {
+	public void setEventDateStart(String eventDateStart) {
 		this.eventDateStart = eventDateStart;
 	}
 
-	public Timestamp getEventDateEnd() {
+	public String getEventDateEnd() {
 		return eventDateEnd;
 	}
 
-	public void setEventDateEnd(Timestamp eventDateEnd) {
+	public void setEventDateEnd(String eventDateEnd) {
 		this.eventDateEnd = eventDateEnd;
 	}
 

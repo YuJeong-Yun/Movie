@@ -26,7 +26,7 @@
 
 <body>
   <!-- 관리자 계정 아니면 메인으로 이동 -->
-  <c:if test="${id ne 'admin' }">
+  <c:if test="${id eq null or id ne 'admin' }">
   	<%response.sendRedirect("./Main.do"); %>
   </c:if>
   
