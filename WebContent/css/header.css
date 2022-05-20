@@ -2,11 +2,12 @@
 header {
   width: 100%;
   border-bottom: 2px solid #ff0000;
-  position: fixed;
+  position: absolute;
   top: 0;
   z-index: 9;
   background-color: #fff;
 }
+/* 메뉴1 */
 header .menu1 {
   border-bottom: 1px solid #eee;
 }
@@ -58,16 +59,16 @@ header .menu1 .memberInfo li .member-Text {
   font-size: 15px;
   color: #555;
 }
-header .menu2 .inner {
-  height: 45px;
-}
-header .menu2 .main-menu {
-  width: 500px;
-}
+
+/* 메뉴2 */
 header .menu2 .main-menu .menu__name {
   height: 45px;
-  display: flex;
   align-items: center; 
+  display: flex;
+}
+header .menu2 .main-menu .menu__name h2 {
+  height: 45px;
+  line-height: 45px;
 }
 header .menu2 .main-menu .menu__name a {
   margin-right: 55px;
@@ -81,15 +82,15 @@ header .menu2 .main-menu .menu__name a.red {
 header .menu2 .main-menu .menu__contents {
   background-color: #fff;
   width: 100%;
-  position: fixed;
+  position: absolute;
   left: 0;
   height: 0;
   overflow: hidden;
   transition: height .3s;
+  border-top: 1px solid #ff0000;
 }
 header .menu2 .main-menu:hover .menu__contents {
-  height: 300px;
-  border-top: 1px solid #ff0000;
+/*   height: 300px; */
 }
 header .menu2 .main-menu .menu__contents .inner {
   height: 300px;
@@ -146,6 +147,8 @@ header .menu2 .search .icon {
   color: #333;
 }
 
+
+/* 사용 가능한 메뉴 진하게 표시 */
 .do {
 	font-weight: 700 !important;
 }

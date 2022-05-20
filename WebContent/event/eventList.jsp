@@ -21,8 +21,6 @@
       rel="stylesheet">
   
     <link rel="stylesheet" href="./css/event/eventList.css">
-
-<!--     <script defer src="./js/event/eventList.js"></script> -->
 </head>
 <body>
     <!-- HEADER -->
@@ -109,7 +107,6 @@
 	<script type="text/javascript">
 		// 카테고리 목록 가져오기
 		const categoryArr = document.querySelectorAll('.category li a');
-		console.log(categoryArr);
 	
 		// 현재 카테고리와 일치하는 요소에 폰트 색상 적용
 		 const categoryList = ['special', 'movie', 'membership', 'cgv', 'discount'];
