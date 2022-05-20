@@ -40,3 +40,10 @@ footer .info li span::before {
 footer .info li span:first-child::before {
   content: "";
 }
+footer .info li:last-child {
+	width: 120px;
+	cursor: pointer;
+}
+footer .info li:last-child:hover {
+	text-decoration: underline;
+}
