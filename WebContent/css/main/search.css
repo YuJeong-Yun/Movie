@@ -4,7 +4,7 @@
 
 /* 게시판 글 목록 */
 .board .inner {
-  margin-top: 200px;
+  margin: 200px auto 50px;
   width: 890px;
 }
 .board a {
@@ -64,7 +64,7 @@
 
 /* 이벤트 게시판 글 목록 */
 .event .inner {
-  margin: 200px auto 200px;
+  margin: 200px auto 50px;
   width: 890px;
 }
 .event .board-title {
