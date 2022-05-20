@@ -18,8 +18,11 @@ public class MemberUpdateAction implements Action {
 		// 전달정보 저장
 		HttpSession session = request.getSession();
 		
+		String addr = request.getParameter("postcode")+ "/"+request.getParameter("address")+"/"
+				+request.getParameter("detailAddress");
+
 		MemberDTO dto = new MemberDTO();
-		dto.setAddr(request.getParameter("addr"));
+		dto.setAddr(addr);
 		dto.setEmail(request.getParameter("email"));
 		dto.setGender(request.getParameter("gender"));
 		dto.setTel(request.getParameter("tel"));

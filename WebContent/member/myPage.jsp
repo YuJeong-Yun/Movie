@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +24,7 @@
 
   <link rel="stylesheet" href="./css/member/myPage.css" />
   <script defer src="./js/jquery-3.6.0.min.js"></script>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script defer src="./js/member/myPage.js"></script>
 </head>
 
@@ -65,7 +67,7 @@
               <td>비밀번호 확인</td>
               <td colspan="2"><input type="password" name="pw"></td>
             </tr>
-            <tr>
+            <tr class="gender">
               <td>성별</td>
               <td colspan="2">
                 <label><input type="radio" name="gender" value="남" 
@@ -82,7 +84,14 @@
             </tr>
             <tr>
               <td>주소</td>
-              <td colspan="2"><input type="text" name="addr" value="${dto.addr }"></td>
+              <td colspan="2" class="addr">
+                <!-- DB에 '우편번호/주소/상세주소' 형태로 들어있음. / 로 구분해서 우편번호, 주소, 상세주소에 값을 출력  -->
+              	<c:set var="addr" value="${fn:split(dto.addr, '/') }"></c:set>
+                <input type="text" name="postcode" id="postcode" placeholder="우편번호" value="${addr[0] }"><input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
+                <input type="text" name="address" id="address" placeholder="주소" value="${addr[1] }"><br>
+                <input type="text" name="detailAddress" id="detailAddress" placeholder="상세주소" value="${addr[2] }" }>
+                <input type="text" name="extraAddress" id="extraAddress" placeholder="참고항목">
+              </td>
             </tr>
             <tr>
               <td>휴대전화</td>

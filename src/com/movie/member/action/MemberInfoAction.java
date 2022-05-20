@@ -12,7 +12,7 @@ public class MemberInfoAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		System.out.println(" M : MemberUpdateAction_execute() 실행");
+		System.out.println(" M : MemberInfoAction_execute() 실행");
 		
 		// 전달 정보 저장
 		HttpSession session = request.getSession();

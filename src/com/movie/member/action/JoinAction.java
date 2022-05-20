@@ -17,7 +17,10 @@ public class JoinAction implements Action {
 		// 전달정보 저장
 		MemberDTO dto = new MemberDTO();
 		
-		dto.setAddr(request.getParameter("addr"));
+		String addr = request.getParameter("postcode")+ "/"+request.getParameter("address")+"/"
+						+request.getParameter("detailAddress");
+		
+		dto.setAddr(addr);
 		dto.setEmail(request.getParameter("email"));
 		dto.setGender(request.getParameter("gender"));
 		dto.setId(request.getParameter("id"));

@@ -23,6 +23,7 @@
 
   <link rel="stylesheet" href="./css/member/join.css">
   <script src="./js/jquery-3.6.0.min.js"></script>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script defer src="./js/member/join.js"></script>
 </head>
 
@@ -66,7 +67,11 @@
             </tr>
             <tr>
               <td>주소</td>
-              <td colspan="2"><input type="text" name="addr"></td>
+              <td colspan="2" class="addr">
+                <input type="text" name="postcode" id="postcode" placeholder="우편번호"><input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
+                <input type="text" name="address" id="address" placeholder="주소"><br>
+                <input type="text" name="detailAddress" id="detailAddress" placeholder="상세주소"><input type="text" name="extraAddress" id="extraAddress" placeholder="참고항목">
+              </td>
             </tr>
             <tr>
               <td>휴대전화</td>
