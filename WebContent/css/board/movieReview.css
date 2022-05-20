@@ -87,6 +87,8 @@
 .board .board-table tr td:nth-child(2) span {
   font-weight: 700;
 }
+
+/* 페이징 처리 */
 .board .paging {
   width: 100%;
   position: absolute;

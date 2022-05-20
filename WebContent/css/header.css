@@ -123,7 +123,7 @@ header .menu2 .main-menu .menu__contents .inner > li > ul  a {
 header .menu2 .main-menu .menu__contents .inner > li > ul  a:hover {
   text-decoration: underline;
 }
-header .menu2 .search {
+header .menu2 .search form {
   width: 200px;
   height: 27px;
   padding: 0 20px;

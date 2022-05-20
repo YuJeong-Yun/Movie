@@ -4,15 +4,15 @@
 
 
 /* 게시판 글 목록 */
-.board .inner {
+.notice .inner {
   margin-top: 200px;
   width: 890px;
   height: 650px;
 }
-.board a {
+.notice a {
 	color: #333;
 }
-.board .board-title {
+.notice .board-title {
   font-size: 30px;
   font-weight: 900;
   color: #333;
@@ -20,12 +20,12 @@
   margin-bottom: 40px;
   border-bottom: 2px solid #333;
 }
-.board .board-table {
+.notice .board-table {
   width: 890px;
   border-top: 1px solid #777 ;
   border-collapse: collapse;
 }
-.board .board-table th {
+.notice .board-table th {
   background-color: #ffdddd;
   height: 40px;
   line-height: 40px;
@@ -34,34 +34,34 @@
   font-size: 16px;
   font-weight: 700;
 }
-.board .board-table th:first-child {
+.notice .board-table th:first-child {
   padding-left: 20px;
 }
-.board .board-table tr {
+.notice .board-table tr {
   height: 33px;
   line-height: 33px;
   border-bottom: 1px dotted #dfdfdf;
   font-size: 14px;
 }
-.board .board-table tr:hover {
+.notice .board-table tr:hover {
   background-color: #fffafa;
 }
-.board .board-table tr td:first-child {
+.notice .board-table tr td:first-child {
   padding-left: 20px;
 }
-.board .board-table tr td:nth-child(2) {
+.notice .board-table tr td:nth-child(2) {
   width: 500px;
   padding-right: 20px;
 }
-.board .board-table tr td:nth-child(2) a {
+.notice .board-table tr td:nth-child(2) a {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.board .board-table tr td.file {
+.notice .board-table tr td.file {
 	position: relative;
 }
-.board .board-table tr td.file span {
+.notice .board-table tr td.file span {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -73,23 +73,23 @@
 }
 
 /* 페이징 */
-.board .paging {
+.notice .paging {
   width: 100%;
   position: absolute;
   bottom: 100px;
   text-align: center;
 }
-.board .paging a:hover {
+.notice .paging a:hover {
   border-bottom: 1px solid #333;
 }
-.board .paging .prev,
-.board .paging .next {
+.notice .paging .prev,
+.notice .paging .next {
   margin: 0 20px;
 }
-.board .paging .pageNum {
+.notice .paging .pageNum {
   margin: 0 5px;
 }
-.board .paging .writeBtn {
+.notice .paging .writeBtn {
   display: block;
   width: 70px;
   height: 30px;

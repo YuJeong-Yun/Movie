@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 
 public class NoticeBoardDAO {
-	// 디비에 movie_board 테이블과 관련된 모든 동작을 처리
+	// 디비에 movie_notice_board 테이블과 관련된 모든 동작을 처리
 	
 	// 공통변수 선언
 	private Connection con = null;

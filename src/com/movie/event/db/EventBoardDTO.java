@@ -5,7 +5,6 @@ import java.util.Date;
 
 public class EventBoardDTO {
 	private int num;
-	private int rownum;
 	private String category;
 	private String subject;
 	private String eventDateStart;
@@ -20,14 +19,6 @@ public class EventBoardDTO {
 
 	public void setNum(int num) {
 		this.num = num;
-	}
-
-	public int getRownum() {
-		return rownum;
-	}
-
-	public void setRownum(int rownum) {
-		this.rownum = rownum;
 	}
 
 	public String getCategory() {
@@ -88,7 +79,7 @@ public class EventBoardDTO {
 
 	@Override
 	public String toString() {
-		return "EventBoardDTO [num=" + num + ", rownum=" + rownum + ", category=" + category + ", subject=" + subject
+		return "EventBoardDTO [num=" + num + ", category=" + category + ", subject=" + subject
 				+ ", eventDateStart=" + eventDateStart + ", eventDateEnd=" + eventDateEnd + ", image=" + image
 				+ ", image_thumb=" + image_thumb + ", date=" + date + "]";
 	}

@@ -12,8 +12,8 @@ import javax.sql.DataSource;
 
 
 public class EventBoardDAO {
-	// 디비에 movie_board 테이블과 관련된 모든 동작을 처리
-	
+	// 디비에 movie_event_board 테이블과 관련된 모든 동작을 처리
+
 	// 공통변수 선언
 	private Connection con = null;
 	private PreparedStatement pstmt = null;
@@ -100,8 +100,7 @@ public class EventBoardDAO {
 			
 			// 3. sql 작성 & pstmt 객체 (num 내림차순 정렬, 페이징 처리)
 			//		=> limit 시작행(0부터 시작함), 개수
-			sql = "select * from (select @ROWNUM:=@ROWNUM +1 AS rownum, T.*	FROM movie_event_board T, (select @ROWNUM:=0) R "
-					+ "	 where category=? ORDER BY num asc) sub order by sub.rownum desc limit ?, ?";
+			sql = "select * from movie_event_board where category=? order by num desc limit ?, ?";
 			pstmt = con.prepareStatement(sql);
 			// ???
 			pstmt.setString(1, category);
@@ -118,7 +117,6 @@ public class EventBoardDAO {
 				
 				dto.setCategory(rs.getString("category"));
 				dto.setDate(rs.getTimestamp("date"));
-				dto.setRownum(rs.getInt("rownum"));
 				dto.setNum(rs.getInt("num"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setEventDateStart(rs.getString("eventDateStart"));

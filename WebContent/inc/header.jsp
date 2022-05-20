@@ -111,8 +111,10 @@
 
       </div>
       <div class="search">
-        <input type="text" class="searchInput">
-        <span class="material-icons-outlined icon">search</span>
+      	<form action="./Search.do" method="post">
+          <input type="text" class="searchInput" name="search">
+          <span class="material-icons-outlined icon">search</span>
+        </form>
       </div>
 
     </div>

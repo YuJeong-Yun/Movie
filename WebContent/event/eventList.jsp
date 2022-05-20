@@ -30,7 +30,7 @@
 
 
   <!-- 이벤트 목록 출력 -->
-  <section class="board">
+  <section class="event">
     <div class="inner">
       <!--이벤트 타이틀 -->
       <div class="board-title">EVENT</div> 

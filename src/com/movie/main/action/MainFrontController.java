@@ -59,6 +59,17 @@ public class MainFrontController extends HttpServlet {
 			forward.setPath("./main/movieChart.jsp");
 			forward.setRedirect(false);
 					
+		}else if(command.equals("/Search.do")) {
+			System.out.println(" C : /Search.do 호출");
+			// DB 사용 ㅇ, 페이지 출력
+			
+			action = new SearchAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

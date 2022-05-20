@@ -3,19 +3,19 @@
 @import url("../common.css");
 
 /* 이벤트 목록 */
-.board .inner {
+.event .inner {
   margin: 200px auto 200px;
   width: 980px;
   height: 1050px;
 }
-.board .board-title {
+.event .board-title {
   font-size: 30px;
   font-weight: 900;
   color: #333;
   padding-bottom: 20px;
   border-bottom: 2px solid #333;
 }
-.board .category {
+.event .category {
   display: flex;
   height: 50px;
   margin-bottom: 40px;
@@ -23,52 +23,52 @@
   align-items: center;
   border-bottom: 1px solid #ddd;
 }
-.board .category li {
+.event .category li {
 }
-.board .category li a {
+.event .category li a {
   margin: 0 50px;
   font-size: 16px;
   font-weight: 600;
   color: #6a6a6a;
 }
 
-.board .event-list {
+.event .event-list {
   display: flex;
   flex-wrap: wrap;
   width: 800px;
 }
-.board .event-list li {
+.event .event-list li {
   width: 256px;
   height: 278px;
   margin-right: 16px;
   margin-bottom: 15px;
   border: 1px solid #ddd;
 }
-.board .event-list li:nth-child(3n) {
+.event .event-list li:nth-child(3n) {
   margin-right: 0;
 }
-.board .event-list li a {
+.event .event-list li a {
   display: block;
   width: 100%;
   height: 100%;
 }
-.board .event-list a > img {
+.event .event-list a > img {
   width: 256px;
   height: 170px;
 }
-.board .event-list a .txt1 {
+.event .event-list a .txt1 {
   height: 70px;
   padding: 15px 10px 5px;
   font-size: 16px;
   font-weight: 600;
 }
-.board .event-list a .txt2 {
+.event .event-list a .txt2 {
   padding: 5px 10px 0;
   font-size: 13px;
   color: #888;
 }
 /* 이벤트 배너 광고 */
-.board .event-ad {
+.event .event-ad {
   display: flex;
   flex-wrap: wrap;
   position: absolute;
@@ -76,12 +76,12 @@
   right: 0;
   width: 160px;
 }
-.board .event-ad img {
+.event .event-ad img {
   margin-bottom: 10px;
 }
 
 /* 글쓰기 버튼 */
-.board .writeBtn {
+.event .writeBtn {
   display: block;
   width: 70px;
   height: 30px;
@@ -97,23 +97,23 @@
 
 
 /* 페이징 */
-.board .paging {
+.event .paging {
   width: 100%;
   position: absolute;
   bottom: -100px;
   text-align: center;
 }
-.board .paging a:hover {
+.event .paging a:hover {
   border-bottom: 1px solid #333;
 }
-.board .paging .prev,
-.board .paging .next {
+.event .paging .prev,
+.event .paging .next {
   margin: 0 20px;
 }
-.board .paging .pageNum {
+.event .paging .pageNum {
   margin: 0 5px;
 }
-.board .paging .writeBtn {
+.event .paging .writeBtn {
   display: block;
   width: 70px;
   height: 30px;

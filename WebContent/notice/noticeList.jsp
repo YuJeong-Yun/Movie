@@ -31,7 +31,7 @@
 
 
   <!-- 공지사항 글 목록 -->
-  <section class="board">
+  <section class="notice">
     <div class="inner">
     
       <!-- 공지사항 목록 출력 -->

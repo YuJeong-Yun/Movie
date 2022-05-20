@@ -1,0 +1,180 @@
+@import url("../header.css");
+@import url("../footer.css");
+@import url("../common.css");
+
+/* 게시판 글 목록 */
+.board .inner {
+  margin-top: 200px;
+  width: 890px;
+}
+.board a {
+	color: #333;
+}
+.board .board-title {
+  font-size: 30px;
+  font-weight: 900;
+  color: #333;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+  border-bottom: 2px solid #333;
+}
+.board .board-table {
+  width: 890px;
+  border-top: 1px solid #777 ;
+}
+.board .board-table th {
+  background-color: #ffdddd;
+  height: 40px;
+  line-height: 40px;
+  text-align: left;
+  color: #444;
+  font-size: 16px;
+  font-weight: 700;
+}
+.board .board-table th:first-child {
+  padding-left: 20px;
+}
+.board .board-table tr {
+  height: 33px;
+  line-height: 33px;
+  border-bottom: 1px dotted #dfdfdf;
+  font-size: 14px;
+}
+.board .board-table tr:hover {
+  background-color: #fffafa;
+}
+.board .board-table tr td:first-child {
+  padding-left: 20px;
+}
+.board .board-table tr td:nth-child(2) {
+  width: 500px;
+  display: flex;
+  padding-right: 20px;
+}
+.board .board-table tr td:nth-child(2) a {
+  padding-right: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.board .board-table tr td:nth-child(2) span {
+  font-weight: 700;
+}
+
+
+/* 이벤트 게시판 글 목록 */
+.event .inner {
+  margin: 200px auto 200px;
+  width: 890px;
+}
+.event .board-title {
+  font-size: 30px;
+  font-weight: 900;
+  color: #333;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #333;
+}
+.event .event-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 890px;
+}
+.event .event-list li {
+  width: 284px;
+  height: 290px;
+  margin-right: 19px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+}
+.event .event-list li:nth-child(3n) {
+  margin-right: 0;
+}
+.event .event-list li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.event .event-list a > img {
+  width: 282px;
+  height: 190px;
+}
+.event .event-list a .txt1 {
+  height: 70px;
+  padding: 15px 10px 5px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.event .event-list a .txt2 {
+  padding: 5px 10px 0;
+  font-size: 13px;
+  color: #888;
+}
+
+
+/* 공지사항 글 목록 */
+.notice .inner {
+  margin: 200px auto 50px;
+  width: 890px;
+}
+.notice a {
+	color: #333;
+}
+.notice .board-title {
+  font-size: 30px;
+  font-weight: 900;
+  color: #333;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+  border-bottom: 2px solid #333;
+}
+.notice .board-table {
+  width: 890px;
+  border-top: 1px solid #777 ;
+  border-collapse: collapse;
+}
+.notice .board-table th {
+  background-color: #ffdddd;
+  height: 40px;
+  line-height: 40px;
+  text-align: left;
+  color: #444;
+  font-size: 16px;
+  font-weight: 700;
+}
+.notice .board-table th:first-child {
+  padding-left: 20px;
+}
+.notice .board-table tr {
+  height: 33px;
+  line-height: 33px;
+  border-bottom: 1px dotted #dfdfdf;
+  font-size: 14px;
+}
+.notice .board-table tr:hover {
+  background-color: #fffafa;
+}
+.notice .board-table tr td:first-child {
+  padding-left: 20px;
+}
+.notice .board-table tr td:nth-child(2) {
+  width: 500px;
+  padding-right: 20px;
+}
+.notice .board-table tr td:nth-child(2) a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.notice .board-table tr td.file {
+	position: relative;
+}
+.notice .board-table tr td.file span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  font-weight: 200;
+  color: #666;
+  font-size: 22px;
+  height: 22px;
+}
