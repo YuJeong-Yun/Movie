@@ -1,0 +1,70 @@
+@import url("../header.css"); 
+@import url("../footer.css");
+@import url("../common.css");
+
+.event-update > .inner {
+  width: 900px;
+  margin: 200px auto 100px;
+}
+input,
+select {
+  width: 800px;
+  border: 1px solid #ebecef;
+  outline: none;
+  padding-left: 15px;
+}
+
+
+/* 이벤트 글쓰기 */
+.event-update {
+  
+}
+.event-update > .inner {
+  width: 800px;
+}
+.event-update form {
+}
+.event-update form table {
+}
+.event-update form table tr:first-child td select {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+}
+.event-update form table tr:nth-child(2) td {
+}
+.event-update form table tr:nth-child(2) td input {
+  height: 60px;
+  margin-bottom: 30px;
+  font-size: 25px;
+}
+.event-update form table tr:nth-child(2) td input::placeholder {
+  color: #bbb;
+}
+.event-update form table tr:nth-child(3){
+  height: 80px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #bbb;
+}
+.event-update form table tr:nth-child(3) td input {
+  width: 300px;
+  height: 40px;
+}
+.event-update form table tr:last-child input {
+  height: 40px;
+}
+.event-update form table tr:last-child .image-comment {
+  font-weight: 700;	
+}
+.event-update form .btn {
+  width: 80px;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  bottom: -60px;
+  padding: 0;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}

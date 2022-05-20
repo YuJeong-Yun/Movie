@@ -79,7 +79,30 @@ public class EventFrontController extends HttpServlet {
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/EventUpdate.ev")) { // 이벤트 수정 페이지 이동
+			System.out.println(" C : /EventUpdate.ev 호출");
+			// DB 사용 ㅇ, 페이지 출력
+			
+			action = new EventUpdateAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/EventUpdateProAction.ev")) { // 이벤트 수정 동작
+			System.out.println(" C : /EventUpdateProAction.ev 호출");
+			// DB 사용ㅇ, 페이지 이동
+			
+			action = new EventUpdateProAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			

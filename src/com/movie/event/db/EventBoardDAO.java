@@ -292,36 +292,39 @@ public class EventBoardDAO {
 //		}
 //		return result;
 //	} // deleteBoard
-//	
-//	
-//	// 수정 정보 DB에 업데이트하는 메서드
-//	public int updateBoard(EventBoardDTO dto) {
-//		int result = -1;
-//		
-//		try {
-//			// 1.2. 디비 연결
-//			con = getCon();
-//			
-//			// 3. sql 작성(update) & pstmt 객체
-//			sql = "update movie_notice_board set subject=?, content=?, file=? where num=?";
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setString(1, dto.getSubject());
-//			pstmt.setString(2, dto.getContent());
-//			pstmt.setString(3, dto.getFile());
-//			pstmt.setInt(4, dto.getNum());
-//			
-//			// 4. sql 실행
-//			result = pstmt.executeUpdate();	
-//			
-//			System.out.println(" DAO : 정보 수정 완료("+result+")");
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		return result;
-//	} // updateBoard 
+	
+	
+	// 수정 정보 DB에 업데이트하는 메서드
+	public int updateBoard(EventBoardDTO dto) {
+		int result = -1;
+		
+		try {
+			// 1.2. 디비 연결
+			con = getCon();
+			
+			// 3. sql 작성(update) & pstmt 객체
+			sql = "update movie_event_board set subject=?, category=?, eventDateStart=?, eventDateEnd=?, image=?, image_thumb=? where num=?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setString(1, dto.getSubject());
+			pstmt.setString(2, dto.getCategory());
+			pstmt.setString(3, dto.getEventDateStart());
+			pstmt.setString(4, dto.getEventDateEnd());
+			pstmt.setString(5, dto.getImage());
+			pstmt.setString(6, dto.getImage_thumb());
+			pstmt.setInt(7, dto.getNum());
+			
+			// 4. sql 실행
+			result = pstmt.executeUpdate();	
+			
+			System.out.println(" DAO : 정보 수정 완료("+result+")");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return result;
+	} // updateBoard 
 		
 }
