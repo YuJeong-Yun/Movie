@@ -1,4 +1,4 @@
-package com.movie.board.db;
+package com.movie.review.db;
 
 import java.sql.Timestamp;
 

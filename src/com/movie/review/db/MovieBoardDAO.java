@@ -1,4 +1,4 @@
-package com.movie.board.db;
+package com.movie.review.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -595,96 +595,6 @@ public class MovieBoardDAO {
 		}
 		return result;
 	} //  reDeleteBoard
-		
-//		
-//		
-//		// 검색어 포함된 글 개수 반환 getBoardCount() - 오버로딩
-//		public int getBoardCount(String search) {
-//			int searchCnt = 0;
-//			
-//			try {
-//				// 1.2. 디비연결
-//				con = getCon();
-//				
-//				// 3. sql 작성(select) & pstmt 객체
-//				sql = "select count(*) from itwill_board where subject like ?";
-//				pstmt = con.prepareStatement(sql);
-//				// ???
-//				pstmt.setString(1, "%"+search+"%"); // like에 ' ' 안 써도 됨!!
-//				
-//				// 4. sql 실행
-//				rs = pstmt.executeQuery();
-//				
-//				// 5. 데이터 처리
-//				if(rs.next()) {
-//					searchCnt = rs.getInt(1);
-//					// searchCnt = rs.getInt("count(*); // 컬럼명
-//				}
-//				
-//				System.out.println("DAO : 검색된 글개수 " + searchCnt + "개");
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			} finally {
-//				closeDB();
-//			}
-//			return searchCnt;
-//		} // getBoardCount() - 오버로딩
-//		
-//		
-//		
-//		// 검색어 결과목록 가져오는 메서드 - 오버로딩
-//		public List<BoardDTO> getBoardList(int startRow, int pageSize, String search) {
-//			List<BoardDTO> searchBoardList = new ArrayList<BoardDTO>();
-//			
-//			try {
-//				// 1.2. 디비 연결
-//				con = getCon();
-//				
-//				// 3. sql 작성 & pstmt 객체
-//				// 정렬- re_ref (내림차순), re_seq (오름차순)
-//				// limit - 원하는 만큼만 가져오기
-//				// 검색어 포함글만 select 
-//				sql = "select * from itwill_board where subject like ? order by re_ref desc, re_seq asc limit ?, ?";
-//				pstmt = con.prepareStatement(sql);
-//				// ???
-//				pstmt.setString(1, "%"+search+"%");
-//				pstmt.setInt(2, startRow-1);
-//				pstmt.setInt(3, pageSize);
-//				
-//				// 4. sql 실행
-//				rs = pstmt.executeQuery();
-//				
-//				// 5. 데이터 처리 (list에 저장)
-//				while(rs.next()) {
-//					// BoardBean 객체의 정보를 ArrayList 한 칸에 저장
-//					BoardDTO bb = new BoardDTO();
-//					
-//					bb.setContent(rs.getString("content"));
-//					bb.setDate(rs.getDate("date"));
-//					bb.setFile(rs.getString("file"));
-//					bb.setIp(rs.getString("ip"));
-//					bb.setName(rs.getString("name"));
-//					bb.setNum(rs.getInt("num"));
-//					bb.setPass(rs.getString("pass"));
-//					bb.setRe_lev(rs.getInt("re_lev"));
-//					bb.setRe_ref(rs.getInt("re_ref"));
-//					bb.setRe_seq(rs.getInt("re_seq"));
-//					bb.setReadcount(rs.getInt("readcount"));
-//					bb.setSubject(rs.getString("subject"));
-//					
-//					// DTO -> arrayList 한 칸에 저장
-//					searchBoardList.add(bb);
-//				}
-//				System.out.println("DAO : 게시판 글 전체 목록 저장완료!");
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			} finally {
-//				closeDB();
-//			}
-//			return searchBoardList;
-//			
-//		} // getBoardList - 오버로딩
-//		
 		
 }
 

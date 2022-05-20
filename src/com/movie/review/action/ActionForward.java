@@ -1,4 +1,4 @@
-package com.movie.board.action;
+package com.movie.review.action;
 
 public class ActionForward { // 페이지 이동할 때 사용하는 객체
 

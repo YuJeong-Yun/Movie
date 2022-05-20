@@ -1,4 +1,4 @@
-package com.movie.board.action;
+package com.movie.review.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -1,12 +1,12 @@
-package com.movie.board.action;
+package com.movie.review.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.movie.board.db.MovieBoardDAO;
-import com.movie.board.db.MovieBoardDTO;
-import com.movie.board.db.MovieBoardReplyDTO;
+import com.movie.review.db.MovieBoardDAO;
+import com.movie.review.db.MovieBoardDTO;
+import com.movie.review.db.MovieBoardReplyDTO;
 
 public class MovieReviewReplyWriteAction implements Action {
 

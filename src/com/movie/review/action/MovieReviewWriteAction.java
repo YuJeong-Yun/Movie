@@ -1,4 +1,4 @@
-package com.movie.board.action;
+package com.movie.review.action;
 
 import java.io.PrintWriter;
 
@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.movie.board.db.MovieBoardDAO;
-import com.movie.board.db.MovieBoardDTO;
+import com.movie.review.db.MovieBoardDAO;
+import com.movie.review.db.MovieBoardDTO;
 
 public class MovieReviewWriteAction implements Action {
 

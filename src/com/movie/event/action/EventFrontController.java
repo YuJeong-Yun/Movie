@@ -106,6 +106,18 @@ public class EventFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+		}else if(command.equals("/EventDelete.ev")) { // 이벤트 글 삭제 동작
+			System.out.println(" C : /EventDelete.ev 호출");
+			// DB 사용ㅇ, 페이지 이동
+			
+			action = new EventDeleteAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 		
 		

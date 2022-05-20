@@ -1,4 +1,4 @@
-package com.movie.board.action;
+package com.movie.review.action;
 
 import java.io.IOException;
 

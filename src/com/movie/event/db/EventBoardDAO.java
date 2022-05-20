@@ -265,33 +265,33 @@ public class EventBoardDAO {
 	} // insertBoard
 	
 	
-//	// 글 삭제하는 메서드
-//	public int deleteBoard(int num) {
-//		int result = -1;
-//		
-//		try {
-//			// 1.2. 디비 연결
-//			con = getCon();
-//			
-//			// 3. sql 작성 & pstmt 객체
-//			sql = "delete from movie_notice_board where num=?";
-//			pstmt = con.prepareStatement(sql);
-//			// ???
-//			pstmt.setInt(1, num);
-//			
-//			// 4. sql 실행
-//			// pstmt.executeUpdate()는 실행된 row 수를 반환함
-//			 result = pstmt.executeUpdate(); 
-//			
-//			System.out.println(" DAO : 게시판 글 삭제 완료! " + result);
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeDB();
-//		}
-//		return result;
-//	} // deleteBoard
+	// 글 삭제하는 메서드
+	public int deleteBoard(int num) {
+		int result = -1;
+		
+		try {
+			// 1.2. 디비 연결
+			con = getCon();
+			
+			// 3. sql 작성 & pstmt 객체
+			sql = "delete from movie_event_board where num=?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setInt(1, num);
+			
+			// 4. sql 실행
+			// pstmt.executeUpdate()는 실행된 row 수를 반환함
+			 result = pstmt.executeUpdate(); 
+			
+			System.out.println(" DAO : 게시판 글 삭제 완료! " + result);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return result;
+	} // deleteBoard
 	
 	
 	// 수정 정보 DB에 업데이트하는 메서드
