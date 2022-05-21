@@ -48,14 +48,14 @@
         </tr>
 		<c:forEach var="dto" items="${searchList.get(0) }">
 			<tr>
-				<td>${dto.rownum }</td>
+				<td>${dto.rownum }</td><!-- 행번호 -->
 				<td>
-					<a href="./MovieReviewContent.bo?num=${dto.num }&pageNum=1">${dto.subject }</a>
-					<span><c:if test="${dto.re_cnt ne 0 }">[${dto.re_cnt }]</c:if></span>
+					<a href="./MovieReviewContent.bo?num=${dto.num }&pageNum=1">${dto.subject }</a> <!-- 제목 -->
+					<span><c:if test="${dto.re_cnt ne 0 }">[${dto.re_cnt }]</c:if></span> <!-- 댓글수 있으면 표시 -->
 				</td>
-				<td>${dto.name }</td>
-				<td><f:formatDate value="${dto.date }" pattern="yyyy.MM.dd"/></td>
-				<td>${dto.readcount }</td>
+				<td>${dto.name }</td> <!-- 작성자 이름 -->
+				<td><f:formatDate value="${dto.date }" pattern="yyyy.MM.dd"/></td> <!-- 작성 날짜  -->
+				<td>${dto.readcount }</td><!-- 조회수 -->
 			</tr>
 		</c:forEach>
       </table>
@@ -73,11 +73,12 @@
       <!-- 이벤트 글 리스트 -->
       <ul class="event-list">
         <c:forEach var="event" items="${searchList.get(1) }">
+            <!-- 글 클릭하면 해당 이벤트 페이지로 이동 -->
 	        <li>
 	          <a href="./EventContent.ev?num=${event.num }&pageNum=1&category=${event.category }">
-	            <img src="./upload/${event.image_thumb }" />
-	            <div class="txt1">${event.subject }</div>
-	            <div class="txt2">
+	            <img src="./upload/${event.image_thumb }" /> <!-- 이벤트 글 썸네일 -->
+	            <div class="txt1">${event.subject }</div> <!-- 제목 -->
+	            <div class="txt2"> <!-- 이벤트 기간 -->
 	              ${event.eventDateStart }
 	              <c:if test="${event.eventDateEnd ne '' or event.eventDateStart ne '' }">~</c:if>
 	               ${event.eventDateEnd }
@@ -106,9 +107,9 @@
         </tr>
 		<c:forEach var="dto" items="${searchList.get(2)}">
 			<tr>
-				<td>${dto.rownum }</td>
+				<td>${dto.rownum }</td> <!-- 행 번호 -->
 				<td>
-					<a href="./NoticeContent.no?num=${dto.num }&pageNum=1">${dto.subject }</a>
+					<a href="./NoticeContent.no?num=${dto.num }&pageNum=1">${dto.subject }</a> <!-- 글 제목 -->
 				</td>
 				<td class="file">
 					<!-- 첨부파일 있으면 아이콘 표시 -->
@@ -116,8 +117,8 @@
 						<span class="material-icons-outlined">save</span>
 					</c:if>
 				</td>
-				<td><f:formatDate value="${dto.date }" pattern="yyyy.MM.dd"/></td>
-				<td>${dto.readcount }</td>
+				<td><f:formatDate value="${dto.date }" pattern="yyyy.MM.dd"/></td> <!-- 작성일 -->
+				<td>${dto.readcount }</td> <!-- 조회수 -->
 			</tr>
 		</c:forEach>
       </table>
@@ -125,6 +126,14 @@
   </section>
   </c:if>
   
+  <!-- 검색결과 없으면 출력 -->
+  <c:if test="${boardCnt.stream().sum() eq 0 }">
+  <section class="searchNone">
+    <div class="inner">
+      <h2>검색결과 없음</h2>
+    </div>
+  </section>
+  </c:if>
   
 
   <!-- FOOTER -->

@@ -77,10 +77,10 @@
       			<c:if test="${startPage <= endPage }">
       				<!-- 현재 페이지블럭에 css 적용 -->
       				<c:if test="${pageNum eq i }">
-      					<a href="./Event.ev?pageNum=${i }" class="pageNum nowPageNum">${i }</a>
+      					<a href="./Event.ev?pageNum=${i }&category=${param.category }" class="pageNum nowPageNum">${i }</a>
       				</c:if>
       				<c:if test="${pageNum ne i }">
-      					<a href="./Event.ev?pageNum=${i }" class="pageNum">${i }</a>
+      					<a href="./Event.ev?pageNum=${i }&category=${param.category }" class="pageNum">${i }</a>
       				</c:if>
       			</c:if>
       		</c:forEach>

@@ -178,3 +178,13 @@
   font-size: 22px;
   height: 22px;
 }
+
+
+/* 검색결과 없음 */
+.searchNone > .inner {
+  margin: 200px auto 50px;
+}
+.searchNone h2 {
+  font-size: 25px;
+  color: #333;
+}
