@@ -69,7 +69,7 @@
       	<c:if test="${result != 0 }">
       		<!-- 이전 -->
       		<c:if test="${startPage > pageBlock }">
-      			<a href="./Event.ev?pageNum=${startPage-pageBlock }" class="prev">이전</a>
+      			<a href="./Event.ev?pageNum=${startPage-pageBlock }&category=${param.category }" class="prev">이전</a>
       		</c:if>
       		
       		<!-- 1 2 3 4 .... 10     11 12 ... 20 -->
@@ -87,7 +87,7 @@
       		
       		<!-- 다음 -->
       		<c:if test="${endPage < pageCount }">
-      			<a href="./Event.ev?pageNum=${startPage + pageBlock }" class="next">다음</a>
+      			<a href="./Event.ev?pageNum=${startPage + pageBlock }&category=${param.category }" class="next">다음</a>
       		</c:if>
       	</c:if>
       	
