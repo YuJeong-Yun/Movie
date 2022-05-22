@@ -28,7 +28,7 @@ public class MovieReviewContentAction implements Action {
 		
 		// BoardDAO 객체 생성
 		MovieBoardDAO dao = new MovieBoardDAO();
-		
+
 		// 조회수 증가 동작 실행
 		int result = dao.updateReadCount(num, id);
 		System.out.println(" M : 조회수 "+result+" 증가 완료"); // 조회수 증가 체크

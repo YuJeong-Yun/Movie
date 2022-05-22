@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -420,9 +423,11 @@ public class MovieBoardDAO {
 	} // updateBoard 
 	
 	
-	// 답글목록 가져오는 메서드
-	public ArrayList<MovieBoardReplyDTO> getBoardReplyList(int num) {
-		ArrayList<MovieBoardReplyDTO> boardReplyList = new ArrayList<>();
+	
+	//////////////////////////////////// 댓글 관련 /////////////////////////////
+	// 댓글 목록 가져오는 메서드
+	public List<MovieBoardReplyDTO> getBoardReplyList(int num) {
+		List<MovieBoardReplyDTO> boardReplyList = new ArrayList<>();
 		
 		try {
 			// 1.2. 디비 연결
@@ -430,7 +435,7 @@ public class MovieBoardDAO {
 			
 			// 3. sql 작성 & pstmt 객체 (num 내림차순 정렬, 페이징 처리)
 			//		=> limit 시작행(0부터 시작함), 개수
-			sql = "select * from movie_board_reply where re_ref = ? order by re_num asc";
+			sql = "select * from movie_board_reply where bno = ? order by cno asc";
 			pstmt = con.prepareStatement(sql);
 			// ???
 			pstmt.setInt(1, num);
@@ -448,12 +453,12 @@ public class MovieBoardDAO {
 				dto.setId(rs.getString("id"));
 				dto.setIp(rs.getString("ip"));
 				dto.setName(rs.getString("name"));
-				dto.setRe_num(rs.getInt("re_num"));
-				dto.setRe_ref(rs.getInt("re_ref"));
+				dto.setCno(rs.getInt("cno"));
+				dto.setBno(rs.getInt("bno"));
 				
 				boardReplyList.add(dto);
 			}
-			System.out.println("DAO : 게시판 답글 전체 목록 저장완료!" + boardReplyList);
+			System.out.println("DAO : 게시판 댓글 전체 목록 저장완료!" + boardReplyList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -463,9 +468,9 @@ public class MovieBoardDAO {
 	} // getBoardReplyList
 	
 	
-	// 답글쓰는 메서드
-	public void reInsertBoard(MovieBoardReplyDTO dto) {
-		int re_num = 0;
+	// 댓글쓰는 메서드
+	public int insertReply(MovieBoardReplyDTO dto) {
+		int cno = 0;
 		String name = "";
 		
 		try {
@@ -474,7 +479,7 @@ public class MovieBoardDAO {
 			
 			// num 계산하기 ----------------------------
 			// 3. sql 작성 & pstmt 객체
-			sql = "select max(re_num) from movie_board_reply";
+			sql = "select max(cno) from movie_board_reply";
 			pstmt = con.prepareStatement(sql);
 			
 			// 4. sql 실행
@@ -482,7 +487,7 @@ public class MovieBoardDAO {
 			
 			// 5. 데이터 처리
 			if(rs.next()) {
-				re_num = rs.getInt("max(re_num)")+1;
+				cno = rs.getInt("max(cno)")+1;
 			}
 			
 			// name 계산하기 -----------------------------
@@ -505,7 +510,7 @@ public class MovieBoardDAO {
 			sql = "update movie_board set re_cnt = re_cnt+1 where num=?";
 			pstmt = con.prepareStatement(sql);
 			// ???
-			pstmt.setInt(1, dto.getRe_ref());
+			pstmt.setInt(1, dto.getBno());
 			
 			// 4. sql 실행
 			pstmt.executeUpdate();
@@ -516,28 +521,146 @@ public class MovieBoardDAO {
 			sql="insert into movie_board_reply values(?,?,?,?,?,now(),?)";
 			pstmt = con.prepareStatement(sql);
 			// ???
-			pstmt.setInt(1, re_num);
+			pstmt.setInt(1, cno);
 			pstmt.setString(2, dto.getId());
 			pstmt.setString(3, name);
 			pstmt.setString(4, dto.getContent());
-			pstmt.setInt(5, dto.getRe_ref());
+			pstmt.setInt(5, dto.getBno());
 			pstmt.setString(6, dto.getIp()); // 조회수 0
 			
 			// 4. sql 실행
 			pstmt.executeUpdate();
 			
-			System.out.println("DAO : 답글 정보 저장 완료! ");
-			
+			System.out.println("DAO : 게시판 댓글 쓰기 완료! ");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();
 		}
-	} // reInsertBoard
+		return cno;
+	} // insertReply
 	
 	
-	// 답글 삭제 메서드
-	public int reDeleteBoard(MovieBoardReplyDTO dto) {
+	// 댓글 정보 가져오기
+	public MovieBoardReplyDTO getReply(int cno) {
+		MovieBoardReplyDTO dto = null;
+		try {
+			// 1.2. 디비 연결
+			con = getCon();
+			
+			// 3. sql 작성 & pstmt 객체 
+			sql = "select * from movie_board_reply where cno=?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setInt(1, cno);
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			if(rs.next()) {
+				dto = new MovieBoardReplyDTO();
+				
+				dto.setContent(rs.getString("content"));
+				dto.setDate(rs.getTimestamp("date"));
+				dto.setId(rs.getString("id"));
+				dto.setIp(rs.getString("ip"));
+				dto.setName(rs.getString("name"));
+				dto.setCno(rs.getInt("cno"));
+				dto.setBno(rs.getInt("bno"));
+				
+			}
+			System.out.println("DAO : 게시판 댓글 저장완료!" + dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return dto;
+	} //getReply
+	
+	
+	// 댓글 삭제 메서드
+	public int deleteReply(MovieBoardReplyDTO dto) {
+		int result = -1;
+		int bno = 0;
+		
+		try {
+			// 1.2. 디비 연결
+			con = getCon();
+			
+			// 부모글 번호(bno) 가져오기 ----------------------
+			// 3. sql 작성 & pstmt 객체
+			sql = "select bno from movie_board_reply where cno=?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setInt(1, dto.getCno());
+			
+			// 4.sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			if(rs.next()) {
+				bno = rs.getInt("bno");
+			}
+			System.out.println("DAO : 부모글 번호 가져오기 "+bno);
+			
+			// -----------------------------------------
+			
+			// 3. sql 작성 & pstmt 객체
+			sql = "select id from movie_board_reply where cno=?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setInt(1, dto.getCno());
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			if(rs.next()) {
+				if(dto.getId().equals(rs.getString("id"))) { // 아이디 일치하면 댓글 삭제
+					// 부모글 re_cnt -1 ---------------------------------
+					// 3. sql 작성 & pstmt 객체
+					sql = "update movie_board set re_cnt = re_cnt-1 where num=?";
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setInt(1, bno);
+					
+					// 4. sql 실행
+					pstmt.executeUpdate(); 
+					
+					
+					// 댓글 삭제 ----------------------------------------
+					// 3. sql 작성 & pstmt 객체
+					sql = "delete from movie_board_reply where cno=?";
+					pstmt = con.prepareStatement(sql);
+					// ???
+					pstmt.setInt(1, dto.getCno());
+					
+					// 4. sql 실행
+					// pstmt.executeUpdate()는 실행된 row 수를 반환함
+					result = pstmt.executeUpdate(); 
+
+					System.out.println(" DAO : 게시판 댓글 삭제 완료! ");
+					
+				} else { // 아이디 일치 XX
+					result = 0;
+				}
+			
+			}else { // 댓글 존재 XX
+				result = -1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return result;
+	} //  deleteReply
+	
+	
+	// 댓글 수정 메서드
+	public int updateReply(MovieBoardReplyDTO dto) {
 		int result = -1;
 		
 		try {
@@ -545,48 +668,39 @@ public class MovieBoardDAO {
 			con = getCon();
 			
 			// 3. sql 작성 & pstmt 객체
-			sql = "select id from movie_board_reply where re_num=?";
+			// 글이 존재하는지 체크
+			sql ="select id from movie_board_reply where cno = ?";
 			pstmt = con.prepareStatement(sql);
 			// ???
-			pstmt.setInt(1, dto.getRe_num());
+			pstmt.setInt(1, dto.getCno());
 			
 			// 4. sql 실행
 			rs = pstmt.executeQuery();
 			
 			// 5. 데이터 처리
 			if(rs.next()) {
-				if(dto.getId().equals(rs.getString("id"))) { // 아이디 일치 => 글 삭제
-					// 부모글 re_cnt -1 ---------------------------------
-					// 3. sql 작성 & pstmt 객체
-					sql = "update movie_board set re_cnt = re_cnt-1 where num=?";
+				// 댓글을 쓴 사람일 때만 수정 가능하도록 함
+				if(dto.getId().equals(rs.getString("id"))) { // 아이디 일치 => 댓글 수정하기
+					// 3. sql 작성(update) & pstmt 객체
+					sql = "update movie_board_reply set content=?,ip=? where cno=?";
 					pstmt = con.prepareStatement(sql);
 					// ???
-					pstmt.setInt(1, dto.getRe_ref());
+					pstmt.setString(1, dto.getContent());
+					pstmt.setString(2, dto.getIp());
+					pstmt.setInt(3, dto.getCno());
 					
 					// 4. sql 실행
-					pstmt.executeUpdate(); 
+					result = pstmt.executeUpdate();		
 					
-					// 답글 삭제 ----------------------------------------
-					// 3. sql 작성 & pstmt 객체
-					sql = "delete from movie_board_reply where re_num=?";
-					pstmt = con.prepareStatement(sql);
-					// ???
-					pstmt.setInt(1, dto.getRe_num());
-					
-					// 4. sql 실행
-					// pstmt.executeUpdate()는 실행된 row 수를 반환함
-					result = pstmt.executeUpdate(); 
-					 
-				
-				} else { // 아이디 다름
+				}else { // 아이디 일치 XX
 					result = 0;
 				}
-				
-			} else { // 글 존재 X
+			// 댓글 존재 XX
+			} else {
 				result = -1;
-			} // if
+			}
 			
-			System.out.println(" DAO : 게시판 답글 삭제 완료! " + result);
+			System.out.println(" DAO : 댓글 정보 수정 완료");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -594,7 +708,8 @@ public class MovieBoardDAO {
 			closeDB();
 		}
 		return result;
-	} //  reDeleteBoard
+	} // updateReply
+	
 		
 }
 

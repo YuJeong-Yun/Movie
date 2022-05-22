@@ -44,7 +44,7 @@ public class MovieReviewWriteAction implements Action {
 		PrintWriter out = response.getWriter();
 		
 		out.print("<script>");
-		out.print("alert('글쓰기가 완료되었습니다.');");
+		out.print("alert('댓글쓰기가 완료되었습니다.');");
 		out.print("location.href='./MovieReviewContent.bo?num="+num+"&pageNum=1';");
 		out.print("</script>");
 		out.flush();

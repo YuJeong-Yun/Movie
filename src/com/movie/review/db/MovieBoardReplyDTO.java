@@ -3,20 +3,20 @@ package com.movie.review.db;
 import java.sql.Timestamp;
 
 public class MovieBoardReplyDTO {
-	private int re_num;
+	private int cno;
 	private String id;
 	private String name;
 	private String content;
-	private int re_ref;
+	private int bno;
 	private Timestamp date;
 	private String ip;
 
-	public int getRe_num() {
-		return re_num;
+	public int getCno() {
+		return cno;
 	}
 
-	public void setRe_num(int re_num) {
-		this.re_num = re_num;
+	public void setCno(int cno) {
+		this.cno = cno;
 	}
 
 	public String getId() {
@@ -43,12 +43,12 @@ public class MovieBoardReplyDTO {
 		this.content = content;
 	}
 
-	public int getRe_ref() {
-		return re_ref;
+	public int getBno() {
+		return bno;
 	}
 
-	public void setRe_ref(int re_ref) {
-		this.re_ref = re_ref;
+	public void setBno(int bno) {
+		this.bno = bno;
 	}
 
 	public Timestamp getDate() {
@@ -69,8 +69,8 @@ public class MovieBoardReplyDTO {
 
 	@Override
 	public String toString() {
-		return "MovieBoardReplyDTO [re_num=" + re_num + ", id=" + id + ", name=" + name + ", content=" + content
-				+ ", re_ref=" + re_ref + ", date=" + date + ", ip=" + ip + "]";
+		return "MovieBoardReplyDTO [cno=" + cno + ", id=" + id + ", name=" + name + ", content=" + content + ", bno="
+				+ bno + ", date=" + date + ", ip=" + ip + "]";
 	}
 
 }

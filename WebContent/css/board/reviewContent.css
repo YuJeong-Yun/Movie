@@ -34,6 +34,7 @@
 }
 .movie-review .btn-group.title .btn {
 }
+
 /* 글 타이틀 */
 .movie-review .review__title {
   padding: 30px 0 10px;
@@ -59,6 +60,7 @@
   font-size: 14px;
   color: #777;
 }
+
 /* 글 본문 */
 .movie-review .review__content {
   padding: 30px 0 100px;
@@ -86,6 +88,8 @@
 .movie-review .review__content .btn-group.content .btn:hover {
   background-color: #efefef;
 }
+
+
 /* 글 댓글 */
 .movie-review .review__comment {
 }
@@ -108,40 +112,8 @@
   font-size: 23px;
   margin-right: 9px;
 }
-.movie-review .review__comment .comment__content .content__write form {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.movie-review .review__comment .comment__content .content__write .lengthCalc,
-.movie-review .review__comment .comment__content .content__write .lengthCalc2 {
-margin-right: 15px;
-color: #aaa;
-font-size: 14px;
-}
-.movie-review .review__comment .comment__content .content__write textarea {
-  width: 700px;
-  height: 100px;
-  padding: 15px;
-  border: 1px solid #d6d4ca;
-  border-radius: 10px;
-  margin-right: 10px;
-  resize: none;
-  outline: none;
-  line-height: 18px;
-}
-.movie-review .review__comment .comment__content .content__write input  {
-background-color: #fff;
-  width: 50px;
-  height: 30px;
-  border: none;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-.movie-review .review__comment .comment__content .content__write input:hover  {
-  background-color: #efefef;
-  cursor: pointer;
+.movie-review .review__comment .comment__cnt .re_cnt::before {
+  content: "댓글 ";
 }
 .movie-review .review__comment .comment__content li {
   padding: 30px 0;
@@ -172,20 +144,53 @@ background-color: #fff;
   color: #999;
 }
 .movie-review .review__comment .comment__content li .content__btn {
+  display: flex;
   position: absolute;
   right: 0;
 }
-.movie-review .review__comment .comment__content li .content__btn a {
+.movie-review .review__comment .comment__content li .content__btn input {
+  background-color: transparent;
+  border: none;
   color: #666;
   font-size: 14px;
+  cursor: pointer;
 }
-.movie-review .review__comment .comment__content li .content__btn a:nth-child(2)::before {
-  content: " │";
-  color: #ddd;
+
+/* 댓글 작성 */
+.movie-review .review__comment .content__write form {
+  display: flex;
+  width: 100%;
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
 }
-.movie-review .review__comment .comment__content li .content__btn a:last-child::before {
-  content: " │";
-  color: #ddd;
+.movie-review .review__comment .content__write .lengthCalc {
+margin-right: 15px;
+color: #aaa;
+font-size: 14px;
+}
+.movie-review .review__comment .content__write textarea {
+  width: 700px;
+  height: 100px;
+  padding: 15px;
+  border: 1px solid #d6d4ca;
+  border-radius: 10px;
+  margin-right: 10px;
+  resize: none;
+  outline: none;
+  line-height: 18px;
+}
+.movie-review .review__comment .content__write input  {
+background-color: #fff;
+  width: 50px;
+  height: 30px;
+  border: none;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.movie-review .review__comment .content__write input:hover  {
+  background-color: #efefef;
+  cursor: pointer;
 }
 .movie-review .review__comment .btn--top {
   position: absolute;

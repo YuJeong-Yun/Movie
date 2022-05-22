@@ -22,7 +22,10 @@
     rel="stylesheet">
 
   <link rel="stylesheet" href="./css/board/reviewContent.css" />
+  <script src="./js/jquery-3.6.0.min.js"></script>
   <script defer src="./js/board/reviewContent.js"></script>
+
+  
 </head>
 
 <body>
@@ -68,13 +71,16 @@
       <!-- 해당 글의 리뷰 수 출력 부분 -->
       <ul class="review__comment">
         <div class="inner">
+          
+          <!-- 댓글 아이콘 / 댓글 수 -->
           <div class="comment__cnt">
             <span class="material-icons-outlined">textsms</span> <!-- 댓글 아이콘 -->
-            <div>댓글 ${dto.re_cnt }</div> <!-- 댓글 수 -->
+            <div class="re_cnt">${dto.re_cnt }</div> <!-- 댓글 수 -->
           </div>
+          
           <!-- 글의 리뷰 모두 출력 -->
           <ul class="comment__content">
-            <c:forEach var="boardReply" items="${boardReplyList }">
+            <c:forEach var="boardReply" items="${boardReplyList }" varStatus="status">
 	            <li>
 	              <span class="material-icons">person</span> <!-- 프로필 -->
 	              <div class="content__wrapper">
@@ -86,26 +92,41 @@
 	                <div class="content__btn">
 	                  <!-- 댓글 작성 아이디와 로그인한 아이디 같으면 수정/삭제 버튼 출력 -->
 	                  <c:if test="${boardReply.id eq id }">
-	                    <a href="javascript:void(0)">수정</a>
-	                    <a href="./MovieReviewReplyDelete.bo?num=${dto.num }&pageNum=${pageNum }&re_num=${boardReply.re_num }" onclick="return confirm('삭제하시겠습니까?');">삭제</a>
+	                    <input type="button" value="수정" onclick='replyUpdate(event)'>
+	                    <input type="button" value="삭제" onclick='replyDelete(event, ${boardReply.cno});'>
 	                  </c:if>
 	                </div>
 	              </div>
 	            </li>
-            </c:forEach>
-            <!-- 로그인한 사람만 댓글 작성 가능 -->
-            <c:if test="${id ne null }">
-	            <li class="content__write">
-	              <form action="./MovieReviewReply.bo?pageNum=${pageNum }" method="post" name="fr" onsubmit="return check();">
+	              
+	            <!-- 수정할 폼 -->
+	            <li class="content__write" style="display: none;">
+	              <form name="fr">
 	                <!-- 댓글은 1000자 까지만 작성 가능. 남은 입력 가능 수 출력 -->
-	                <div class="lengthCalc">1000</div> <!-- 남은 입력 가능 수 (최대 1000자) -->
-	                <textarea name="reply" maxlength="1000" onkeyup="calcInputLength();"></textarea>
-	                <input type="submit" value="등록">
-	                <input type="hidden" name="num" value="${dto.num }">
+	                <div class="lengthCalc">1000</div> 
+	                <textarea name="reply" maxlength="1000" onkeyup="calcInputLength(event);" class="replyInput">${boardReply.content }</textarea>
+	                <input type="button" value="취소" onclick="replyUpdateCancle(event)">
+	                <input type="button" value="수정" onclick="replyUpdatePro(event, ${boardReply.cno}, ${status.index })">
 	              </form>
 	            </li>
-	        </c:if>
+	            
+	            
+            </c:forEach>
           </ul>
+          
+           <!-- 로그인한 사람만 댓글 작성 가능 -->
+           <c:if test="${id ne null }">
+            <li class="content__write">
+<%--               <form action="./MovieReviewReply.bo?pageNum=${pageNum }" method="post" name="fr" onsubmit="return check();"> --%>
+              <form name="fr">
+                <!-- 댓글은 1000자 까지만 작성 가능. 남은 입력 가능 수 출력 -->
+                <div class="lengthCalc">1000</div>
+                <textarea name="reply" maxlength="1000" onkeyup="calcInputLength(event);" placeholder="댓글을 입력해보세요"></textarea>
+                <input type="button" value="등록" onclick="replyWrite(event);">
+              </form>
+            </li>
+          </c:if>
+          
           <!-- 화면 상단으로 이동하는 버튼 -->
           <a href="#" class="btn btn--top">▲ TOP</a>
         </div>
@@ -117,6 +138,156 @@
 
   <!-- FOOTER -->
   <jsp:include page="../inc/footer.jsp"></jsp:include>
+  
+  
+  
+  
+  
+    <script type="text/javascript">
+		  
+	  // 현재 글번호
+	  let bno = <c:out value="${dto.num }"></c:out>;
+
+	  // 댓글 쓰기
+	  function replyWrite(event) {
+		const e = event.target;
+		// 공백이면 댓글 작성 안 함
+	  	if(e.previousElementSibling.value.trim() == "") {
+	  		return;
+	  	}
+		// 작성한 내용
+		let content = e.previousElementSibling.value;
+		// 댓글 마지막 인덱스 찾기
+		let replyIndex = document.querySelector('.comment__content').childElementCount/2;
+		  
+		
+	  	$.getJSON({
+	  		url: "./board/replyWriteAjax.jsp",
+	  		type: "post",
+	  		data: {
+	  			content: content,
+	  			bno : bno,
+	  		},
+	  		success: function(item) {
+				// 댓글 리스트에 추가
+				let newReply = 
+					"<li>" +
+		              "<span class='material-icons'>person</span>" +
+		              "<div class='content__wrapper'>" +
+		                "<div  class='content__name'>"+item.name+"</div>" +
+		                "<div class='content__text' style='white-space:pre-wrap'>"+item.content+"</div>" +
+		                "<div class='content__date'>"+item.date+"</div>" +
+		                "<div class='content__btn'>" +
+	                      "<input type='button' value='수정' onclick='replyUpdate(event)'>" +
+	                      "<input type='button' value='삭제' onclick='replyDelete(event,"+item.cno+")'>" +
+		                "</div>" +
+		              "</div>" +
+		            "</li>" +
+		            "<li class='content__write' style='display: none;'>" +
+		              "<form name='fr'>" +
+		                "<div class='lengthCalc'>1000</div>" +
+		                "<textarea name='reply' maxlength='1000' onkeyup='calcInputLength(event);' class='replyInput'>"+item.content+"</textarea>" +
+		                "<input type='button' value='취소' onclick='replyUpdateCancle(event)'>" +
+		                "<input type='button' value='수정' onclick='replyUpdatePro(event,"+item.cno+","+replyIndex+")'>" +
+		              "</form>" +
+		            "</li>";
+		            
+		       
+	           $('.comment__content').append(newReply);
+	           
+	   	  	   // 댓글 입력창 내용 비우기
+	   	  	   e.previousElementSibling.value = "";
+	   	       // 댓글 수 + 1
+	           $('.re_cnt').text(Number($('.re_cnt').text())+1); 
+	  		},
+	  	    error:function(request,error){
+	  	      alert("message:"+request.responseText);
+	  	    }
+	  	}); // $.getJSON
+	  }; // replyWrite()
+  
+	  
+	  
+	  // 댓글 삭제
+	  function replyDelete(event, cno) {
+		  
+		  if(confirm('삭제하시겠습니까?')==false) {
+			  return;
+		  }
+		  // 댓글 삭제
+		  $.getJSON({
+			url: "./board/replyDeleteAjax.jsp",
+	  		type: "post",
+	  		data: {
+	  			cno : cno,
+	  		},
+	  		success: function(item) {
+	  		},
+	  	    error:function(){
+	  	    	alert('댓글 삭제 오류');
+		  	}
+		  }); // $.getJSON
+		  
+		  // 삭제한 댓글 숨기기
+		  event.target.parentElement.parentElement.parentElement.style.display="none";
+		  // 본문 댓글 수 - 1
+		  $('.re_cnt').text(Number($('.re_cnt').text())-1); 
+	  }; // replyDelete()
+	  
+	  
+	  
+	  // 댓글 수정 클릭
+	  function replyUpdate(event) {
+		  const e = event.target;
+		  
+		  // 수정할 댓글 숨기기
+		  e.parentElement.parentElement.parentElement.style.display="none";
+		  // 수정할 폼 보이기
+		  e.parentElement.parentElement.parentElement.nextElementSibling.style.display="block";
+	  }; //replyUpdate()
+	  
+	  // 댓글 수정 취소 클릭
+	  function replyUpdateCancle(event) {
+		  const e = event.target;
+		  
+		  // 댓글 보이기
+		  e.parentElement.parentElement.previousElementSibling.style.display="flex";
+		  // 수정할 폼 숨기기
+		  e.parentElement.parentElement.style.display="none";
+	  }; //replyUpdateCancle()
+	  
+	  // 댓글 수정 동작하기
+	  function replyUpdatePro(event, cno, index) {
+		  const e = event.target;
+		  // 수정한 댓글 내용
+		  let content = event.target.previousElementSibling.previousElementSibling.value;
+		  
+		  // 댓글 수정
+		  $.getJSON({
+			url: "./board/replyUpdateAjax.jsp",
+	  		type: "post",
+	  		data: {
+	  			cno : cno,
+	  			content: content,
+	  		},
+	  		success: function(item) {
+	  		  // 댓글 보이기
+	  		  e.parentElement.parentElement.previousElementSibling.style.display="flex";
+	  		  // 수정할 폼 숨기기
+	  		  e.parentElement.parentElement.style.display="none";
+	  		  // 댓글 내용 -> 수정한 내용으로 변경
+	  		  let replyContentArr = document.querySelectorAll('.comment__content li .content__text');
+	  		replyContentArr[index].textContent = content;
+	  		},
+	  		error: function() {
+	  			alert('댓글 수정 오류');
+	  		}
+		  }); // $.getJSON
+		  
+
+	  }; //replyUpdatePro()
+	  
+  </script>
 </body>
 
 </html>
