@@ -12,6 +12,7 @@ public class MemberDTO {
 	private String email;
 	private Date date;
 	private String profile;
+	private String th_profile;
 
 	public String getId() {
 		return id;
@@ -85,10 +86,19 @@ public class MemberDTO {
 		this.profile = profile;
 	}
 
+	public String getTh_profile() {
+		return th_profile;
+	}
+
+	public void setTh_profile(String th_profile) {
+		this.th_profile = th_profile;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberDTO [id=" + id + ", pw=" + pw + ", name=" + name + ", gender=" + gender + ", addr=" + addr
-				+ ", tel=" + tel + ", email=" + email + ", date=" + date + ", profile=" + profile + "]";
+				+ ", tel=" + tel + ", email=" + email + ", date=" + date + ", profile=" + profile + ", th_profile="
+				+ th_profile + "]";
 	}
 
 }

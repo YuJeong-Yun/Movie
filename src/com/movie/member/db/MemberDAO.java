@@ -161,6 +161,7 @@ public class MemberDAO {
 				dto.setTel(rs.getString("tel"));
 				dto.setEmail(rs.getString("email"));
 				dto.setProfile(rs.getString("profile"));
+				dto.setTh_profile(rs.getString("th_profile"));
 			}	
 			System.out.println("DAO : 회원정보 저장 완료!");
 			
@@ -214,7 +215,7 @@ public class MemberDAO {
 					// 프로필 파일 있거나 profileDel==1이면 프로필 업데이트 O -------------------
 					} else {
 						// 3 sql 작성(update) & pstmt 객체
-						sql = "update movie_member set gender=?, addr=?, tel=?, email=?, profile=? where id=?";
+						sql = "update movie_member set gender=?, addr=?, tel=?, email=?, profile=?, th_profile=? where id=?";
 						pstmt = con.prepareStatement(sql);
 						// ???
 						pstmt.setString(1, dto.getGender());
@@ -222,7 +223,8 @@ public class MemberDAO {
 						pstmt.setString(3, dto.getTel());
 						pstmt.setString(4, dto.getEmail());
 						pstmt.setString(5, dto.getProfile());
-						pstmt.setString(6, dto.getId());
+						pstmt.setString(6, dto.getTh_profile());
+						pstmt.setString(7, dto.getId());
 						
 						System.out.println("DAO : 프로필 업데이트 O");
 					}
