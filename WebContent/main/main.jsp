@@ -35,8 +35,15 @@
 
   <!-- 유튜브 iFrame API -->
   <section class="youtube">
-    <div class="youtube__area">
-      <div id="player"></div>
+    <div class="youtube-video">
+      <div class="youtube__area">
+        <div id="player"></div>
+      </div>
+    </div>
+    
+    <div class="youtube-text">
+      <div class="title">피는 물보다 진하다</div>
+      <div class="description">하드보일드 액션의<br>기준이 바뀐다!</div>
     </div>
   </section> 
 
