@@ -145,6 +145,7 @@ header .menu2 .search .searchInput {
 header .menu2 .search .icon {
   font-size: 25px;
   color: #333;
+  cursor: pointer;
 }
 
 

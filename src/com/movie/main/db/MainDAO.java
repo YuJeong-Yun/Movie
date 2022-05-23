@@ -143,14 +143,14 @@ public class MainDAO {
 			// 1.2. 디비 연결
 			con = getCon();
 			
-			// movie_board 게시판 검색 결과 있으면 최신 글 5개 리스트에 저장
+			// movie_board 게시판 검색 결과 있으면 최신 글 10개 리스트에 저장
 			if((int)boardCnt.get(0) > 0) {
 				reviewList = new ArrayList<>();
 				
 				// 3. sql 작성 & pstmt 객체
 				// 검색어 포함글만 select 
 				sql = "select * from (select @ROWNUM:=@ROWNUM +1 AS rownum, T.*	FROM movie_board T, (select @ROWNUM:=0) R "
-						+ "	 ORDER BY num asc) sub where subject like ? order by sub.rownum desc limit 0, 5";
+						+ "	 ORDER BY num asc) sub where subject like ? order by sub.rownum desc limit 0, 10";
 				pstmt = con.prepareStatement(sql);
 				// ???
 				pstmt.setString(1, "%"+search+"%");
@@ -184,13 +184,13 @@ public class MainDAO {
 				searchList.add(null);
 			}
 				
-			// movie_event_board 게시판 검색 결과 있으면 최신 글 5개 리스트에 저장
+			// movie_event_board 게시판 검색 결과 있으면 최신 글 12개 리스트에 저장
 			if((int)boardCnt.get(1) > 0) {
 				eventList = new ArrayList<>();
 				
 				// 3. sql 작성 & pstmt 객체
 				// 검색어 포함글만 select 
-				sql = "select * from movie_event_board where subject like ? order by num desc limit 0, 6";
+				sql = "select * from movie_event_board where subject like ? order by num desc limit 0, 12";
 				pstmt = con.prepareStatement(sql);
 				// ???
 				pstmt.setString(1, "%"+search+"%");
@@ -222,14 +222,14 @@ public class MainDAO {
 				searchList.add(null);
 			}
 			
-			// movie_notice_board 게시판 검색 결과 있으면 최신 글 5개 리스트에 저장
+			// movie_notice_board 게시판 검색 결과 있으면 최신 글 10개 리스트에 저장
 			if((int)boardCnt.get(2) > 0) {
 				noticeList = new ArrayList<>();
 				
 				// 3. sql 작성 & pstmt 객체
 				// 검색어 포함글만 select 
 				sql = "select * from (select @ROWNUM:=@ROWNUM +1 AS rownum, T.*	FROM movie_notice_board T, (select @ROWNUM:=0) R "
-						+ "	 ORDER BY num asc) sub where subject like ? order by sub.rownum desc limit 0, 5";
+						+ "	 ORDER BY num asc) sub where subject like ? order by sub.rownum desc limit 0, 10";
 				pstmt = con.prepareStatement(sql);
 				// ???
 				pstmt.setString(1, "%"+search+"%");

@@ -174,4 +174,12 @@
 	  }
   }, 200));
   
+  
+  // 돋보기 아이콘 클릭하면 검색 동작
+  const searchIcon = document.querySelector('.search .icon');
+  const searchForm = document.querySelector('.search form');
+  searchIcon.addEventListener('click', function() {
+	  searchForm.submit();
+  })
+  
 </script>
