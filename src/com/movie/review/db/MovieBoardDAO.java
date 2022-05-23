@@ -711,35 +711,5 @@ public class MovieBoardDAO {
 	} // updateReply
 	
 	
-	// 프로필 가져오기
-	public String getProfile(String id) {
-		String profile = null;
-		
-		try {
-			// 1.2. 디비 연결
-			con = getCon();
-			
-			// 3. sql 작성 & pstmt 객체
-			sql = "select profile from movie_member where id=?";
-			pstmt = con.prepareStatement(sql);
-			// ???
-			pstmt.setString(1, id);
-			
-			// 4. sql 실행
-			rs = pstmt.executeQuery();
-			
-			// 5. 데이터 처리
-			if(rs.next()) {
-				profile = rs.getString("profile");
-			}
-			
-			System.out.println("DAO : 프로필 정보 저장 "+profile);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return profile;
-	} //getProfile()
-	
-		
 }
 

@@ -49,7 +49,7 @@
         <ul class="inner">
           <li class="title__subject">${dto.subject }</li> <!-- 타이틀 -->
           <li class="title__name"><!-- 글 작성자 -->
-          	<img src="./profile/${profile }" /> <!-- 프로필 -->
+          	<img src="./profile/th_${dto.id}.jpg" /> <!-- 프로필 -->
           	${dto.name }
           </li> 
           <li class="title__info">
@@ -112,7 +112,7 @@
 	              <form name="fr">
 	                <!-- 댓글은 1000자 까지만 작성 가능. 남은 입력 가능 수 출력 -->
 	                <div class="lengthCalc">1000</div> 
-	                <textarea name="reply" maxlength="1000" onkeyup="calcInputLength(event);" class="replyInput">${boardReply.content }</textarea>
+	                <textarea name="reply" maxlength="1000" onkeyup="calcInputLength(event);">${boardReply.content }</textarea>
 	                <input type="button" value="취소" onclick="replyUpdateCancle(event)">
 	                <input type="button" value="수정" onclick="replyUpdatePro(event, ${boardReply.cno}, ${status.index })">
 	              </form>
@@ -125,7 +125,6 @@
            <!-- 로그인한 사람만 댓글 작성 가능 -->
            <c:if test="${id ne null }">
             <li class="content__write">
-<%--               <form action="./MovieReviewReply.bo?pageNum=${pageNum }" method="post" name="fr" onsubmit="return check();"> --%>
               <form name="fr">
                 <!-- 댓글은 1000자 까지만 작성 가능. 남은 입력 가능 수 출력 -->
                 <div class="lengthCalc">1000</div>
@@ -143,7 +142,6 @@
     </div>
   </section>
 
-
   <!-- FOOTER -->
   <jsp:include page="../inc/footer.jsp"></jsp:include>
   
@@ -154,8 +152,10 @@
     <script type="text/javascript">
 		  
 	  // 현재 글번호
-	  let bno = <c:out value="${dto.num }"></c:out>;
-
+	  let bno = ${dto.num };
+	  // 본문 글쓴이 아이디
+	  let boardWriter ='${dto.id }';
+	  
 	  // 댓글 쓰기
 	  function replyWrite(event) {
 		const e = event.target;
@@ -177,15 +177,16 @@
 	  			bno : bno,
 	  		},
 	  		success: function(item) {
-				// 댓글 리스트에 추가
+				// 글쓴이 댓글쓴이 아이디 비교 -> 댓글 리스트에 함께 추가
+				let writer = (boardWriter == item.id) ? "<div class='writer'>글쓴이</div>" : "";
+	  			
+	  			// 댓글 리스트에 추가
 				let newReply = 
 					"<li>" +
-		              "<span class='material-icons'>person</span>" +
+		              "<span class='material-icons'>person</span>" + 
 		              "<div class='content__wrapper'>" +
 		                "<div  class='content__name'>"+item.name + 
-		                  "<c:if test='${"+ item.id +" eq dto.id }'>" +
-		                    "<div class='writer'>글쓴이</div>" +
-		                   "</c:if>" +
+		                writer +
 		                "</div>" +
 		                "<div class='content__text' style='white-space:pre-wrap'>"+item.content+"</div>" +
 		                "<div class='content__date'>"+item.date+"</div>" +
@@ -198,7 +199,7 @@
 		            "<li class='content__write' style='display: none;'>" +
 		              "<form name='fr'>" +
 		                "<div class='lengthCalc'>1000</div>" +
-		                "<textarea name='reply' maxlength='1000' onkeyup='calcInputLength(event);' class='replyInput'>"+item.content+"</textarea>" +
+		                "<textarea name='reply' maxlength='1000' onkeyup='calcInputLength(event);'>"+item.content+"</textarea>" +
 		                "<input type='button' value='취소' onclick='replyUpdateCancle(event)'>" +
 		                "<input type='button' value='수정' onclick='replyUpdatePro(event,"+item.cno+","+replyIndex+")'>" +
 		              "</form>" +
@@ -209,11 +210,13 @@
 	           
 	   	  	   // 댓글 입력창 내용 비우기
 	   	  	   e.previousElementSibling.value = "";
+	   	  	   // 댓글 입력창 남은 숫자 다시 1000으로 설정
+	   	  	   e.previousElementSibling.previousElementSibling.textContent= 1000;
 	   	       // 댓글 수 + 1
 	           $('.re_cnt').text(Number($('.re_cnt').text())+1); 
 	  		},
-	  	    error:function(request,error){
-	  	      alert("message:"+request.responseText);
+	  	    error:function(){
+	  	      alert("댓글 작성 오류");
 	  	    }
 	  	}); // $.getJSON
 	  }; // replyWrite()
@@ -273,6 +276,10 @@
 		  const e = event.target;
 		  // 수정한 댓글 내용
 		  let content = event.target.previousElementSibling.previousElementSibling.value;
+		  // 댓글 내용 없으면 수정 X
+		  if(content.trim() == "") {
+		  	return;
+		  }
 		  
 		  // 댓글 수정
 		  $.getJSON({
@@ -289,7 +296,7 @@
 	  		  e.parentElement.parentElement.style.display="none";
 	  		  // 댓글 내용 -> 수정한 내용으로 변경
 	  		  let replyContentArr = document.querySelectorAll('.comment__content li .content__text');
-	  		replyContentArr[index].textContent = content;
+	  		  replyContentArr[index].textContent = content;
 	  		},
 	  		error: function() {
 	  			alert('댓글 수정 오류');
