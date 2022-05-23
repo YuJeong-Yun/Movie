@@ -48,7 +48,9 @@
       <ul class="review__title">
         <ul class="inner">
           <li class="title__subject">${dto.subject }</li> <!-- 타이틀 -->
-          <li class="title__name">${dto.name }</li> <!-- 글 작성자 -->
+          <li class="title__name"><!-- 글 작성자 -->
+          	${dto.name }
+          </li> 
           <li class="title__info">
             <span><f:formatDate value="${dto.date }" pattern="yyyy.MM.dd  HH:mm" /></span> <!-- 작성 시간 -->
             <span>조회수 ${dto.readcount }</span> <!-- 조회수 -->

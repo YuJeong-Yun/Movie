@@ -55,6 +55,11 @@
   color: #555;
   font-weight: 700;
 }
+.movie-review .review__title .title__name img {
+	width: 20px;
+	height: 20px;
+	
+}
 .movie-review .review__title .title__info span {
   margin-right: 15px;
   font-size: 14px;

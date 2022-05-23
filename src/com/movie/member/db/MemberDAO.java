@@ -61,32 +61,33 @@ public class MemberDAO {
 	
 	// 회원가입 - insertMember()
 	public void insertMember(MemberDTO dto){
-		
-				try {
-					// 1.2. 디비 연결
-					con = getCon();
-					
-					// 3. sql작성 & pstmt 생성
-					sql = "insert into movie_member(id, pw, name, gender, addr, tel, email, date) values(?, ?, ?, ?, ?, ?, ?, now())";
-					pstmt = con.prepareStatement(sql);
-					// ??? 입력
-					pstmt.setString(1, dto.getId());
-					pstmt.setString(2, dto.getPw());
-					pstmt.setString(3, dto.getName());
-					pstmt.setString(4, dto.getGender());
-					pstmt.setString(5, dto.getAddr());
-					pstmt.setString(6, dto.getTel());
-					pstmt.setString(7, dto.getEmail());
-					
-					// 4. sql 실행
-					pstmt.executeUpdate();
-					
-					System.out.println("DAO : 회원가입 완료!");
-				} catch (Exception e) {
-					e.printStackTrace();
-				} finally {
-					closeDB();
-				}
+	
+		try {
+			// 1.2. 디비 연결
+			con = getCon();
+			
+			// 3. sql작성 & pstmt 생성
+			sql = "insert into movie_member(id, pw, name, gender, addr, tel, email, date, profile) values(?, ?, ?, ?, ?, ?, ?, now(), ?)";
+			pstmt = con.prepareStatement(sql);
+			// ??? 입력
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPw());
+			pstmt.setString(3, dto.getName());
+			pstmt.setString(4, dto.getGender());
+			pstmt.setString(5, dto.getAddr());
+			pstmt.setString(6, dto.getTel());
+			pstmt.setString(7, dto.getEmail());
+			pstmt.setString(8, dto.getProfile());
+			
+			// 4. sql 실행
+			pstmt.executeUpdate();
+			
+			System.out.println("DAO : 회원가입 완료!");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
 	} // 회원가입 - insertMember()
 	
 	
@@ -160,6 +161,7 @@ public class MemberDAO {
 				dto.setAddr(rs.getString("addr"));
 				dto.setTel(rs.getString("tel"));
 				dto.setEmail(rs.getString("email"));
+				dto.setProfile(rs.getString("profile"));
 			}	
 			System.out.println("DAO : 회원정보 저장 완료!");
 			
@@ -176,7 +178,7 @@ public class MemberDAO {
 	
 	
 	// updateMember(updateBean)
-	public int updateMember(MemberDTO dto) {
+	public int updateMember(MemberDTO dto, int profileDel) {
 		int result = -1;
 		
 		try {
@@ -194,18 +196,37 @@ public class MemberDAO {
 			
 			// 5 데이터 처리
 			if(rs.next()) { // 수정할 정보가 있을 때(회원일 때)
-				if(dto.getPw().equals(rs.getString("pw"))) {
-					// 본인 -> 정보수정
+				if(dto.getPw().equals(rs.getString("pw"))) { // 본인 -> 정보수정
 					
-					// 3 sql 작성(update) & pstmt 객체
-					sql = "update movie_member set gender=?, addr=?, tel=?, email=? where id=?";
-					pstmt = con.prepareStatement(sql);
-					// ???
-					pstmt.setString(1, dto.getGender());
-					pstmt.setString(2, dto.getAddr());
-					pstmt.setString(3, dto.getTel());
-					pstmt.setString(4, dto.getEmail());
-					pstmt.setString(5, dto.getId());
+					// 프로필 null이고 profileDel!=1 이면 프로필 업데이트 X ---------------------
+					if(dto.getProfile()==null && profileDel!=1) {
+						// 3 sql 작성(update) & pstmt 객체
+						sql = "update movie_member set gender=?, addr=?, tel=?, email=? where id=?";
+						pstmt = con.prepareStatement(sql);
+						// ???
+						pstmt.setString(1, dto.getGender());
+						pstmt.setString(2, dto.getAddr());
+						pstmt.setString(3, dto.getTel());
+						pstmt.setString(4, dto.getEmail());
+						pstmt.setString(5, dto.getId());
+						
+						System.out.println("DAO : 프로필 업데이트 X");
+						
+					// 프로필 파일 있거나 profileDel==1이면 프로필 업데이트 O -------------------
+					} else {
+						// 3 sql 작성(update) & pstmt 객체
+						sql = "update movie_member set gender=?, addr=?, tel=?, email=?, profile=? where id=?";
+						pstmt = con.prepareStatement(sql);
+						// ???
+						pstmt.setString(1, dto.getGender());
+						pstmt.setString(2, dto.getAddr());
+						pstmt.setString(3, dto.getTel());
+						pstmt.setString(4, dto.getEmail());
+						pstmt.setString(5, dto.getProfile());
+						pstmt.setString(6, dto.getId());
+						
+						System.out.println("DAO : 프로필 업데이트 O");
+					}
 					
 					// 4 sql 실행
 					result = pstmt.executeUpdate(); // result = 1;

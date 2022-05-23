@@ -48,6 +48,7 @@ public class MovieReviewContentAction implements Action {
 		request.setAttribute("prevNum", prevNum);
 		request.setAttribute("nextNum", nextNum);
 		request.setAttribute("boardReplyList", boardReplyList);
+		request.setAttribute("profile", dao.getProfile(id)); // 작성자 프로필 정보 가져오기
 		
 		// 페이지 이동 객체 
 		ActionForward forward = new ActionForward();

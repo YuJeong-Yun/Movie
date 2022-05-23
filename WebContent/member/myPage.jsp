@@ -48,9 +48,21 @@
       <!-- 회원 정보 수정 -->
       <div class="modify-info">
         <h2 class="info-title">MY CGV</h2>
-        <form action="./MemberUpdateAction.me" method="post" name="fr" onsubmit="return formCheck();">
+        <form action="./MemberUpdateAction.me" method="post" enctype="multipart/form-data" name="fr" onsubmit="return formCheck();">
           <div class="form-title">필수 회원 정보</div>
           <table>
+            <tr>
+              <td>프로필
+                <c:if test="${dto.profile ne null }">
+                  <img src="./profile/${dto.profile }" class="profile-img">
+                </c:if>
+              </td>
+              <td colspan="2">
+                <input type="file" name="profile" value="프로필 등록하기"><br>
+                <div class="profile-size">* 10MB 이하로 등록해주세요.</div>
+                <label class="profile-del"><input type="checkBox" name="profileDel" value="1">프로필 삭제</label>
+              </td>
+            </tr>
             <tr>
               <td>이름</td>
               <td colspan="2">${dto.name }</td>

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 
 import com.movie.member.db.MemberDAO;
 import com.movie.member.db.MemberDTO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class MemberUpdateAction implements Action {
 
@@ -15,24 +17,46 @@ public class MemberUpdateAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println(" M : MemberUpdateAction_execute() 실행");
 		
+		// 파일 업로드 - 가상의 업로드 폴더 설정 
+		String path = request.getRealPath("/profile");
+		System.out.println(" M path : " +path);
+		//		- 업로드 파일의 크기 설정(제한) - 10MB
+		int maxSize = 10 * 1024 * 1024; 
+		//		- MultipartRequest 객체 생성(업로드)
+		MultipartRequest  multi 
+				= new MultipartRequest(
+						request,	// request 내장객체 (파라메터, 파일정보)
+						path,		// 업로드 위치(가상경로)
+						maxSize,		// 업로드 파일의 크기 
+						"UTF-8",		// 업로드시 인코딩처리
+						new DefaultFileRenamePolicy()		// 중복된 파일이름 업로드시 처리 객체 -> 중복된 이름 넣으면 이름 뒤에 (1) 이런식으로 붙임
+						);
+		
+		System.out.println(" M : 파일 업로드 완료! ");
+		
 		// 전달정보 저장
 		HttpSession session = request.getSession();
+		String addr = multi.getParameter("postcode")+ "/"+multi.getParameter("address")+"/"
+				+multi.getParameter("detailAddress");
+		// profileDel = 1이면 프로필 삭제
+		int profileDel = 0;
+		if(multi.getParameter("profileDel").equals("1")) {
+			profileDel = 1;
+		}
 		
-		String addr = request.getParameter("postcode")+ "/"+request.getParameter("address")+"/"
-				+request.getParameter("detailAddress");
-
+		
 		MemberDTO dto = new MemberDTO();
 		dto.setAddr(addr);
-		dto.setEmail(request.getParameter("email"));
-		dto.setGender(request.getParameter("gender"));
-		dto.setTel(request.getParameter("tel"));
-		dto.setPw(request.getParameter("pw"));
+		dto.setEmail(multi.getParameter("email"));
+		dto.setGender(multi.getParameter("gender"));
+		dto.setTel(multi.getParameter("tel"));
+		dto.setPw(multi.getParameter("pw"));
 		dto.setId((String) session.getAttribute("id"));
-		
+		dto.setProfile(multi.getFilesystemName("profile"));
 		
 		// DAO 객체
 		MemberDAO dao = new MemberDAO();
-		int result = dao.updateMember(dto); // -1:회원 없음, 0:비밀번호 오류, 1:정보 수정
+		int result = dao.updateMember(dto, profileDel); // -1:회원 없음, 0:비밀번호 오류, 1:정보 수정
 
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();

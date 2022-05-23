@@ -1,5 +1,7 @@
 package com.movie.member.db;
 
+import java.util.Date;
+
 public class MemberDTO {
 	private String id;
 	private String pw;
@@ -8,6 +10,8 @@ public class MemberDTO {
 	private String addr;
 	private String tel;
 	private String email;
+	private Date date;
+	private String profile;
 
 	public String getId() {
 		return id;
@@ -65,10 +69,26 @@ public class MemberDTO {
 		this.email = email;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
 	@Override
 	public String toString() {
-		return "memberDTO [id=" + id + ", pw=" + pw + ", name=" + name + ", gender=" + gender + ", addr=" + addr
-				+ ", tel=" + tel + ", email=" + email + "]";
+		return "MemberDTO [id=" + id + ", pw=" + pw + ", name=" + name + ", gender=" + gender + ", addr=" + addr
+				+ ", tel=" + tel + ", email=" + email + ", date=" + date + ", profile=" + profile + "]";
 	}
 
 }

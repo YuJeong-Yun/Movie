@@ -16,7 +16,7 @@ input {
 
 /* 회원 정보 수정 */
 .my-cgv > .inner {
-    height: 1100px;
+    height: 1200px;
 }
 .modify-info {
     margin-top: 160px;
@@ -47,6 +47,28 @@ input {
     height: 60px;
     line-height: 60px;
     border-bottom: 1px solid #dfdfdf;
+}
+.modify-info form table tr:first-child {
+	height: 40px;
+	line-height: 40px;
+}
+.modify-info form table tr:first-child .profile-size {
+	font-size: 13px;
+	font-weight: 700;
+}
+.modify-info form table tr:first-child .profile-img {
+	width: 60px;
+	height: 60px;
+}
+.modify-info form table tr:first-child .profile-del {
+	font-size: 14px;
+}
+.modify-info form table tr:first-child .profile-del input {
+	width: 15px;
+	height: 15px;
+}
+.modify-info form table tr:first-child td:last-child {
+	height: 40px;
 }
 .modify-info form table tr td {
     padding-left: 30px;
@@ -106,7 +128,7 @@ input {
 }
 .modify-info form .submitBtn {
     position: absolute;
-    bottom: -70px;
+    bottom: -200px;
     width: 120px;
     height: 40px;
     background-color: #fd6759;
