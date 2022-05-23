@@ -49,7 +49,7 @@
         <ul class="inner">
           <li class="title__subject">${dto.subject }</li> <!-- 타이틀 -->
           <li class="title__name"><!-- 글 작성자 -->
-          	<img src="./profile/th_${dto.id}.jpg" /> <!-- 프로필 -->
+          	<img src="./profile/th_${dto.id}.jpg" onerror="this.style.display='none'" /> <!-- 프로필 -->
           	${dto.name }
           </li> 
           <li class="title__info">
@@ -85,7 +85,9 @@
           <ul class="comment__content">
             <c:forEach var="boardReply" items="${boardReplyList }" varStatus="status">
 	            <li>
-	              <span class="material-icons">person</span> <!-- 프로필 -->
+	              <!-- 프로필 이미지 없으면 익명 아이콘 출력 -->
+				  <img src="./profile/th_${boardReply.id }.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />	              
+	              <span class="material-icons">person</span> 
 	              <div class="content__wrapper">
 	                <div  class="content__name"> <!-- 댓글 작성자 -->
 	                  ${boardReply.name } 

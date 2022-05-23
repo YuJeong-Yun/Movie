@@ -130,7 +130,14 @@
   border-bottom: 1px solid #f2f2f2;
   display: flex;
 }
+.movie-review .review__comment .comment__content li img {
+  width: 35px;
+  height: 35px;
+  margin-right: 15px;
+  border-radius: 50%;
+}
 .movie-review .review__comment .comment__content li .material-icons {
+  display: none;
   background-color: #efefef;
   width: 35px;
   height: 35px;

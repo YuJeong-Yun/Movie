@@ -89,8 +89,13 @@ public class MemberUpdateAction implements Action {
 			int profileDel = 0;
 			// profileDel != null이면 profileDel = 1 => 프로필 삭제
 			if(multi.getParameter("profileDel") == null ) {
-			}else {
+			}else { // 업로드한 프로필 썸네일 파일 삭제
 				profileDel = 1;
+				
+				File file = new File(path+"/th_"+id+".jpg");
+		        if(file.exists()) {    //삭제하고자 하는 파일이 해당 서버에 존재하면 삭제시킨다
+		            file.delete();
+		        }
 			}
 			System.out.println("pro "+profileDel);
 			
