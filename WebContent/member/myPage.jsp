@@ -98,11 +98,11 @@
               <td>주소</td>
               <td colspan="2" class="addr">
                 <!-- DB에 '우편번호/주소/상세주소' 형태로 들어있음. / 로 구분해서 우편번호, 주소, 상세주소에 값을 출력  -->
-              	<c:set var="addr" value="${fn:split(dto.addr, '/') }"></c:set>
+              	<c:set var="addr" value="${fn:split(dto.addr, '/') }" />
                 <input type="text" name="postcode" id="postcode" placeholder="우편번호" value="${addr[0] }"><input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
                 <input type="text" name="address" id="address" placeholder="주소" value="${addr[1] }"><br>
                 <input type="text" name="detailAddress" id="detailAddress" placeholder="상세주소" value="${addr[2] }" }>
-                <input type="text" name="extraAddress" id="extraAddress" placeholder="참고항목">
+                <input type="text" name="extraAddress" id="extraAddress" placeholder="참고항목" value="${addr[3] }">
               </td>
             </tr>
             <tr>

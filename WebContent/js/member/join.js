@@ -6,6 +6,12 @@ const idDbResult = fr.querySelector('.idDbResult');
 const telDbResult= fr.querySelector('.telDbResult');
 const emailDbResult = fr.querySelector('.emailDbResult');
 const regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/; // 전화번호 유효성 체크용
+const check_num = /[0-9]/; // 숫자
+const check_eng = /[a-zA-Z]/; // 문자
+const check_spc = /[~!@#$%^&*()_+|<>?:{}]/; // 특수문자 
+const check_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글체크
+
+
 
 let idArr = [];
 let telArr = [];
@@ -58,6 +64,7 @@ function emailDbCheck() {
 }
 
 
+
 // 폼 submit될 때 체크
 function formCheck() {
 	if(fr.id.value == "") {
@@ -83,13 +90,19 @@ function formCheck() {
 		return false;
 		
 	}else if(fr.postcode.value == "") {
-		alert("주소를 입력하세요.");
+		alert("우편번호를 입력하세요.");
 		fr.postcode.focus();
 		
 		return false;
 		
 	}else if(fr.address.value == "") {
 		alert("주소를 입력하세요.");
+		fr.address.focus();
+		
+		return false;
+		
+	}else if(fr.detailAddress.value == "") {
+		alert("상세 주소를 입력하세요.");
 		fr.address.focus();
 		
 		return false;
@@ -136,6 +149,22 @@ function formCheck() {
 		
 		return false;
 	}
+		
+	// 아이디 영어 / 숫자만 입력 가능
+	if( check_kor.test(fr.id.value) || check_spc.test(fr.id.value) ) { 
+		alert("아이디는 영어/숫자만 입력 가능합니다."); 
+		fr.id.focus();
+		
+		return false;
+	}
+	
+	if(  check_num.test(fr.name.value) || check_spc.test(fr.name.value) ) {
+		alert("이름은 한글/영어만 입력 가능합니다.")
+		fr.name.focus();
+		
+		return false;
+	}
+
 }
 
 

@@ -18,7 +18,7 @@ public class JoinAction implements Action {
 		MemberDTO dto = new MemberDTO();
 		
 		String addr = request.getParameter("postcode")+ "/"+request.getParameter("address")+"/"
-						+request.getParameter("detailAddress");
+						+request.getParameter("detailAddress")+"/" + request.getParameter("extraAddress");
 		
 		dto.setAddr(addr);
 		dto.setEmail(request.getParameter("email"));

@@ -37,10 +37,11 @@ public class MemberUpdateAction implements Action {
 		// 전달정보 저장
 		HttpSession session = request.getSession();
 		String addr = multi.getParameter("postcode")+ "/"+multi.getParameter("address")+"/"
-				+multi.getParameter("detailAddress");
+				+multi.getParameter("detailAddress") +"/"+ multi.getParameter("extraAddress");
 		// profileDel = 1이면 프로필 삭제
 		int profileDel = 0;
-		if(multi.getParameter("profileDel").equals("1")) {
+		System.out.println(multi.getParameter("profileDel"));
+		if(multi.getParameter("profileDel")!=null || multi.getParameter("profileDel").equals("1")) {
 			profileDel = 1;
 		}
 		
