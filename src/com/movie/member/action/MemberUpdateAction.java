@@ -38,13 +38,16 @@ public class MemberUpdateAction implements Action {
 		HttpSession session = request.getSession();
 		String addr = multi.getParameter("postcode")+ "/"+multi.getParameter("address")+"/"
 				+multi.getParameter("detailAddress") +"/"+ multi.getParameter("extraAddress");
-		// profileDel = 1이면 프로필 삭제
+		System.out.println(addr);
+		System.out.println("pro : "+multi.getParameter("profileDel"));
+		
 		int profileDel = 0;
-		System.out.println(multi.getParameter("profileDel"));
-		if(multi.getParameter("profileDel")!=null || multi.getParameter("profileDel").equals("1")) {
+		// profileDel != null이면 profileDel = 1 => 프로필 삭제
+		if(multi.getParameter("profileDel") == null ) {
+		}else {
 			profileDel = 1;
 		}
-		
+		System.out.println("pro "+profileDel);
 		
 		MemberDTO dto = new MemberDTO();
 		dto.setAddr(addr);

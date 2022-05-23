@@ -40,6 +40,7 @@ public class MovieReviewContentAction implements Action {
 		// 글번호에 해당하는 글 전체의 정보를 가져오기
 		MovieBoardDTO dto = dao.getBoard(num);
 		System.out.println(" M :글정보 1개 조회 완료");
+		// 글번호에 해당하는 댓글 리스트 가져오기
 		List<MovieBoardReplyDTO> boardReplyList = dao.getBoardReplyList(num);
 		
 		// request 영역에 글정보를 저장
@@ -48,8 +49,7 @@ public class MovieReviewContentAction implements Action {
 		request.setAttribute("prevNum", prevNum);
 		request.setAttribute("nextNum", nextNum);
 		request.setAttribute("boardReplyList", boardReplyList);
-		request.setAttribute("profile", dao.getProfile(id)); // 작성자 프로필 정보 가져오기
-		
+		request.setAttribute("profile", dao.getProfile(dto.getId())); // 작성자 프로필 정보 가져오기
 		// 페이지 이동 객체 
 		ActionForward forward = new ActionForward();
 		forward.setPath("./board/reviewContent.jsp");

@@ -51,13 +51,18 @@
   word-break: break-all;
 }
 .movie-review .review__title .title__name {
+  display: flex;
+  align-items: center;
   margin-bottom: 5px;
   color: #555;
   font-weight: 700;
 }
 .movie-review .review__title .title__name img {
-	width: 20px;
-	height: 20px;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	
+	margin-right: 10px;
 	
 }
 .movie-review .review__title .title__info span {
@@ -137,8 +142,19 @@
   color: #555;
 }
 .movie-review .review__comment .comment__content li .content__name {
+  display: flex;
+  aling-items: center;
   font-weight: 900;
   margin-bottom: 5px;
+}
+.movie-review .review__comment .comment__content li .content__name .writer {
+  margin-left: 15px;
+  padding: 3px;
+  border:1px solid #F53535;
+  border-radius: 20%;
+  font-size: 10px;
+  color: #F53535;
+  
 }
 .movie-review .review__comment .comment__content li .content__text {
   width: 850px;

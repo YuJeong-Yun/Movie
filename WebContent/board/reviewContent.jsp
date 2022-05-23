@@ -49,6 +49,7 @@
         <ul class="inner">
           <li class="title__subject">${dto.subject }</li> <!-- 타이틀 -->
           <li class="title__name"><!-- 글 작성자 -->
+          	<img src="./profile/${profile }" /> <!-- 프로필 -->
           	${dto.name }
           </li> 
           <li class="title__info">
@@ -86,7 +87,12 @@
 	            <li>
 	              <span class="material-icons">person</span> <!-- 프로필 -->
 	              <div class="content__wrapper">
-	                <div  class="content__name">${boardReply.name }</div> <!-- 댓글 작성자 -->
+	                <div  class="content__name"> <!-- 댓글 작성자 -->
+	                  ${boardReply.name } 
+	                  <c:if test="${boardReply.id eq dto.id }"> <!-- 글 작성자와 댓글 작성자 같으면 작성자 표시 -->
+	                    <div class="writer">작성자</div>
+	                  </c:if>
+	                </div> 
 	                <div class="content__text" style="white-space:pre-wrap">${boardReply.content }</div> <!-- 댓글 내용 -->
 	                <div class="content__date">
 	                	<f:formatDate value="${boardReply.date }" pattern="yyyy.MM.dd HH:mm" ></f:formatDate> <!-- 댓글 작성 시간 -->
@@ -176,7 +182,11 @@
 					"<li>" +
 		              "<span class='material-icons'>person</span>" +
 		              "<div class='content__wrapper'>" +
-		                "<div  class='content__name'>"+item.name+"</div>" +
+		                "<div  class='content__name'>"+item.name + 
+		                  "<c:if test='${"+ item.id +" eq dto.id }'>" +
+		                    "<div class='writer'>글쓴이</div>" +
+		                   "</c:if>" +
+		                "</div>" +
 		                "<div class='content__text' style='white-space:pre-wrap'>"+item.content+"</div>" +
 		                "<div class='content__date'>"+item.date+"</div>" +
 		                "<div class='content__btn'>" +

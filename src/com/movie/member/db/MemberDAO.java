@@ -67,7 +67,7 @@ public class MemberDAO {
 			con = getCon();
 			
 			// 3. sql작성 & pstmt 생성
-			sql = "insert into movie_member(id, pw, name, gender, addr, tel, email, date, profile) values(?, ?, ?, ?, ?, ?, ?, now(), ?)";
+			sql = "insert into movie_member(id, pw, name, gender, addr, tel, email, date) values(?, ?, ?, ?, ?, ?, ?, now())";
 			pstmt = con.prepareStatement(sql);
 			// ??? 입력
 			pstmt.setString(1, dto.getId());
@@ -77,7 +77,6 @@ public class MemberDAO {
 			pstmt.setString(5, dto.getAddr());
 			pstmt.setString(6, dto.getTel());
 			pstmt.setString(7, dto.getEmail());
-			pstmt.setString(8, dto.getProfile());
 			
 			// 4. sql 실행
 			pstmt.executeUpdate();
