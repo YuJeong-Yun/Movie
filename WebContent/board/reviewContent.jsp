@@ -49,7 +49,7 @@
         <ul class="inner">
           <li class="title__subject">${dto.subject }</li> <!-- 타이틀 -->
           <li class="title__name"><!-- 글 작성자 -->
-          	<img src="./profile/th_${dto.id}.jpg" onerror="this.style.display='none'" /> <!-- 프로필 -->
+          	<img src="./profile/th_${dto.id}.jpg" onerror="this.style.display='none';" /> <!-- 프로필 -->
           	${dto.name }
           </li> 
           <li class="title__info">
@@ -185,7 +185,8 @@
 	  			// 댓글 리스트에 추가
 				let newReply = 
 					"<li>" +
-		              "<span class='material-icons'>person</span>" + 
+					   "<img src='./profile/th_"+item.id+".jpg' onerror='this.style.display='none'; this.nextElementSibling.style.display='block';' />" +
+			           "<span class='material-icons'>person</span>" + 
 		              "<div class='content__wrapper'>" +
 		                "<div  class='content__name'>"+item.name + 
 		                writer +
