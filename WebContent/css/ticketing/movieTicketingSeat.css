@@ -64,6 +64,7 @@
     text-align: center;
     font-size: 13px;
     font-weight: 700;
+    cursor: pointer;
 }
 .seat .select-personnel .movie-wrapper {
     width: 580px;
@@ -127,6 +128,7 @@
     border: 1px solid #aaa;
     border-radius: 5px;
     font-size: 13px;
+    cursor: pointer;
 }
 .seat .select-seat .seat-container .seat:nth-child(2),
 .seat .select-seat .seat-container .seat:nth-child(8) {

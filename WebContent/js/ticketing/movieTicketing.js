@@ -187,6 +187,7 @@ timeList.forEach((time) => {
 // 좌석선택 클릭
 
 const fr = document.fr;
+const dateYearMonth = "";
 
 fr.addEventListener('submit', function(event){
 	event.preventDefault();
@@ -217,6 +218,7 @@ fr.addEventListener('submit', function(event){
 	dateSelected.type = "hidden";
 	dateSelected.name = "date";
 	dateSelected.value = dateActive.innerText;
+	
 	
 	timeSelected.type = "hidden";
 	timeSelected.name = "time";

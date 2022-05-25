@@ -59,9 +59,9 @@
           </div>
         </div>
         <div class="movie-wrapper">
-          <span class="movie-theater">대전</span>
-          <span class="movie-date">2022.05.26 목</span>
-          <div class="movie-title">닥터 스트레인지</div>
+          <span class="movie-theater">${param.theater }</span>
+          <span class="movie-date">${param.date } ${param.time }</span>
+          <div class="movie-title">${param.movie }</div>
         </div>
       </div>
       <!-- 좌석 선택 -->
