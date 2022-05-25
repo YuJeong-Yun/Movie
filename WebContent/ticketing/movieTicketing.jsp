@@ -168,15 +168,26 @@
         </li>
       </ul>
       
-      <form action="./MovieTicketingSeat.ti" method="get" name="fr">
-        <input type="submit" value="좌석선택" class="selectSeat">
+      <form action="./MovieTicketingSeat.ti" method="get" name="fr" onsubmit="return idCheck();">
+        <input type="submit" value="좌석선택" class="selectSeat" >
       </form>
     </div>
   </section>
 
 
-
   <jsp:include page="../inc/footer.jsp"></jsp:include>
+  
+  <script type="text/javascript">
+  	const id = '${id}';
+  	
+  	// 로그인 했을 경우만 좌석 선택 가능
+  	function idCheck() {
+  		if(id == null) {
+  			alert('로그인 후 좌석을 선택해주세요.');
+  			return false;
+  		}
+  	}
+  </script>
 </body>
 
 </html>

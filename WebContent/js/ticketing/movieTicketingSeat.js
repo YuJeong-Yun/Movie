@@ -1,52 +1,3 @@
-// 선택한 인원 수 계산
-const adultCount = document.querySelectorAll('.adult__count li');
-const teenagerCount = document.querySelectorAll('.teenager__count li');
-
-// 일반에서 인원 선택했을 때
-adultCount.forEach((adult) => {
-    adult.addEventListener('click', function() {
-        const adultCountActive = document.querySelectorAll('.adult-count-active');
-        adultCountActive.forEach((active) => {
-            active.classList.remove('adult-count-active');
-        });
-        adult.classList.add('adult-count-active');
-        calcSelectSeat(); // 선택 가능한 좌석 수 계산
-    });
-});
-// 청소년에서 인원 선택했을 때
-teenagerCount.forEach((teenager) => {
-    teenager.addEventListener('click', function() {
-        const teenagerCountActive = document.querySelectorAll('.teenager-count-active');
-        teenagerCountActive.forEach((active) => {
-            active.classList.remove('teenager-count-active');
-        });
-        teenager.classList.add('teenager-count-active');
-        calcSelectSeat(); // 선택 가능한 좌석 수 계산
-    });
-});
-
-let selectSeat = 0;
-// 선택 가능한 좌석 수 계산하기
-function calcSelectSeat() {
-    let adultCount = 0;
-    let teenagerCount = 0;
-
-    let adult = document.querySelector('.adult-count-active');
-    let teenager = document.querySelector('.teenager-count-active');
-    if(adult != null) {
-        adultCount = Number(adult.innerText);
-    }
-    if(teenager != null) {
-        teenagerCount = Number(teenager.innerText);
-    }
-    selectSeat = adultCount + teenagerCount;
-}
-
-
-
-
-
-
 // 좌석 뿌리기
 const seatContainer = document.querySelector('.select-seat .seat-container');
 
@@ -113,3 +64,63 @@ function mapping(input, i, j) {
         input.value = "G" + j;
     }
 }
+
+
+
+
+
+
+// 선택한 인원 수 계산
+const adultCount = document.querySelectorAll('.adult__count li');
+const teenagerCount = document.querySelectorAll('.teenager__count li');
+
+// 일반에서 인원 선택했을 때
+adultCount.forEach((adult) => {
+    adult.addEventListener('click', function() {
+        const adultCountActive = document.querySelectorAll('.adult-count-active');
+        adultCountActive.forEach((active) => {
+            active.classList.remove('adult-count-active');
+        });
+        adult.classList.add('adult-count-active');
+        calcSelectSeat(); // 선택 가능한 좌석 수 계산
+    });
+});
+// 청소년에서 인원 선택했을 때
+teenagerCount.forEach((teenager) => {
+    teenager.addEventListener('click', function() {
+        const teenagerCountActive = document.querySelectorAll('.teenager-count-active');
+        teenagerCountActive.forEach((active) => {
+            active.classList.remove('teenager-count-active');
+        });
+        teenager.classList.add('teenager-count-active');
+        calcSelectSeat(); // 선택 가능한 좌석 수 계산
+    });
+});
+
+let selectSeat = 0;
+// 선택 가능한 좌석 수 계산하기
+function calcSelectSeat() {
+    let adultCount = 0;
+    let teenagerCount = 0;
+
+    let adult = document.querySelector('.adult-count-active');
+    let teenager = document.querySelector('.teenager-count-active');
+    if(adult != null) {
+        adultCount = Number(adult.innerText);
+    }
+    if(teenager != null) {
+        teenagerCount = Number(teenager.innerText);
+    }
+    selectSeat = adultCount + teenagerCount;
+}
+
+
+
+// 인원 수 만큼 좌석 선택해야 결제창으로 이동
+const payment = document.querySelector('.payment');
+payment.addEventListener('click', function() {
+	if(clicked.length != selectSeat) {
+		alert('인원 수 만큼 좌석을 선택해 주세요.');
+		return false;
+	}
+});

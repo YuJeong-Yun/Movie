@@ -47,9 +47,9 @@
           </tr>
           <tr>
             <td>
-              <!-- 영화 차트 / 상영 시간표 이동 링크 -->
+              <!-- 영화 차트 / 예매 이동 링크 -->
               <div>지금 영화 차트를 확인하고 싶다면 → <a href="./MovieChart.do"><span class="material-icons-outlined">equalizer</span></a></div>
-              <div>상영 시간표를 확인하고 싶다면 → <a href="javascript:void(0)"><span class="material-icons-outlined">date_range</span></a></div>
+              <div>지금 바로 예매하고 싶다면 → <a href="./MovieTicketing.ti"><span class="material-icons-outlined">date_range</span></a></div>
             </td>
           </tr>
           <tr>

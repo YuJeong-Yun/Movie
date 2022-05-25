@@ -19,6 +19,7 @@
     rel="stylesheet">
 
   <link rel="stylesheet" href="./css/ticketing/movieTicketingSeat.css">
+   <script defer type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script>
   <script defer src="./js/ticketing/movieTicketingSeat.js"></script>
 </head>
 
@@ -70,7 +71,7 @@
         <div class="seat-container"></div>
       </div>
 
-      <a href="javascript:void(0)" class="back">이전화면</a>
+      <a href="javascript:history.back()"  class="back">이전화면</a>
       <a href="javascript:void(0)" class="payment">결제하기</a>
     </div>
   </section>
