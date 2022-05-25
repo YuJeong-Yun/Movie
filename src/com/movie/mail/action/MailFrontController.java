@@ -17,7 +17,7 @@ public class MailFrontController extends HttpServlet {
 	
 	protected void doProcess(HttpServletRequest request
 			, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(" BoardFrontController - doPROCESS() 호출");
+		System.out.println(" MailFrontController - doPROCESS() 호출");
 		
 		//////////////////////////////1. 가상 주소 계산 /////////////////////////////////
 		System.out.println(" C :1. 가상 주소 계산 시작");
