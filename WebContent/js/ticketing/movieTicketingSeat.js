@@ -1,7 +1,6 @@
 // 좌석 뿌리기
 const seatContainer = document.querySelector('.select-seat .seat-container');
 
-let test = [];
 let selectedSeats =[]; // 선택되어있는 '좌석번호' 담음
 let clicked = []; // 선택되어있는 좌석 '태그' 담음
 let div = "";
@@ -19,11 +18,12 @@ for (let i = 0; i < 7; i++) {
         div.append(input);
         input.addEventListener('click', function(e) {
             console.log(e.target.value);
-            //중복방지 함수 - selectedSeats 비움 -> 클릭 일어날 때마다 clicked 클래스 가진 요소들 모두 담을 것
-            selectedSeats = selectedSeats.filter((element, index) => selectedSeats.indexOf(element) != index);
 
             //click class가 존재할때(제거해주는 toggle)
             if (input.classList.contains("clicked")) {
+                //중복방지 함수 - selectedSeats 비움 -> 클릭 일어날 때마다 clicked 클래스 가진 요소들 모두 담을 것
+                selectedSeats = selectedSeats.filter((element, index) => selectedSeats.indexOf(element) != index);
+
                 input.classList.remove("clicked");
                 clicked = document.querySelectorAll(".clicked"); // clicked에 선택되어있는 '요소' 담음
                 clicked.forEach((data) => {
@@ -35,6 +35,9 @@ for (let i = 0; i < 7; i++) {
                     alert('선택 가능한 좌석수를 초과했습니다.');
                     return;
                 }
+                //중복방지 함수 - selectedSeats 비움 -> 클릭 일어날 때마다 clicked 클래스 가진 요소들 모두 담을 것
+                selectedSeats = selectedSeats.filter((element, index) => selectedSeats.indexOf(element) != index);
+
                 input.classList.add("clicked");
                 clicked = document.querySelectorAll(".clicked"); // clicked에 선택되어있는 '요소' 담음
                 clicked.forEach((data) => {
@@ -123,4 +126,111 @@ payment.addEventListener('click', function() {
 		alert('인원 수 만큼 좌석을 선택해 주세요.');
 		return false;
 	}
+	requestPay();
 });
+
+
+
+
+
+// 결제하기 클릭 - 아임포트 API
+var IMP = window.IMP; 
+IMP.init('imp72265744'); // 가맹점 식별코드
+
+// 주문번호 계산 함수
+function calcUID() {
+	let order_num = "";
+	$.ajax({
+		url: "./ticketing/calcUIDAjax.jsp",
+		success: function(data) {
+			console.log("o_n data : "+data); ////////////////////////////////////////
+			order_num = data;
+		},
+	}); // ajax
+	console.log("order_num : "+order_num); ////////////////////////////////////////////
+	return order_num;
+}; // calcUID
+
+// 결제금액 계산 함수
+function calcPrice() {
+	const adultCntActive = document.querySelector('.adult-count-active');
+	const teenagerCntActive = document.querySelector('.teenager-count-active');
+	
+	let adultCnt = 0;
+	let teenagerCnt = 0;
+	let totalPrice = 0;
+	
+	if(adultCntActive != null) {
+		adultCnt = adultCntActive.innerText;
+	}
+	if(teenagerCntActive != null) {
+		teenagerCnt = teenagerCntActive.innerText;
+	}
+	
+	totalPrice = 100*adultCnt + 70*teenagerCnt;
+	return totalPrice;
+}; // calcPrice()
+
+
+function requestPay() { // 결제요청
+	const order_num = calcUID();   	
+	const totalPrice = calcPrice();
+	let seat =""; // 좌석 전달하기 위해 배열->문자로 변환
+	for(let i=0; i<selectedSeats.length; i++) {
+		seat+= selectedSeats[i]+"/";
+	};
+	
+	let buyer_email = "" ;
+	let buyer_name = "";
+	let buyer_tel = "";
+	let buyer_addr = "";
+	let buyer_postcode = "";
+	
+	
+	$.getJSON({ // 회원정보 조회
+		url: "./ticketing/getMemberInfo.jsp",
+		async: false, // ajax 동기식으로 사용 -> 전역변수에 값 저장하기 위해
+		success: function(data) {
+			buyer_email = data.email;
+			buyer_name = data.name;
+			buyer_tel = data.tel;
+			buyer_addr = data.addr;
+			buyer_postcode = data.postcode;
+		},
+	}); // ajax
+	
+	
+    // IMP.request_pay(param, callback) 결제창 호출
+    IMP.request_pay({ // param
+        pg: "html5_inicis",
+        pay_method: "card",
+        merchant_uid: order_num,
+        name: "영화 예매",
+        amount: totalPrice,
+        buyer_email: buyer_email,
+        buyer_name: buyer_name,
+        buyer_tel: buyer_tel,
+        buyer_addr: buyer_addr,
+        buyer_postcode: buyer_postcode,
+    }, function (rsp) { // callback
+   	   if (rsp.success) { // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
+   	        $.ajax({
+   	            url: "./ticketing/payMentCompleteAjax.jsp", // 예: https://www.myservice.com/payments/complete
+   	            method: "POST",
+   	            data: {
+   	                imp_uid: rsp.imp_uid,
+   	                merchant_uid: rsp.merchant_uid,
+   	                order_num: order_num,
+   	                totalPrice: totalPrice,
+   	                movieTitle: movieTitle,
+   	                movieTheater: movieTheater,
+   	                movieDate: movieDate,
+   	                movieTime: movieTime,
+   	                movieSeat: seat
+   	            }
+   	        }); // ajax
+       } else {
+         alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
+       } // if
+    });
+} // requestPay

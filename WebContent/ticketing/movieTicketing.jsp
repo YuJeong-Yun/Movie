@@ -168,8 +168,12 @@
         </li>
       </ul>
       
-      <form action="./MovieTicketingSeat.ti" method="get" name="fr" onsubmit="return idCheck();">
+      <form action="./MovieTicketingSeat.ti" method="get" name="fr">
         <input type="submit" value="좌석선택" class="selectSeat" >
+        <input type="hidden" name="movie">
+        <input type="hidden" name="theater">
+        <input type="hidden" name="date">
+        <input type="hidden" name="time">
       </form>
     </div>
   </section>
@@ -180,13 +184,6 @@
   <script type="text/javascript">
   	const id = '${id}';
   	
-  	// 로그인 했을 경우만 좌석 선택 가능
-  	function idCheck() {
-  		if(id == null) {
-  			alert('로그인 후 좌석을 선택해주세요.');
-  			return false;
-  		}
-  	}
   </script>
 </body>
 

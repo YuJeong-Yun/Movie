@@ -192,6 +192,12 @@ const dateYearMonth = "";
 fr.addEventListener('submit', function(event){
 	event.preventDefault();
 	
+	// 로그인 했을 경우만 좌석 선택 가능
+	if(id == "") {
+  		alert('로그인 후 좌석을 선택해주세요.');
+  		return ;
+  	}
+	
 	const movieActive = document.querySelector('.movie-active');
 	const theaterActive = document.querySelector('.movie-theater-active');
 	const dateActive = document.querySelector('.movie-date-active');
@@ -202,32 +208,15 @@ fr.addEventListener('submit', function(event){
 		return;
 	}
 	
-	const movieSelected = document.createElement("input"); 
-	const theaterSelected = document.createElement("input"); 
-	const dateSelected = document.createElement("input"); 
-	const timeSelected = document.createElement("input"); 
+	const movie = document.querySelector("[name='movie']"); 
+	const theater = document.querySelector("[name='theater']"); 
+	const date = document.querySelector("[name='date']"); 
+	const time = document.querySelector("[name='time']"); 
 	
-	movieSelected.type ="hidden";
-	movieSelected.name ="movie";
-	movieSelected.value = movieActive.innerText;
-	
-	theaterSelected.type = "hidden";
-	theaterSelected.name = "theater";
-	theaterSelected.value = theaterActive.innerText;
-	
-	dateSelected.type = "hidden";
-	dateSelected.name = "date";
-	dateSelected.value = dateActive.innerText;
-	
-	
-	timeSelected.type = "hidden";
-	timeSelected.name = "time";
-	timeSelected.value = timeActive.innerText;
-	
-	fr.append(movieSelected);
-	fr.append(theaterSelected);
-	fr.append(timeSelected);
-	fr.append(dateSelected);
+	movie.value = movieActive.innerText;
+	theater.value = theaterActive.innerText;
+	date.value = dateActive.innerText;
+	time.value = timeActive.innerText;
 	
 	fr.submit();
 	

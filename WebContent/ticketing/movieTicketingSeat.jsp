@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,13 +20,25 @@
     rel="stylesheet">
 
   <link rel="stylesheet" href="./css/ticketing/movieTicketingSeat.css">
-   <script defer type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script>
+  <script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+  <script type="text/javascript">
+    // 결제 성공시 전달할 정보들
+	const movieTitle = '${param.movie}';
+	const movieTheater = '${param.theater}';
+	const movieDate = '${param.date}';
+	const movieTime = '${param.time}';
+  </script>
   <script defer src="./js/ticketing/movieTicketingSeat.js"></script>
 </head>
 
 <body>
   <jsp:include page="../inc/header.jsp"></jsp:include>
 
+  <!-- 로그인 안되어있으면 로그인 페이지로 이동 -->
+  <c:if test="${id eq null }">
+  <% response.sendRedirect("./Login.me"); %>
+  </c:if>
 
   <!-- 좌석 -->
   <section class="seat">
@@ -72,14 +85,14 @@
       </div>
 
       <a href="javascript:history.back()"  class="back">이전화면</a>
-      <a href="javascript:void(0)" class="payment">결제하기</a>
+      <button class="payment">결제하기</button>
     </div>
   </section>
 
 
 
-
   <jsp:include page="../inc/footer.jsp"></jsp:include>
+  
 </body>
 
 </html>

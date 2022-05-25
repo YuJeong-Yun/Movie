@@ -139,7 +139,8 @@
 }
 
 /* 이전화면, 결제하기 버튼 */
-.seat > .inner > a {
+.seat > .inner > a,
+.seat > .inner > button {
     background-color: #AF2D2D;
     display: block;
     width: 130px;
@@ -159,4 +160,5 @@
 .seat .payment {
     right: 0;
     bottom: 0px;
+    border: none;
 }

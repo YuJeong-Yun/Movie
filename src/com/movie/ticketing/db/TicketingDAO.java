@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,6 +13,8 @@ import java.util.List;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import com.movie.member.db.MemberDTO;
 
 public class TicketingDAO {
 
@@ -60,4 +63,76 @@ public class TicketingDAO {
 	// 디비 자원해제 메서드
 	////////////////////////////////////////////////////////////////////
 
+	
+	// 주문번호 생성
+	public String makeOrderNum() {
+		int num = 0;
+		String order_num = "";
+		
+		try {
+			// 1.2. 디비 연결
+			con = getCon();
+			
+			// 3. sql 작성 & pstmt 객체
+			sql = "select max(num) from movie_ticketing";
+			pstmt = con.prepareStatement(sql);
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			if(rs.next()) {
+				num = rs.getInt(1)+1;
+			}
+		
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+			order_num = sdf.format(new Date()) + "-" + String.format("%05d", num);
+			
+			System.out.println("DAO : 주문번호 생성 완료 "+order_num);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return order_num;
+	} // makeOrderNum
+	
+	
+	// 회원 정보 가져오기
+	public MemberDTO getMemberInfo(String id) {
+		MemberDTO dto = null;
+				
+		try {
+			// 1.2. 디비 연결
+			con = getCon();
+			
+			// 3. sql 작성 & pstmt 객체
+			sql = "select * from movie_member where id=?";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setString(1, id);
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			if(rs.next()) {
+				dto = new MemberDTO();
+				
+				dto.setEmail(rs.getString("email"));
+				dto.setTel(rs.getString("tel"));
+				dto.setName(rs.getString("name"));
+				dto.setAddr(rs.getString("addr"));
+			}
+			
+			System.out.println("DAO : 회원 정보 조회 완료! "+dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return dto;
+	} // getMemberInfo()
 }
