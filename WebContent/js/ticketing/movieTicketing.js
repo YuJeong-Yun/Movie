@@ -179,3 +179,54 @@ timeList.forEach((time) => {
         time.classList.add("movie-time-active");
     });
 });
+
+
+
+
+
+// 좌석선택 클릭
+
+const fr = document.fr;
+
+fr.addEventListener('submit', function(event){
+	event.preventDefault();
+	
+	const movieActive = document.querySelector('.movie-active');
+	const theaterActive = document.querySelector('.movie-theater-active');
+	const dateActive = document.querySelector('.movie-date-active');
+	const timeActive = document.querySelector('.movie-time-active');
+	
+	if(movieActive == null || theaterActive == null || dateActive == null || timeActive == null) {
+		alert('항목을 선택하세요.');
+		return;
+	}
+	
+	const movieSelected = document.createElement("input"); 
+	const theaterSelected = document.createElement("input"); 
+	const dateSelected = document.createElement("input"); 
+	const timeSelected = document.createElement("input"); 
+	
+	movieSelected.type ="hidden";
+	movieSelected.name ="movie";
+	movieSelected.value = movieActive.innerText;
+	
+	theaterSelected.type = "hidden";
+	theaterSelected.name = "theater";
+	theaterSelected.value = theaterActive.innerText;
+	
+	dateSelected.type = "hidden";
+	dateSelected.name = "date";
+	dateSelected.value = dateActive.innerText;
+	
+	timeSelected.type = "hidden";
+	timeSelected.name = "time";
+	timeSelected.value = timeActive.innerText;
+	
+	fr.append(movieSelected);
+	fr.append(theaterSelected);
+	fr.append(timeSelected);
+	fr.append(dateSelected);
+	
+	fr.submit();
+	
+});

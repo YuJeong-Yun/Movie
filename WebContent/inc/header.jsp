@@ -94,7 +94,7 @@
           <li>
             <h2>예매</h2>
             <ul>
-              <li><a href="javascript:void(0)">빠른 예매</a></li>
+              <li><a href="./MovieTicketing.ti" class="do">빠른 예매</a></li>
               <li><a href="javascript:void(0)">상영스케줄</a></li>
             </ul>
           </li>

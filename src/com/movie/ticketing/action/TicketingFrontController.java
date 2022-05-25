@@ -9,14 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.movie.review.action.Action;
-import com.movie.review.action.ActionForward;
-import com.movie.review.action.MovieReviewContentAction;
-import com.movie.review.action.MovieReviewDeleteAction;
-import com.movie.review.action.MovieReviewListAction;
-import com.movie.review.action.MovieReviewUpdateAction;
-import com.movie.review.action.MovieReviewUpdateProAction;
-import com.movie.review.action.MovieReviewWriteAction;
 
 @WebServlet("*.ti")
 public class TicketingFrontController extends HttpServlet {
@@ -44,7 +36,23 @@ public class TicketingFrontController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 		
-		
+		if(command.equals("/MovieTicketing.ti")) { // 영화 예매 페이지 이동
+			System.out.println(" C : /MovieTicketing.ti 호출 ");
+			// DB 사용 X, 뷰 이동
+			
+			forward = new ActionForward();
+			forward.setPath("./ticketing/movieTicketing.jsp");
+			forward.setRedirect(false);
+			
+		}else if(command.equals("/MovieTicketingSeat.ti")) { // 좌석 선택 페이지 이동
+			System.out.println(" C : /MovieTicketingSeat.ti 호출"); 
+			// DB 사용 X, 뷰 이동
+			
+			forward = new ActionForward();
+			forward.setPath("./ticketing/movieTicketingSeat.jsp");
+			forward.setRedirect(false);
+			
+		}
 
 		
 		System.out.println(" C : 2. 가상 주소 매핑 끝\n ");

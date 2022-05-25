@@ -1,6 +1,7 @@
-@import url("./header.css");
-@import url("./footer.css");
-@import url("./common.css");
+@import url("../header.css");
+@import url("../footer.css");
+@import url("../common.css");
+
 
 .clicked { /* 좌석 선택했을때 */
     background-color: #bbb !important;

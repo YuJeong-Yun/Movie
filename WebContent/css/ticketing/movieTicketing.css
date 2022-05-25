@@ -1,6 +1,7 @@
-@import url("./header.css");
-@import url("./footer.css");
-@import url("./common.css");
+@import url("../header.css");
+@import url("../footer.css");
+@import url("../common.css");
+
 
 .movie-reserve > .inner {
     margin: 200px auto 100px;
@@ -13,9 +14,6 @@
     line-height: 40px;
     color: #bcbcbc;
     font-weight: 700;
-}
-select {
-    outline: none;
 }
 .hide {
     display: none;
@@ -64,7 +62,7 @@ select {
     background-color: transparent;
     width: 100%;
     border: none;
-    overflow: hidden;
+    overflow: auto;
     height: 100%;
 }
 .movie-reserve .movie-container .movie__item li {
@@ -187,16 +185,16 @@ select {
 
 .movie-reserve .selectSeat {
     background-color: #AF2D2D;
-    display: block;
     width: 150px;
     height: 50px;
     position: absolute;
     bottom: -70px;
     right: 0;
+    border: none;
     border-radius: 10px;
     text-align: center; 
     color: #efefef;
-    line-height: 50px;
     font-weight: 700;
     font-size: 20px;
+    cursor: pointer;
 }
