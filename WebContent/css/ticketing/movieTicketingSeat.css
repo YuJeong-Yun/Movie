@@ -1,0 +1,159 @@
+@import url("./header.css");
+@import url("./footer.css");
+@import url("./common.css");
+
+.clicked { /* 좌석 선택했을때 */
+    background-color: #bbb !important;
+}
+.adult-count-active,
+.teenager-count-active { /* 인원 선택했을 때 */
+    background-color: #b7b4a1;
+}
+
+
+.seat > .inner {
+    margin-top: 200px;
+    height: 800px;
+    margin-bottom: 70px;
+}
+/* 인원 선택 */
+.seat .select-personnel {
+    background-color: #F2F0E4;
+    position: relative;
+    height: 200px;
+    border: 2px solid #d4d3c9;
+    border-top: none;
+}
+.seat .select-personnel .title {
+    background-color: #333;
+    width: 100%;
+    height: 40px;
+    position: relative;
+    text-align: center;
+    line-height: 40px;
+    color: #bcbcbc;
+    font-weight: 700;
+}
+
+.seat .select-personnel .personnel-wrapper {
+    width: 500px;
+    height: 130px;
+    position: absolute;
+    left: 0;
+    top: 60px;
+    border-right: 1px solid #d4d3c9;
+}
+.seat .select-personnel .personnel-wrapper .personnel__item {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 5px 20px;
+}
+.seat .select-personnel .personnel-wrapper .personnel__item div {
+    width: 70px;
+}
+.seat .select-personnel .personnel-wrapper .personnel__item ul {
+    display: inline-flex;
+}
+.seat .select-personnel .personnel-wrapper .personnel__item ul li {
+    width: 25px;
+    height: 25px;
+    margin: 0 3px;
+    border: 1px solid #d6d3ce;
+    line-height: 25px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+}
+.seat .select-personnel .movie-wrapper {
+    width: 580px;
+    height: 130px;
+    position: absolute;
+    right: 0;
+    top: 60px;
+}
+.seat .select-personnel .movie-wrapper .movie-theater {
+}
+.seat .select-personnel .movie-wrapper .movie-theater::before {
+    content: "CGV ";
+}
+.seat .select-personnel .movie-wrapper .movie-date::before {
+    content: "| ";
+    color: #d6d3ce;
+}
+.seat .select-personnel .movie-wrapper .movie-date {
+}
+.seat .select-personnel .movie-wrapper .movie-title {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+
+/* 좌석 선택 */
+.seat .select-seat {
+    background-color: #f3f2ef;
+    height: 600px;
+    position: relative;
+}
+.seat .select-seat .screen {
+    background-color: #888;
+    width: 400px;
+    height: 35px;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    line-height: 35px;
+    text-align: center;
+    color: #eee;
+    font-size: 25px;
+    font-weight: 700;
+}
+.seat .select-seat .seat-container {
+    width: calc(37px*10 + 60px);
+    height: calc(37px*7);
+    position: absolute;
+    top: 120px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.seat .select-seat .seat-container .seat {
+    background-color: #eee;
+    width: 33px;
+    height: 33px;
+    margin: 2px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    font-size: 13px;
+}
+.seat .select-seat .seat-container .seat:nth-child(2),
+.seat .select-seat .seat-container .seat:nth-child(8) {
+    margin-right: 30px;
+}
+.seat .select-seat .seat-container .seat:hover {
+    background-color: #bbb;
+}
+
+/* 이전화면, 결제하기 버튼 */
+.seat > .inner > a {
+    background-color: #AF2D2D;
+    display: block;
+    width: 130px;
+    height: 40px;
+    position: absolute;
+    border-radius: 10px;
+    text-align: center; 
+    color: #efefef;
+    line-height: 40px;
+    font-weight: 700;
+    font-size: 15px;
+}
+.seat .back {
+    left: 0;
+    bottom: 0px;
+}
+.seat .payment {
+    right: 0;
+    bottom: 0px;
+}
