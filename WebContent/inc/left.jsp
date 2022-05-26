@@ -11,7 +11,7 @@
       <a href="./MyPage.me">회원 정보 수정</a>
     </li>
     <li>
-      <a href="javascript:void(0)">예매 내역 조회</a>
+      <a href="./MyTicket.ti">예매 내역 조회</a>
     </li>
     <li>
       <a href="./DeleteMember.me">회원 탈퇴하기</a>
