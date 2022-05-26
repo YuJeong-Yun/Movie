@@ -86,7 +86,7 @@ public class TicketingDAO {
 			}
 		
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-			order_num = sdf.format(new Date()) + "-" + String.format("%05d", num);
+			order_num = sdf.format(new Date()) + "-" + String.format("%04d", num);
 			
 			System.out.println("DAO : 주문번호 생성 완료 "+order_num);
 			
@@ -132,7 +132,59 @@ public class TicketingDAO {
 		} finally {
 			closeDB();
 		}
-		
 		return dto;
 	} // getMemberInfo()
+	
+	
+	// 결제정보 DB에 저장
+	public void insertPayInfo(TicketingDTO dto) {
+		int num = 0;
+		
+		try {
+			// 1.2. 결제 연결
+			con = getCon();
+			
+			/////////////////////////////////////// num 계산하기
+			// 3. sql 작성 & pstmt 객체
+			sql = "select max(num) from movie_ticketing";
+			pstmt = con.prepareStatement(sql);
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리
+			if(rs.next()) {
+				num = rs.getInt(1)+1;
+			}
+			System.out.println("DAO : num 계산 "+num);
+			
+			//////////////////////////////////////// 결제 정보 insert
+			// 3. sql 작성 & pstmt 객체
+			sql = "insert into movie_ticketing(num, order_num, member_id, movie_title, movie_theater, movie_dateTime, movie_seat, order_date, price, payment_num) "
+					+ "values(?,?,?,?,?,?,?,now(),?,?)";
+			pstmt = con.prepareStatement(sql);
+			// ???
+			pstmt.setInt(1, num);
+			pstmt.setString(2, dto.getOrder_num());
+			pstmt.setString(3, dto.getMember_id());
+			pstmt.setString(4, dto.getMovie_title());
+			pstmt.setString(5, dto.getMovie_theater());
+			pstmt.setString(6, dto.getMovie_dateTime());
+			pstmt.setString(7, dto.getMovie_seat());
+			pstmt.setInt(8, dto.getPrice());
+			pstmt.setString(9, dto.getPayment_num());
+			
+			// 4. sql 실행
+			pstmt.executeUpdate();
+			
+			System.out.println("DAO : 정보 저장 완료 "+dto);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	} //insertPayInfo
+	
+	
 }

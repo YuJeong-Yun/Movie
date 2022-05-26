@@ -142,12 +142,11 @@ function calcUID() {
 	let order_num = "";
 	$.ajax({
 		url: "./ticketing/calcUIDAjax.jsp",
+		async: false, // 동기식으로 사용 -> 변수에 값 저장하기 위해
 		success: function(data) {
-			console.log("o_n data : "+data); ////////////////////////////////////////
-			order_num = data;
+			order_num = data.trim();
 		},
 	}); // ajax
-	console.log("order_num : "+order_num); ////////////////////////////////////////////
 	return order_num;
 }; // calcUID
 
@@ -177,7 +176,7 @@ function requestPay() { // 결제요청
 	const totalPrice = calcPrice();
 	let seat =""; // 좌석 전달하기 위해 배열->문자로 변환
 	for(let i=0; i<selectedSeats.length; i++) {
-		seat+= selectedSeats[i]+"/";
+		seat+= selectedSeats[i]+",";
 	};
 	
 	let buyer_email = "" ;
@@ -220,7 +219,6 @@ function requestPay() { // 결제요청
    	            data: {
    	                imp_uid: rsp.imp_uid,
    	                merchant_uid: rsp.merchant_uid,
-   	                order_num: order_num,
    	                totalPrice: totalPrice,
    	                movieTitle: movieTitle,
    	                movieTheater: movieTheater,
@@ -229,6 +227,8 @@ function requestPay() { // 결제요청
    	                movieSeat: seat
    	            }
    	        }); // ajax
+   	        alert("결제를 완료했습니다.");
+   	        location.href='./MyTicket.me';
        } else {
          alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
        } // if
