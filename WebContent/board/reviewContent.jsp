@@ -185,7 +185,7 @@
 	  			// 댓글 리스트에 추가
 				let newReply = 
 					"<li>" +
-					   "<img src='./profile/th_"+item.id+".jpg' onerror='this.style.display='none'; this.nextElementSibling.style.display='block';' />" +
+					   `<img src='./profile/th_"+${item.id}+".jpg' onerror='this.style.display="none"; this.nextElementSibling.style.display="block";' />` +
 			           "<span class='material-icons'>person</span>" + 
 		              "<div class='content__wrapper'>" +
 		                "<div  class='content__name'>"+item.name + 
