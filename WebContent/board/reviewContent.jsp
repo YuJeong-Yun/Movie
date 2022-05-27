@@ -84,6 +84,7 @@
           <!-- 글의 리뷰 모두 출력 -->
           <ul class="comment__content">
             <c:forEach var="boardReply" items="${boardReplyList }" varStatus="status">
+              <c:if test="${boardReply.id ne null }"> <!-- 존재하는 회원일 경우 -->
 	            <li>
 	              <!-- 프로필 이미지 없으면 익명 아이콘 출력 -->
 				  <img src="./profile/th_${boardReply.id }.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />	              
@@ -108,6 +109,20 @@
 	                </div>
 	              </div>
 	            </li>
+	          </c:if>
+	          <c:if test="${boardReply.id eq null }"> <!-- 탈퇴한 회원일 경우 -->
+	            <li>
+	              <span class="material-icons">person</span> 
+	              <div class="content__wrapper">
+	                <div  class="content__name"> <!-- 댓글 작성자 -->
+	                </div> 
+	                <div class="content__text" style="white-space:pre-wrap">탈퇴한 회원입니다.</div> <!-- 댓글 내용 -->
+	                <div class="content__date">
+	                	<f:formatDate value="${boardReply.date }" pattern="yyyy.MM.dd HH:mm" ></f:formatDate> <!-- 댓글 작성 시간 -->
+	                </div>
+	              </div>
+	            </li>
+	          </c:if>
 	              
 	            <!-- 수정할 폼 -->
 	            <li class="content__write" style="display: none;">
@@ -185,7 +200,7 @@
 	  			// 댓글 리스트에 추가
 				let newReply = 
 					"<li>" +
-					   `<img src='./profile/th_"+${item.id}+".jpg' onerror='this.style.display="none"; this.nextElementSibling.style.display="block";' />` +
+					   `<img src='./profile/th_`+item.id+`.jpg' onerror='this.style.display="none"; this.nextElementSibling.style.display="block";' />` +
 			           "<span class='material-icons'>person</span>" + 
 		              "<div class='content__wrapper'>" +
 		                "<div  class='content__name'>"+item.name + 
