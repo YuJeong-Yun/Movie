@@ -6,10 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 
 public class MemberDAO {
@@ -359,5 +363,37 @@ public class MemberDAO {
 	} // updatePw
 	
 	
+	// id, tel, email 정보 가져오기 - 중복 체크용
+	public JSONArray dbCheck() {
+		JSONArray memberList  = new JSONArray();
+		
+		try {
+			// 1.2. 디비 연결
+			con = getCon();
+			
+			// 3. sql 생성 & pstmt 객체
+			sql = "select id, tel, email from movie_member";
+			pstmt = con.prepareStatement(sql);
+			
+			// 4. sql 실행
+			rs = pstmt.executeQuery();
+			
+			// 5. 데이터 처리 => DB정보를 JSON 형태로 변경
+			while(rs.next()) {
+				JSONObject obj = new JSONObject();
+				
+				obj.put("id", rs.getString("id"));
+				obj.put("tel", rs.getString("tel"));
+				obj.put("email", rs.getString("email"));
+				
+				memberList.add(obj);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return memberList;
+	} // dbCheck()
 	
 }
