@@ -66,7 +66,7 @@
       <c:if test="${id eq 'admin' }">
         <div class="btn-group content">
           <a href="./EventUpdate.ev?num=${dto.num }&pageNum=${pageNum }&category=${dto.category }" class="btn">수정하기</a>
-          <a href="./EventDelete.ev?num=${dto.num }&pageNum=${pageNum }&category=${dto.category }" class="btn">삭제하기</a>
+          <a href="./EventDelete.ev?num=${dto.num }&pageNum=${pageNum }&category=${dto.category }" class="btn" onclick="return confirm('삭제하시겠습니까?');">삭제하기</a>
         </div>
       </c:if>
       

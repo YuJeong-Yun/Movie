@@ -56,7 +56,7 @@
                   <c:if test="${dto.category == 'cgv' }">selected</c:if>
                 >CGV 극장별</option>
                 <option value="discount" 
-                <c:if test="${dto.category == 'discoutn' }">selected</c:if>
+                <c:if test="${dto.category == 'discount' }">selected</c:if>
                 >제휴/할인</option>
               </select>
             </td>
