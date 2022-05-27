@@ -1,8 +1,7 @@
 package com.movie.ticketing.db;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
-import com.sun.jmx.snmp.Timestamp;
 
 public class TicketingDTO {
 	private int num; // 번호(pk)

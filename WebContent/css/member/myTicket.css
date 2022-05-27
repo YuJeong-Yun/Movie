@@ -1,0 +1,75 @@
+@import url("../header.css");
+@import url("../footer.css");
+@import url("../common.css");
+@import url("../left.css");
+
+
+.my-ticket > .inner {
+    height: 1100px;
+}
+/* 예매 내역 */
+.my-ticket .ticket-wrapper {
+	width: 850px;
+    margin-top: 160px;
+    padding: 60px 40px 0;
+    height: 750px;
+    position: absolute;
+    right: 0;
+}
+.my-ticket .ticket-wrapper .ticket-title {
+    font-size: 30px;
+    font-weight: 900;
+    color: #fb4537;
+    margin-bottom: 30px;
+}
+.my-ticket .ticket-wrapper table {
+    width: 770px;
+    margin-bottom: 10px;
+    border-top: 1px solid #e5d1d1;
+    border-bottom: 1px solid #e5d1d1;
+    text-align: left;
+    table-layout: fixed;
+}
+.my-ticket .ticket-wrapper table tr td {
+    padding: 0 20px;
+    font-size: 14px;
+}
+.my-ticket .ticket-wrapper table tr:first-child {
+    background-color: #f9f5f5;
+    height: 40px;
+    line-height: 40px;
+    font-size: 17px;
+}
+.my-ticket .ticket-wrapper table tr:first-child td.movie-title {
+    width: 400px;
+    font-size: 15px;
+    font-weight: 700;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap;  
+}
+.my-ticket .ticket-wrapper table tr:first-child td.order_num {
+    width: 250px;
+    color: #d74338;
+    font-weight: 700;
+  }
+.my-ticket .ticket-wrapper table tr td.movie-theater::before { 
+  content: "CGV ";
+}
+.my-ticket .ticket-wrapper table tr:not(:first-child) {
+    height: 35px;
+    line-height: 35px;
+  }
+.my-ticket .ticket-wrapper table tr:not(:first-child) td:first-child { /*첫 번째 열 */
+	color: #555;
+	font-weight: 700;
+}
+.my-ticket .ticket-wrapper table tr:not(:first-child) td:nth-child(2) {
+	
+}
+.my-ticket .ticket-wrapper table tr:not(:first-child) td:nth-child(3) { /* 세 번째 열 */
+	color: #555;
+	font-weight: 700;
+}
+.my-ticket .ticket-wrapper table tr:not(:first-child) td:last-child {
+}

@@ -52,6 +52,17 @@ public class TicketingFrontController extends HttpServlet {
 			forward.setPath("./ticketing/movieTicketingSeat.jsp");
 			forward.setRedirect(false);
 			
+		}else if(command.equals("/MyTicket.ti")) { // 예매내역 페이지 이동
+			System.out.println(" C : /MyTicket.ti 호출");
+			// DB 사용 ㅇ, 페이지 출력
+			
+			action = new MyTicketAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		

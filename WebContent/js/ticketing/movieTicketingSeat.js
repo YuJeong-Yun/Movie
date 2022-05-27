@@ -228,7 +228,7 @@ function requestPay() { // 결제요청
    	            }
    	        }); // ajax
    	        alert("결제를 완료했습니다.");
-   	        location.href='./MyTicket.me';
+   	        location.href='./MyTicket.ti';
        } else {
          alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
        } // if

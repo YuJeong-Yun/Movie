@@ -112,7 +112,6 @@
 	          </c:if>
 	          <c:if test="${boardReply.id eq null }"> <!-- 탈퇴한 회원일 경우 -->
 	            <li>
-	              <span class="material-icons">person</span> 
 	              <div class="content__wrapper">
 	                <div  class="content__name"> <!-- 댓글 작성자 -->
 	                </div> 

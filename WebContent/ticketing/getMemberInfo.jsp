@@ -5,11 +5,11 @@
     pageEncoding="UTF-8"%>
 
 <%
-//     String id = (String) session.getAttribute("id");
+    String id = (String) session.getAttribute("id");
 	
 	// DAO 객체 생성
 	TicketingDAO dao = new TicketingDAO();
-	MemberDTO dto = dao.getMemberInfo("admin");
+	MemberDTO dto = dao.getMemberInfo(id);
 	
 	// 주소 - 우편번호랑 나누기
 	String[] addrAll = dto.getAddr().split("/");
