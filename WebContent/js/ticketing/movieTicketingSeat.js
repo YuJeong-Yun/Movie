@@ -222,8 +222,7 @@ function requestPay() { // 결제요청
    	                totalPrice: totalPrice,
    	                movieTitle: movieTitle,
    	                movieTheater: movieTheater,
-   	                movieDate: movieDate,
-   	                movieTime: movieTime,
+   	                movieDateTime: movieDateTime,
    	                movieSeat: seat
    	            }
    	        }); // ajax

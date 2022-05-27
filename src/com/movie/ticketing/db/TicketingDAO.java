@@ -196,7 +196,7 @@ public class TicketingDAO {
 			con = getCon();
 			
 			// 3. sql 작성 & pstmt 객체
-			sql = "select * from movie_ticketing where member_id=?";
+			sql = "select * from movie_ticketing where member_id=? order by num desc";
 			pstmt = con.prepareStatement(sql);
 			// ???
 			pstmt.setString(1, id);

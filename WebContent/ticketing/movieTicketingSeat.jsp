@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -22,14 +23,7 @@
   <link rel="stylesheet" href="./css/ticketing/movieTicketingSeat.css">
   <script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-  <script type="text/javascript">
-    // 결제 성공시 전달할 정보들
-	const movieTitle = '${param.movie}';
-	const movieTheater = '${param.theater}';
-	const movieDate = '${param.date}';
-	const movieTime = '${param.time}';
-  </script>
-  <script defer src="./js/ticketing/movieTicketingSeat.js"></script>
+  <!-- 아래에 script 추가있음 -->
 </head>
 
 <body>
@@ -72,9 +66,31 @@
             </ul>
           </div>
         </div>
+        
+        <%
+	        // 영화 상영 날짜 계산하기
+	        String movie_dateTime ="";
+			String movie_date = request.getParameter("date");
+			String movie_time = request.getParameter("time");
+	    	
+	    	LocalDate today = LocalDate.now();
+	    	int date = today.getDayOfMonth(); // 오늘 일 계산
+	    	
+	    	int movieDateOnly = Integer.parseInt(movie_date.substring(1)); // 날짜에서 일만 추출
+	    	
+	    	if(movieDateOnly >= date) { // 상영날이 오늘 날짜보다 크거나 같으면 이번 달 날짜임
+	    		movie_dateTime = today.getYear() +"년 "+today.getMonthValue() +"월 "+movieDateOnly + "일 " +movie_time;
+	    	}else { // 상영날이 오늘 날짜보다 작으면 다음 달 날짜임
+	    		if(today.getMonthValue() == 12) { // 이번달이 12월이면 연도+1
+	    			movie_dateTime =  (today.getYear()+1) +"년 "+1 +"월 "+movieDateOnly + "일 " +movie_time;
+	    		}
+	    		movie_dateTime =  today.getYear() +"년 "+(today.getMonthValue()+1) +"월 "+movieDateOnly + "일 " +movie_time;
+	    	} //if
+	    		pageContext.setAttribute("movie_dateTime", movie_dateTime);
+        %>
         <div class="movie-wrapper">
           <span class="movie-theater">${param.theater }</span>
-          <span class="movie-date">${param.date } ${param.time }</span>
+          <span class="movie-date">${movie_dateTime }</span>
           <div class="movie-title">${param.movie }</div>
         </div>
       </div>
@@ -90,9 +106,16 @@
   </section>
 
 
-
   <jsp:include page="../inc/footer.jsp"></jsp:include>
   
+  
+  <script type="text/javascript">
+    // 결제 성공시 전달할 정보들
+	const movieTitle = '${param.movie}';
+	const movieTheater = '${param.theater}';
+	const movieDateTime = '${movie_dateTime}';
+  </script>
+  <script defer src="./js/ticketing/movieTicketingSeat.js"></script>
 </body>
 
 </html>
