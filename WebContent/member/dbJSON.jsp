@@ -11,8 +11,6 @@
 	
 	JSONArray memberList = dao.dbCheck();
 	
-
-	System.out.println(memberList);
 %>
 
 <%=memberList %>

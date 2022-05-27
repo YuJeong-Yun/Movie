@@ -4,8 +4,15 @@
 @import url("../left.css");
 
 
+/* left menu에서 예매 내역 조회 표시 */
+.left .left-menu li:nth-child(3) a {
+    color: #d92316;;
+}
+
+
 .my-ticket > .inner {
     height: 1100px;
+    overflow: auto;
 }
 /* 예매 내역 */
 .my-ticket .ticket-wrapper {
@@ -53,9 +60,6 @@
     color: #d74338;
     font-weight: 700;
   }
-.my-ticket .ticket-wrapper table tr td.movie-theater::before { 
-  content: "CGV ";
-}
 .my-ticket .ticket-wrapper table tr:not(:first-child) {
     height: 35px;
     line-height: 35px;

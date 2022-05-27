@@ -48,7 +48,7 @@
 	            <td>관람 일시</td>
 	            <td>${pay.movie_dateTime }</td>
 	            <td>관람 극장</td>
-	            <td class="movie-theater">${pay.movie_theater }</td>
+	            <td class="movie-theater">CGV ${pay.movie_theater }</td>
 	          </tr>
 	          <tr>
 	            <td>결제 날짜</td>
@@ -58,6 +58,27 @@
 	          </tr>
 	        </table>
         </c:forEach>
+        <c:if test="${payList.size() eq 0 }">
+        	<table><col width="120"><col width="280"><col width="120"><col width="250">
+	          <tr>
+	            <td colspan="2" class="movie-title">예매 내역 없음</td>
+	            <td>예매번호</td>
+	            <td class="order_num">CGV에서 지금 예매해보세요!</td>
+	          </tr>
+	          <tr>
+	            <td>관람 일시</td>
+	            <td></td>
+	            <td>관람 극장</td>
+	            <td class="movie-theater"></td>
+	          </tr>
+	          <tr>
+	            <td>결제 날짜</td>
+	            <td></td>
+	            <td>결제 금액</td>
+	            <td></td>
+	          </tr>
+	        </table>
+        </c:if>
         
       </div>
 
