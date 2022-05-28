@@ -87,7 +87,7 @@
           <li>
             <h2>극장</h2>
             <ul>
-              <li><a href="javascript:void(0)">CGV극장</a></li>
+              <li><a href="./MovieTheater.do" class="do">CGV극장</a></li>
               <li><a href="javascript:void(0)">특별관</a></li>
             </ul>
           </li>

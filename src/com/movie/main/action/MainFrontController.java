@@ -72,6 +72,15 @@ public class MainFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+		}else if(command.equals("/MovieTheater.do")) { // 영화관 지도 페이지 이동
+			System.out.println(" C : /MovieTheater.do 호출");
+			// DB 사용 X, 페이지 이동
+			
+			forward = new ActionForward();
+			forward.setPath("./main/movieTheater.jsp");
+			forward.setRedirect(false);
+			
 		}
 		
 		
