@@ -56,6 +56,12 @@
 	            <td>결제 금액</td>
 	            <td><f:formatNumber value="${pay.price }" pattern="#,##0 원" /></td>
 	          </tr>
+	          <tr>
+	            <td>좌석 번호</td>
+	            <td>${pay.movie_seat }</td>
+	            <td></td>
+	            <td></td>
+	          </tr>
 	        </table>
         </c:forEach>
         <c:if test="${payList.size() eq 0 }">
