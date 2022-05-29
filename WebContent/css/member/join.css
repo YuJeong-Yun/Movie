@@ -15,7 +15,7 @@ input {
 .join > .inner {
   margin-top: 200px;
   width: 900px;
-  height: 1400px;
+  height: 1200px;
 }
 
 /* 환영 이미지 */
@@ -33,7 +33,7 @@ input {
 
 /* 회원가입 입력 폼 */
 .join .form-wrapper {
-  height: 800px;
+  height: 700px;
   position: absolute;
   top: 450px;
 }
