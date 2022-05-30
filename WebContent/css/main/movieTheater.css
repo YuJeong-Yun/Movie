@@ -9,6 +9,7 @@
   background-image: url("../../images/bg_showtimes_favorite.gif");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   
 }
 .map > .inner {

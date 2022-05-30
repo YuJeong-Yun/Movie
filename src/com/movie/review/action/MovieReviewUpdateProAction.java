@@ -28,8 +28,8 @@ public class MovieReviewUpdateProAction implements Action {
 		dto.setSubject(request.getParameter("subject"));
 		dto.setContent(request.getParameter("content"));
 		
-		System.out.println(" M : " + dto);
-		System.out.println(" M : pageNum : "+pageNum);
+//		System.out.println(" M : " + dto);
+//		System.out.println(" M : pageNum : "+pageNum);
 		
 		
 		// DAO 객체 생성 - 글 수정 메서드 호출 updateBoard()

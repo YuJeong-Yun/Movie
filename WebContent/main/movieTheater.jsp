@@ -35,7 +35,7 @@
 	
 	
 	
-	
+  <!-- 하단 메뉴에서 광고 배너 빼고 출력 -->
   <!-- FOOTER -->
   <footer>
   <div class="inner">

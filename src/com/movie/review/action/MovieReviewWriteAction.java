@@ -28,7 +28,7 @@ public class MovieReviewWriteAction implements Action {
 		dto.setIp(ip);
 		dto.setSubject(subject);
 		
-		System.out.println(" M : "+dto);
+//		System.out.println(" M : "+dto);
 			
 		// insertBoard() 글쓰기 동작 실행
 		MovieBoardDAO dao = new MovieBoardDAO();

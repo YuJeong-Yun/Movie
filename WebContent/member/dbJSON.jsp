@@ -8,7 +8,7 @@
 	
 	// DAO 객체 생성
 	MemberDAO dao = new MemberDAO();
-	
+	// id, tel, email 정보 가져오기 - 중복 체크용
 	JSONArray memberList = dao.dbCheck();
 	
 %>

@@ -5,6 +5,8 @@
     pageEncoding="UTF-8"%>
 
 <%
+	// 회원 정보 가져오는 파일
+	
     String id = (String) session.getAttribute("id");
 	
 	// DAO 객체 생성
@@ -24,8 +26,6 @@
 	obj.put("addr", addr);
 	obj.put("postcode", postcode);
 	
-	System.out.println("Ajax 회원 정보 조회 :"+obj);
-
 %>
 
 <%= obj%>

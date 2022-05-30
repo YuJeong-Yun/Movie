@@ -48,7 +48,7 @@
   </section> 
 
 
-  <!-- 영화 차트 슬라이드 -->
+  <!-- 영화 차트 슬라이드 1-10위 출력-->
   <section class="movie-chart">
     <div class="inner">
       <div class="swiper">
@@ -69,10 +69,10 @@
         </div>
       </div>
 
-      <div class="swiper-prev">
+      <div class="swiper-prev"> <!-- 이전 이동 버튼 -->
         <div class="material-icons">chevron_left</div>
       </div>
-      <div class="swiper-next">
+      <div class="swiper-next"> <!-- 다음 이동 버튼 -->
         <div class="material-icons">navigate_next</div>
       </div>
     </div>

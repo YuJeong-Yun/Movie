@@ -27,7 +27,7 @@ public class EventListAction implements Action {
 		EventBoardDAO dao = new EventBoardDAO();
 		// 글 개수 확인 동작 실행
 		int result = dao.getBoardCount(category);
-		System.out.println(" M : 글 개수 " + result + "개");
+//		System.out.println(" M : 글 개수 " + result + "개");
 		
 		
 		///////////////////////////////////////////////////////////////////////////////////
@@ -77,7 +77,7 @@ public class EventListAction implements Action {
 
 		// request 영역에 글정보(list) 저장
 		request.setAttribute("boardList", boardList);
-		System.out.println("boardList : "+boardList);
+//		System.out.println("boardList : "+boardList);
 
 		// request 영역에 페이징처리 정보를 저장
 		request.setAttribute("pageNum", pageNum);

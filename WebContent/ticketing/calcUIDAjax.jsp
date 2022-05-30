@@ -7,7 +7,6 @@
  	TicketingDAO dao = new TicketingDAO();
  	// 주문번호 생성
  	String order_num = dao.makeOrderNum() ;
- 	System.out.println("Ajax : 주문번호 "+order_num);
  	
  %>
 <%= order_num %>

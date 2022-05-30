@@ -62,7 +62,7 @@ public class EventWriteAction implements Action {
 		
 		// 썸네일 이미지 생성 --------------------------------------
 		String image = multi.getFilesystemName("image");
-		System.out.println(" M : 파일 이름 "+ image);
+//		System.out.println(" M : 파일 이름 "+ image);
 		
 		// ParameterBlock 클래스에 변환할 이미지를 담고 그 이미지를 불러온다.
 		ParameterBlock pb=new ParameterBlock();
@@ -103,7 +103,7 @@ public class EventWriteAction implements Action {
 		dto.setImage(image); // 서버에 업로드된 이미지명
 		dto.setImage_thumb("th_"+image); // 생성한 섬네일 이미지
 		
-		System.out.println(" M  dto : " + dto);
+//		System.out.println(" M  dto : " + dto);
 		
 		//		- DAO 객체 생성 - 업로드 메서드 호출
 		EventBoardDAO dao = new EventBoardDAO();

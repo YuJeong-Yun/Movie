@@ -29,6 +29,7 @@
 </head>
 
 <body>
+  <!-- 로그인 안되어 있으면 로그인 페이지로 이동 -->
   <c:if test="${sessionScope.id == null }">
     <% response.sendRedirect("./Login.me"); %>
   </c:if>
@@ -53,7 +54,7 @@
           <table>
             <tr>
               <td>프로필
-                <c:if test="${dto.profile ne null }">
+                <c:if test="${dto.profile ne null }"> <!-- 프로필 있으면 출력 -->
                   <img src="./profile/${dto.profile }" class="profile-img">
                 </c:if>
               </td>

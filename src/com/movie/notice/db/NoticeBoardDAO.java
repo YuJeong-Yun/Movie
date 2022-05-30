@@ -78,7 +78,7 @@ public class NoticeBoardDAO {
 				result = rs.getInt(1);
 			}
 			
-			System.out.println("DAO : 게시판 글개수 " + result + "개");
+//			System.out.println("DAO : 게시판 글개수 " + result + "개");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -123,7 +123,7 @@ public class NoticeBoardDAO {
 				
 				boardList.add(dto);
 			}
-			System.out.println("DAO : 공지사항 글 전체 목록 저장완료!");
+//			System.out.println("DAO : 공지사항 글 전체 목록 저장완료!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -150,7 +150,7 @@ public class NoticeBoardDAO {
 			// 4. sql 실행
 			result = pstmt.executeUpdate();
 			
-			System.out.println("DAO : "+num+"번 조회수 "+result +" 증가");
+//			System.out.println("DAO : "+num+"번 조회수 "+result +" 증가");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -189,7 +189,7 @@ public class NoticeBoardDAO {
 				dto.setSubject(rs.getString("subject"));
 				dto.setFile(rs.getString("file"));
 			}
-			System.out.println(" 데이터 입력 완료!");
+//			System.out.println(" 데이터 입력 완료!");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -272,7 +272,7 @@ public class NoticeBoardDAO {
 			// 4. sql 실행
 			pstmt.executeUpdate();
 			
-			System.out.println("DAO : 글쓰기 완료! ");
+//			System.out.println("DAO : 글쓰기 완료! ");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -301,7 +301,7 @@ public class NoticeBoardDAO {
 			// pstmt.executeUpdate()는 실행된 row 수를 반환함
 			 result = pstmt.executeUpdate(); 
 			
-			System.out.println(" DAO : 게시판 글 삭제 완료! " + result);
+//			System.out.println(" DAO : 게시판 글 삭제 완료! " + result);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -332,7 +332,7 @@ public class NoticeBoardDAO {
 			// 4. sql 실행
 			result = pstmt.executeUpdate();	
 			
-			System.out.println(" DAO : 정보 수정 완료("+result+")");
+//			System.out.println(" DAO : 정보 수정 완료("+result+")");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

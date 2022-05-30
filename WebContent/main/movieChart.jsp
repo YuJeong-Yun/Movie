@@ -44,6 +44,8 @@
       </div>
     
       <h2 class="title">무비차트</h2>
+      
+      <!-- 1-3위 -->
       <ol class="movie-wrapper">
       	<c:forEach var="mc" items="${sessionScope.movieChart }" begin="0" end="2" step="1">
 	      <li>
@@ -58,6 +60,7 @@
 	      </li>
         </c:forEach>
       </ol>
+      <!-- 4-19위 -->
       <ol class="movie-wrapper second">
       	<c:forEach var="mc" items="${sessionScope.movieChart }" begin="3" end="18" step="1">
 	      <li>

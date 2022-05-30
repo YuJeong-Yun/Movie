@@ -85,7 +85,7 @@ public class MemberDAO {
 			// 4. sql 실행
 			pstmt.executeUpdate();
 			
-			System.out.println("DAO : 회원가입 완료!");
+//			System.out.println("DAO : 회원가입 완료!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -123,7 +123,7 @@ public class MemberDAO {
 				result = -1;
 			}
 			
-			System.out.println("DAO : 로그인 체크완료! ("+result+")");
+//			System.out.println("DAO : 로그인 체크완료! ("+result+")");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -167,7 +167,7 @@ public class MemberDAO {
 				dto.setProfile(rs.getString("profile"));
 				dto.setTh_profile(rs.getString("th_profile"));
 			}	
-			System.out.println("DAO : 회원정보 저장 완료!");
+//			System.out.println("DAO : 회원정보 저장 완료!");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -230,7 +230,7 @@ public class MemberDAO {
 						pstmt.setString(6, dto.getTh_profile());
 						pstmt.setString(7, dto.getId());
 						
-						System.out.println("DAO : 프로필 업데이트 O");
+//						System.out.println("DAO : 프로필 업데이트 O");
 					}
 					
 					// 4 sql 실행
@@ -239,15 +239,15 @@ public class MemberDAO {
 				}else {
 					// 본인 x, 정보수정 x
 					result = 0;
-					System.out.println("DAO : 비밀번호 오류, 정보수정 X");
+//					System.out.println("DAO : 비밀번호 오류, 정보수정 X");
 				} // if
 				
 			}else {
 				result = -1;
-				System.out.println("DAO : 회원정보가 없음, 정보수정 X");
+//				System.out.println("DAO : 회원정보가 없음, 정보수정 X");
 			} // if
 			
-			System.out.println("DAO : 회원정보 수정완료! ( "+result+")");
+//			System.out.println("DAO : 회원정보 수정완료! ( "+result+")");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -294,15 +294,15 @@ public class MemberDAO {
 				}else {
 					// 본인 x, 정보삭제 x
 					result = 0;
-					System.out.println(" DAO : 비밀번호 오류, 정보삭제 X");
+//					System.out.println(" DAO : 비밀번호 오류, 정보삭제 X");
 				} // if
 				
 			}else {
 				result = -1;
-				System.out.println(" DAO : 회원정보가 없음, 정보삭제 X");
+//				System.out.println(" DAO : 회원정보가 없음, 정보삭제 X");
 			} // if
 			
-			System.out.println(" DAO : 회원정보 삭제완료! ( "+result+")");
+//			System.out.println(" DAO : 회원정보 삭제완료! ( "+result+")");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -345,14 +345,14 @@ public class MemberDAO {
 					result = pstmt.executeUpdate(); // result = 1
 				} else { // 비밀번호 오류
 					result = 0;
-					System.out.println("DAO : 비밀번호 오류, 비밀번호 업데이트 X");
+//					System.out.println("DAO : 비밀번호 오류, 비밀번호 업데이트 X");
 				}
 			} else { // 
 				result = -1;
-				System.out.println("DAO : 회원정보가 없음, 비밀번호 업데이트 X");
+//				System.out.println("DAO : 회원정보가 없음, 비밀번호 업데이트 X");
 			} // if
 			
-			System.out.println("DAO : 비밀번호 업데이트 완료! "+result);
+//			System.out.println("DAO : 비밀번호 업데이트 완료! "+result);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

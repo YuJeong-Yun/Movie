@@ -33,7 +33,7 @@
   <!-- HEADER -->
   <jsp:include page="../inc/header.jsp"></jsp:include>
 
-
+  <!-- 공지사항 글쓰기 -->
   <section class="notice-write">
     <div class="inner">
       <form action="./NoticeWriteAction.no" method="post"  enctype="multipart/form-data" name="fr" onsubmit="return check();" >

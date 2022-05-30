@@ -51,7 +51,7 @@ public class MainMovieChartAction implements Action {
 			movieChart.add(obj);
 		}
 
-		System.out.println("movieChart : " + movieChart);
+//		System.out.println("movieChart : " + movieChart);
 		
 		// session에 movieList 저장
 		HttpSession session = request.getSession();

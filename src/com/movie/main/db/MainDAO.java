@@ -121,7 +121,7 @@ public class MainDAO {
 				boardCnt.add(0);
 			}
 			
-			System.out.println("DAO : 검색된 글개수 " + boardCnt);
+//			System.out.println("DAO : 검색된 글개수 " + boardCnt);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -179,7 +179,7 @@ public class MainDAO {
 				}
 				searchList.add(reviewList);
 				
-				System.out.println("DAO : reviewList 저장 완료 "+reviewList);
+//				System.out.println("DAO : reviewList 저장 완료 "+reviewList);
 			}else {
 				searchList.add(null);
 			}
@@ -217,7 +217,7 @@ public class MainDAO {
 				}
 				searchList.add(eventList);
 				
-				System.out.println("DAO : eventList 저장 완료 "+eventList);
+//				System.out.println("DAO : eventList 저장 완료 "+eventList);
 			}else {
 				searchList.add(null);
 			}
@@ -254,12 +254,12 @@ public class MainDAO {
 				}
 				searchList.add(noticeList);
 				
-				System.out.println("DAO : noticeList 저장 완료 "+noticeList);
+//				System.out.println("DAO : noticeList 저장 완료 "+noticeList);
 			}else {
 				searchList.add(null);
 			}
 			
-			System.out.println("DAO : 게시판 글 전체 목록 저장완료!");
+//			System.out.println("DAO : 게시판 글 전체 목록 저장완료!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

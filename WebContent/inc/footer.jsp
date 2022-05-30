@@ -32,6 +32,7 @@
         <span>대표이메일: jcgvmaster@cj.net</span>
       </li>
       <li>© CJ CGV. All Rights Reserved</li>
+      <!-- 메일 보내기 -->
       <li class="mail"
       	onclick="window.open('./Mail.ml', 'mail', 'top=100, left=100, width=550, height=600, status=no, menubar=no, toolbar=no, resizable=no');"> * 메일 보내기</li>
     </ul>

@@ -51,7 +51,8 @@
     </div>
   </div>
 
-  <!-- 메뉴 리스트 -->
+  <!-- 메뉴 리스트 
+  		사용 가능한 메뉴에는 do 클래스 추가했음 -->
   <div class="menu2">
     <div class="main-menu">
       <div class="inner">

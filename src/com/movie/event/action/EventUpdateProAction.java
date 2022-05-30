@@ -30,7 +30,7 @@ public class EventUpdateProAction implements Action {
 		String pageNum = request.getParameter("pageNum");
 		
 		// 1) 파일 업로드
-		// 		- 가상의 업로드 폴더 설정 : file 폴더
+		// 		- 가상의 업로드 폴더 설정 : upload 폴더
 		String path = request.getRealPath("/upload");
 		System.out.println(" M path : " +path);
 		//		- 업로드 파일의 크기 설정(제한) - 10MB
@@ -95,7 +95,7 @@ public class EventUpdateProAction implements Action {
 //		dto.setFile(multi.getOriginalFileName("file")); // 실제 파일명
 		
 		
-		System.out.println(" M  dto : " + dto);
+//		System.out.println(" M  dto : " + dto);
 		
 		// DAO 객체 생성 - 글 수정 메서드 호출 updateBoard()
 		EventBoardDAO dao = new EventBoardDAO();

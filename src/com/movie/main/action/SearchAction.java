@@ -17,7 +17,7 @@ public class SearchAction implements Action {
 		
 		// 전달된 정보 저장 (search)
 		String search = request.getParameter("search");
-		System.out.println(" M 검색어 : " + search);
+//		System.out.println(" M 검색어 : " + search);
 		
 		// DAO 객체 생성
 		MainDAO dao = new MainDAO();
@@ -26,7 +26,7 @@ public class SearchAction implements Action {
 		
 		
 		// 인덱스 0: movie_board, 1 : movie_event_board, 2 : movie_notice_board
-		System.out.println(" M : 검색된 글 개수  " + boardCnt);
+//		System.out.println(" M : 검색된 글 개수  " + boardCnt);
 		
 		
 		///////////////////////////////////////////////////////////////////////////////////

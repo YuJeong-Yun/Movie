@@ -30,10 +30,9 @@
 	dto.setPayment_num(payment_num);
 	dto.setPrice(price);
 	
-	System.out.println("Ajax : 정보 저장 "+dto);
-	
 	// DAO 객체 생성
 	TicketingDAO dao = new TicketingDAO();
+	// 결제 정보 DB에 저장
 	dao.insertPayInfo(dto); 
 %>
 

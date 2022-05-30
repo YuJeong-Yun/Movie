@@ -37,6 +37,7 @@
 
       <div class="ticket-wrapper">
         <h2 class="ticket-title">MY 예매 내역</h2>
+        <!-- 예매 내역 있는 경우 -->
         <c:forEach var="pay" items="${payList }">
 	        <table><col width="120"><col width="280"><col width="120"><col width="250">
 	          <tr>
@@ -64,6 +65,7 @@
 	          </tr>
 	        </table>
         </c:forEach>
+        <!-- 예매 내역 없는 경우 -->
         <c:if test="${payList.size() eq 0 }">
         	<table><col width="120"><col width="280"><col width="120"><col width="250">
 	          <tr>

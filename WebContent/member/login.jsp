@@ -34,7 +34,7 @@
         <button class="btn"><a href="javascript:void(0)">비회원 예매확인</a></button>
       </div>
       
-      <h2 class="alert">${requestScope.alert }</h2>
+      <h2 class="alert">${requestScope.alert }</h2> <!-- 비회원 입니다. 비밀번호 오류입니다. --출력 -->
       <form action="./LoginAction.me" method="post" class="logInForm" name="loginForm" onsubmit="return loginCheck();">
         <input type="text" name="id"><br>
         <input type="password" name="pw"><br>

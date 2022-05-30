@@ -26,6 +26,7 @@
 </head>
 
 <body>
+  <!-- 로그인 안 한 회원 로그인 페이지로 이동 -->
   <c:if test="${sessionScope.id == null }">
     <% response.sendRedirect("./Login.me"); %>
   </c:if>

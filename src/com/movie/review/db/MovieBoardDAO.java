@@ -81,7 +81,7 @@ public class MovieBoardDAO {
 				result = rs.getInt(1);
 			}
 			
-			System.out.println("DAO : 게시판 글개수 " + result + "개");
+//			System.out.println("DAO : 게시판 글개수 " + result + "개");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -130,7 +130,7 @@ public class MovieBoardDAO {
 				
 				boardList.add(dto);
 			}
-			System.out.println("DAO : 게시판 글 전체 목록 저장완료!");
+//			System.out.println("DAO : 게시판 글 전체 목록 저장완료!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -165,7 +165,7 @@ public class MovieBoardDAO {
 			// 4. sql 실행
 			result = pstmt.executeUpdate();
 			
-			System.out.println("DAO : "+num+"번 조회수 "+result +" 증가");
+//			System.out.println("DAO : "+num+"번 조회수 "+result +" 증가");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -207,7 +207,7 @@ public class MovieBoardDAO {
 				dto.setReadcount(rs.getInt("readcount"));
 				dto.setSubject(rs.getString("subject"));
 			}
-			System.out.println(" 데이터 입력 완료!");
+//			System.out.println(" 데이터 입력 완료!");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -291,7 +291,7 @@ public class MovieBoardDAO {
 				name = rs.getString("name");
 			}
 			
-			System.out.println("DAO : 이름 " + name);
+//			System.out.println("DAO : 이름 " + name);
 			
 			////////////////////////////////////////////////////////////
 			// 글쓰기
@@ -312,7 +312,7 @@ public class MovieBoardDAO {
 			// 4. sql 실행
 			pstmt.executeUpdate();
 			
-			System.out.println("DAO : 글쓰기 완료! ");
+//			System.out.println("DAO : 글쓰기 완료! ");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -361,7 +361,7 @@ public class MovieBoardDAO {
 				result = -1;
 			} // if
 			
-			System.out.println(" DAO : 게시판 글 삭제 완료! " + result);
+//			System.out.println(" DAO : 게시판 글 삭제 완료! " + result);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -412,7 +412,7 @@ public class MovieBoardDAO {
 			} else { // 글 정보 존재 X
 				result = -1;
 			}
-			System.out.println(" DAO : 정보 수정 완료("+result+")");
+//			System.out.println(" DAO : 정보 수정 완료("+result+")");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -458,7 +458,7 @@ public class MovieBoardDAO {
 				
 				boardReplyList.add(dto);
 			}
-			System.out.println("DAO : 게시판 댓글 전체 목록 저장완료!" + boardReplyList);
+//			System.out.println("DAO : 게시판 댓글 전체 목록 저장완료!" + boardReplyList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -531,7 +531,7 @@ public class MovieBoardDAO {
 			// 4. sql 실행
 			pstmt.executeUpdate();
 			
-			System.out.println("DAO : 게시판 댓글 쓰기 완료! ");
+//			System.out.println("DAO : 게시판 댓글 쓰기 완료! ");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -570,7 +570,7 @@ public class MovieBoardDAO {
 				dto.setBno(rs.getInt("bno"));
 				
 			}
-			System.out.println("DAO : 게시판 댓글 저장완료!" + dto);
+//			System.out.println("DAO : 게시판 댓글 저장완료!" + dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -603,7 +603,7 @@ public class MovieBoardDAO {
 			if(rs.next()) {
 				bno = rs.getInt("bno");
 			}
-			System.out.println("DAO : 부모글 번호 가져오기 "+bno);
+//			System.out.println("DAO : 부모글 번호 가져오기 "+bno);
 			
 			// -----------------------------------------
 			
@@ -641,7 +641,7 @@ public class MovieBoardDAO {
 					// pstmt.executeUpdate()는 실행된 row 수를 반환함
 					result = pstmt.executeUpdate(); 
 
-					System.out.println(" DAO : 게시판 댓글 삭제 완료! ");
+//					System.out.println(" DAO : 게시판 댓글 삭제 완료! ");
 					
 				} else { // 아이디 일치 XX
 					result = 0;
@@ -700,7 +700,7 @@ public class MovieBoardDAO {
 				result = -1;
 			}
 			
-			System.out.println(" DAO : 댓글 정보 수정 완료");
+//			System.out.println(" DAO : 댓글 정보 수정 완료");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

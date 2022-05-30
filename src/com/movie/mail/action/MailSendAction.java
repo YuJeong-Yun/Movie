@@ -28,8 +28,8 @@ public class MailSendAction implements Action {
 		String receiver = request.getParameter("receiver");
 		String subject = request.getParameter("subject");
 		String content = "<발신 : "+sender+">"+request.getParameter("content");
-		System.out.println(sender);
-		System.out.println(content);
+//		System.out.println(sender);
+//		System.out.println(content);
 			
 		response.setContentType("text/html;charset-UTF-8");
 		PrintWriter out = response.getWriter();

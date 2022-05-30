@@ -20,6 +20,10 @@
     rel="stylesheet">
 
   <link rel="stylesheet" href="./css/ticketing/movieTicketing.css">
+    
+  <script type="text/javascript">
+  	const id = '${id}';
+  </script>
   <script defer src="./js/ticketing/movieTicketing.js"></script>
 </head>
 
@@ -180,11 +184,7 @@
 
 
   <jsp:include page="../inc/footer.jsp"></jsp:include>
-  
-  <script type="text/javascript">
-  	const id = '${id}';
-  	
-  </script>
+
 </body>
 
 </html>

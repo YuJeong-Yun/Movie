@@ -80,7 +80,7 @@ public class EventBoardDAO {
 				result = rs.getInt(1);
 			}
 			
-			System.out.println("DAO : 카테고리 글개수 " + result + "개");
+//			System.out.println("DAO : 카테고리 글개수 " + result + "개");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -126,7 +126,7 @@ public class EventBoardDAO {
 				
 				boardList.add(dto);
 			}
-			System.out.println("DAO : 이벤트 글 전체 목록 저장완료!");
+//			System.out.println("DAO : 이벤트 글 전체 목록 저장완료!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -199,7 +199,7 @@ public class EventBoardDAO {
 				dto.setImage(rs.getString("image"));
 				dto.setImage_thumb(rs.getString("image_thumb"));
 			}
-			System.out.println(" 데이터 입력 완료!");
+//			System.out.println(" 데이터 입력 완료!");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -231,7 +231,7 @@ public class EventBoardDAO {
 				num = rs.getInt(1)+1;   		
 			}
 			
-			System.out.println("DAO  : 글번호 " + num);
+//			System.out.println("DAO  : 글번호 " + num);
 			
 			
 			////////////////////////////////////////////////////////////
@@ -252,7 +252,7 @@ public class EventBoardDAO {
 			// 4. sql 실행
 			pstmt.executeUpdate();
 			
-			System.out.println("DAO : 글쓰기 완료! ");
+//			System.out.println("DAO : 글쓰기 완료! ");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -281,7 +281,7 @@ public class EventBoardDAO {
 			// pstmt.executeUpdate()는 실행된 row 수를 반환함
 			 result = pstmt.executeUpdate(); 
 			
-			System.out.println(" DAO : 게시판 글 삭제 완료! " + result);
+//			System.out.println(" DAO : 게시판 글 삭제 완료! " + result);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -315,7 +315,7 @@ public class EventBoardDAO {
 			// 4. sql 실행
 			result = pstmt.executeUpdate();	
 			
-			System.out.println(" DAO : 정보 수정 완료("+result+")");
+//			System.out.println(" DAO : 정보 수정 완료("+result+")");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

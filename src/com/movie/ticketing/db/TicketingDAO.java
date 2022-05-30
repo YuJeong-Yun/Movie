@@ -88,7 +88,7 @@ public class TicketingDAO {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 			order_num = sdf.format(new Date()) + "-" + String.format("%06d", num);
 			
-			System.out.println("DAO : 주문번호 생성 완료 "+order_num);
+//			System.out.println("DAO : 주문번호 생성 완료 "+order_num);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -126,7 +126,7 @@ public class TicketingDAO {
 				dto.setAddr(rs.getString("addr"));
 			}
 			
-			System.out.println("DAO : 회원 정보 조회 완료! "+dto);
+//			System.out.println("DAO : 회원 정보 조회 완료! "+dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -156,7 +156,7 @@ public class TicketingDAO {
 			if(rs.next()) {
 				num = rs.getInt(1)+1;
 			}
-			System.out.println("DAO : num 계산 "+num);
+//			System.out.println("DAO : num 계산 "+num);
 			
 			//////////////////////////////////////// 결제 정보 insert
 			// 3. sql 작성 & pstmt 객체
@@ -177,7 +177,7 @@ public class TicketingDAO {
 			// 4. sql 실행
 			pstmt.executeUpdate();
 			
-			System.out.println("DAO : 정보 저장 완료 "+dto);
+//			System.out.println("DAO : 정보 저장 완료 "+dto);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -221,7 +221,7 @@ public class TicketingDAO {
 
 				payList.add(dto);
 			}
-			System.out.println("DAO : 결제정보 저장 완료 "+payList);
+//			System.out.println("DAO : 결제정보 저장 완료 "+payList);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

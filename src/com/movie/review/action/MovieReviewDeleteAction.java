@@ -33,7 +33,7 @@ public class MovieReviewDeleteAction implements Action {
 		response.setContentType("text/html; charset=UTF-8");
 		// 응답결과를 처리하는 연결통로를 지정(데이터 보낼 준비)
 		PrintWriter out = response.getWriter();
-		System.out.println("re : "+result);
+//		System.out.println("re : "+result);
 		
 		if(result==0) { // 아이디 다름
 			out.print("<script>");
