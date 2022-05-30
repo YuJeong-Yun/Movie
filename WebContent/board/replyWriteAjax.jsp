@@ -36,9 +36,7 @@
 	reply.put("bno", dto.getBno()+"");
 	reply.put("date", sDate.format(dto.getDate()));
 	reply.put("ip", dto.getIp());
-		
 
-	System.out.println("AJAX 댓글 정보 전달 "+reply);
 %>
 
 <%=reply %>

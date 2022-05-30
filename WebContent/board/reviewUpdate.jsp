@@ -25,6 +25,7 @@
 </head>
 
 <body>
+  <!-- 로그인한 id와 글쓴 id 다르면 메인으로 이동 -->
   <c:if test="${id ne dto.id }">
   	<%response.sendRedirect("./Main.do"); %>
   </c:if>

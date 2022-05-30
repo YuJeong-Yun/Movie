@@ -92,8 +92,8 @@
 	              <div class="content__wrapper">
 	                <div  class="content__name"> <!-- 댓글 작성자 -->
 	                  ${boardReply.name } 
-	                  <c:if test="${boardReply.id eq dto.id }"> <!-- 글 작성자와 댓글 작성자 같으면 작성자 표시 -->
-	                    <div class="writer">작성자</div>
+	                  <c:if test="${boardReply.id eq dto.id }"> <!-- 글 작성자와 댓글 작성자 같으면 글쓴이 표시 -->
+	                    <div class="writer">글쓴이</div>
 	                  </c:if>
 	                </div> 
 	                <div class="content__text" style="white-space:pre-wrap">${boardReply.content }</div> <!-- 댓글 내용 -->

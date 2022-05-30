@@ -92,6 +92,7 @@
       		</c:if>
       	</c:if>
       	
+      	<!-- 로그인한 유저는 글쓰기 버튼 출력 -->
       	<c:if test="${id!=null }">
       		<a href="./MovieReviewWrite.bo" class="writeBtn">글쓰기</a>
       	</c:if>
