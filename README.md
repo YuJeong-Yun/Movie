@@ -1,6 +1,8 @@
 # Movie
-CGV UI 참조<br/>
-자세한 설명 참조 - https://yunyj99.tistory.com/250 <br/><br/>
+`디자인`은 `CGV UI 참조` <br/>
+자세한 설명 아래 참조 
+1. https://yunyj99.tistory.com/250 <br/>
+2. 상단 파일의 '윤유정_개인 프로젝트_PDF.pdf' 참조 <br/><br/>
 
 1.개발환경
 =============
