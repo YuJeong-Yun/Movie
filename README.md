@@ -1,5 +1,6 @@
 # Movie
-CGV UI 참조<br/><br/><br/>
+CGV UI 참조<br/>
+자세한 설명 참조 - https://yunyj99.tistory.com/250 <br/><br/>
 
 1.개발환경
 =============
